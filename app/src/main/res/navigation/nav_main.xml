@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment"
+    >
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.capstone.HomeFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_lessons"
+            app:destination="@id/lessons" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.capstone.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.capstone.settingsFragment"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_manageAccount"
+            app:destination="@id/manageAccount" />
+        <action
+            android:id="@+id/action_settingsFragment_to_fragmentAbout"
+            app:destination="@id/fragmentAbout" />
+    </fragment>
+    <fragment
+        android:id="@+id/definitionFragment"
+        android:name="com.example.capstone.definitionFragment"
+        tools:layout="@layout/fragment_definition" />
+    <fragment
+        android:id="@+id/lessons"
+        android:name="com.example.capstone.LessonFragment"
+        android:label="fragment_lessons"
+        tools:layout="@layout/fragment_lessons" >
+        <action
+            android:id="@+id/action_lessons_to_preTest"
+            app:destination="@id/preTest" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageAccount"
+        android:name="com.example.capstone.ManageAccount"
+        android:label="fragment_manage_account"
+        tools:layout="@layout/fragment_manage_account" >
+        <action
+            android:id="@+id/action_manageAccount_to_editEmail"
+            app:destination="@id/editEmail" />
+        <action
+            android:id="@+id/action_manageAccount_to_editPassword"
+            app:destination="@id/editPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAbout"
+        android:name="com.example.capstone.fragmentAbout"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/editEmail"
+        android:name="com.example.capstone.EditEmail"
+        android:label="fragment_edit_email"
+        tools:layout="@layout/fragment_edit_email" >
+        <action
+            android:id="@+id/action_editEmail_to_manageAccount"
+            app:destination="@id/manageAccount" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPassword"
+        android:name="com.example.capstone.EditPassword"
+        android:label="fragment_edit_password"
+        tools:layout="@layout/fragment_edit_password" />
+    <fragment
+        android:id="@+id/preTest"
+        android:name="com.example.capstone.PreTest"
+        android:label="fragment_pre_test"
+        tools:layout="@layout/fragment_pre_test" />
+
+</navigation>
