@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_forgot_password.xml" value="0.9" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_lesson.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_main.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_menu.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_registration.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_splash_screen.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/cardviewlessons.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/dialog_confirm_password.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_about.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_blank.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_definition.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_edit_password.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_home.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_lessons.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_manage_account.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_pre_test.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_profile.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_settings.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/listview_items_chapters.xml" value="0.27239583333333334" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.9" />
+      </ProjectState>
+    </option>
   </component>
 </project>

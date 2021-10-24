@@ -38,29 +38,26 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
                 .into(holder.chapterImage);
 
 
-        holder.rlChapters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                LessonFragment lessonsfrags=new LessonFragment();
+        holder.rlChapters.setOnClickListener(view -> {
+            AppCompatActivity activity = (AppCompatActivity)view.getContext();
+            LessonFragment lessonsfrags=new LessonFragment();
 
-                PreTest pre=new PreTest();
+            PreTest pre=new PreTest();
 
 
-                Bundle bundle = new Bundle();
-                bundle.putInt("id",holder.getBindingAdapterPosition());
-                bundle.putString("ChapterName",model.getChapterName());
-                bundle.putInt("ChapterNumber",model.getChapterNumber());
-                lessonsfrags.setArguments(bundle);
-                pre.setArguments(bundle);
+            Bundle bundle = new Bundle();
+            bundle.putInt("id",holder.getBindingAdapterPosition());
+            bundle.putString("ChapterName",model.getChapterName());
+            bundle.putInt("ChapterNumber",model.getChapterNumber());
+            lessonsfrags.setArguments(bundle);
+            pre.setArguments(bundle);
 
 
-                activity.getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragmentHome,lessonsfrags)
-                        .addToBackStack(null)
-                        .commit();
-            }
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentHome,lessonsfrags)
+                    .addToBackStack(null)
+                    .commit();
         });
     }
     @NonNull
