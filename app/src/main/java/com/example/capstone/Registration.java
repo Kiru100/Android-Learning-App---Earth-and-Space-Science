@@ -2,7 +2,11 @@ package com.example.capstone;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -24,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Registration extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
     //TODO: implement Show Password button
+    private boolean connected;
 
     private FirebaseAuth mAuth;
     private  TextView tvHaveAccount,btnRegister;
@@ -117,8 +122,18 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             edtPassword.requestFocus();
             return;
         }
-        System.out.println("here");
         progressBar.setVisibility(View.VISIBLE);
+
+        //return internet connection status
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else{
+            connected = false;
+        }
 
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -134,19 +149,27 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(Registration.this, "Student has been registered.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Registration.this, "Register successfully. \n Please check your email address \n to verify email. ", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
                                         startActivity(new Intent(Registration.this, LoginActivity.class));
                                         finish();
                                     }else{
                                         Toast.makeText(Registration.this, "Failed to register, Try again", Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(View.GONE);
+
                                     }
                                 }
                             });
                        }else {
-                            Toast.makeText(Registration.this, "Failed to register!", Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+                            //To show user if connected to internet or not
+                            if(!connected){
+                                Toast.makeText(Registration.this, "Failed to register, \n Please check your internet connection.", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }else{
+                                //TODO: show user if the email already exist
+                                Toast.makeText(Registration.this, "Failed to register!", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
 
                         }
                     }

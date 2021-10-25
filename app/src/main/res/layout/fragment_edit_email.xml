@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".EditEmail">
 
-
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -60,14 +59,14 @@
         android:ems="10"
         android:hint="@string/enter_new_email_adress"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.23000002"
-        android:importantForAutofill="no"
-        />
+
+        app:layout_constraintVertical_bias="0.23000002" />
 
     <EditText
         android:id="@+id/edtConfirmNewEmail"
@@ -77,10 +76,10 @@
         android:ems="10"
         android:hint="@string/re_enter_new_email_adress"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/edtNewEmail"
         app:layout_constraintStart_toStartOf="@+id/edtNewEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewEmail"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNewEmail" />
 
     <Button
         android:id="@+id/btnConfirmEditEmail"

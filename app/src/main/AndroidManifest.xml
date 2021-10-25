@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LessonActivity"></activity>
+        <activity
+            android:name=".QuestionActivity"
+            android:exported="false" />
+        <activity android:name=".LessonActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

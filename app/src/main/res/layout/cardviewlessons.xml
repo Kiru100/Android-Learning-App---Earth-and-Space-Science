@@ -14,10 +14,10 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/tvLessonType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lesson"
-            android:id="@+id/tvLessonType"/>
+            android:text="@string/lesson" />
 
         <TextView
             android:id="@+id/lessonNumber"

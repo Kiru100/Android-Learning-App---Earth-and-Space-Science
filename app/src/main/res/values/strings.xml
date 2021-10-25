@@ -1,6 +1,9 @@
 <resources>
+    //forgot password
+    <string name="forgot_password_title">FORGOT \n PASSWORD</string>
+
     <string name="app_name">Capstone</string>
-    <string name="reset_password">Reset Password</string>
+    <string name="reset_password">Reset</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
     <string name="forgot_password">Forgot Password?</string>
@@ -35,7 +38,7 @@
     <string name="dbname_students">Students</string>
     <string name="dbname_chapter">Chapter</string>
     <string name="dbname_lesson">Lesson</string>
-
+    <string name="todo">TODO</string>
 
 
 </resources>

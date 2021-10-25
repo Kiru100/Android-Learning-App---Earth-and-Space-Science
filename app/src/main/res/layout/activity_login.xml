@@ -7,7 +7,7 @@
     android:background="@drawable/gradientbg"
     tools:context=".LoginActivity">
 
-    <ImageView
+        <ImageView
         android:id="@+id/imageView"
         android:layout_width="108dp"
         android:layout_height="108dp"
@@ -38,11 +38,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:autofillHints=""
+
         android:backgroundTint="#F2F2F2"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="#F2F2F2"
         android:textColorHighlight="#EFBEBE"
         android:textColorHint="#E4B2B2"
@@ -64,6 +65,7 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:textColor="#E4B2B2"
         android:textColorHint="#E4B2B2"
         app:layout_constraintEnd_toEndOf="@+id/edtEmail"
@@ -73,7 +75,7 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="214dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:layout_marginTop="28dp"
         android:text="@string/login"
         android:textColor="#0C0B0B"
@@ -116,4 +118,6 @@
         app:layout_constraintStart_toStartOf="@+id/tvForgotPassword"
         app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
         app:layout_constraintVertical_bias="0.35000002" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

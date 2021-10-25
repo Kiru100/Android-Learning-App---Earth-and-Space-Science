@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/todo" />
 
     <EditText
         android:id="@+id/edtFirstName"
@@ -29,11 +30,13 @@
         android:ems="10"
         android:hint="@string/first_name"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="#E4B2B2"
         android:textColorHint="#E4B2B2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        />
 
     <EditText
         android:id="@+id/edtLastName"
@@ -43,12 +46,13 @@
         android:backgroundTint="#F2F2F2"
         android:ems="10"
         android:hint="@string/last_name"
-        android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="#E4B2B2"
         android:textColorHint="#E4B2B2"
         app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
         app:layout_constraintStart_toStartOf="@+id/edtFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/edtFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtFirstName"
+       />
 
     <EditText
         android:id="@+id/edtEmail"
@@ -59,11 +63,13 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:textColor="#E4B2B2"
         android:textColorHint="#E4B2B2"
         app:layout_constraintEnd_toEndOf="@+id/edtLastName"
         app:layout_constraintStart_toStartOf="@+id/edtLastName"
-        app:layout_constraintTop_toBottomOf="@+id/edtLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtLastName"
+       />
 
     <EditText
         android:id="@+id/edtPassword"
@@ -74,16 +80,18 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:textColor="#E4B2B2"
         android:textColorHint="#E4B2B2"
         app:layout_constraintEnd_toEndOf="@+id/edtEmail"
         app:layout_constraintStart_toStartOf="@+id/edtEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail"
+        />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="210dp"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:text="@string/register"
         app:layout_constraintBottom_toTopOf="@+id/tvHaveAccount"
@@ -125,11 +133,13 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/design_default_color_on_primary"
         android:foregroundTint="#F1EBEB"
+        android:minHeight="48dp"
         android:textColorHint="#E4B2B2"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
         app:layout_constraintStart_toStartOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
