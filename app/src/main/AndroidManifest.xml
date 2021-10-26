@@ -13,21 +13,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".QuestionActivity"
+            android:name=".Activity.QuestionActivity"
             android:exported="false" />
-        <activity android:name=".LessonActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".Activity.LessonActivity" />
+        <activity android:name=".Activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".Menu" />
-        <activity android:name=".Registration" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activity.ForgotPasswordActivity" />
+        <activity android:name=".Activity.Menu" />
+        <activity android:name=".Activity.RegistrationActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
