@@ -13,6 +13,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.ScoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.QuestionActivity"
             android:exported="false" />
         <activity android:name=".Activity.LessonActivity" />

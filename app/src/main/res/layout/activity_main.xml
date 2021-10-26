@@ -7,8 +7,6 @@
     tools:context=".Activity.MainActivity"
     >
 
-
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -31,6 +29,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_main" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
