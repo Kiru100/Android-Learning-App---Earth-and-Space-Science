@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -81,16 +82,18 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void startTimer() {
-        countdown=new CountDownTimer(10000,1000) {
+        countdown=new CountDownTimer(12000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                tvTimer.setText(String.valueOf(millisUntilFinished/1000));
 
+                if(millisUntilFinished<10000){
+                    tvTimer.setText(String.valueOf(millisUntilFinished/1000));
+                }
             }
             @Override
             public void onFinish() {
 
-                changeQuestion();
+               changeQuestion();
             }
         };
 
@@ -138,16 +141,25 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 case 2:
                     btnB.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     break;
-                case 4:
+                case 3:
                     btnC.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     break;
-                case 5:
+                case 4:
                     btnD.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     break;
 
+                default:
             }
+
         }
-        changeQuestion();
+        Handler handler=new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                changeQuestion();
+            }
+        },2000);
+
 
     }
 
@@ -207,6 +219,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                                     ((Button)view).setText(mQuestionList.get(questionNumber).getOptionD());
                                     break;
                             }
+                            if (viewNumber!=0){
+                                ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                                //   ((Button))view.setBackgroundTintList(ColorStateList.valueOf()); TODO:reset color of selected button
+                            }
+
                             playAnim(view,1,viewNumber);
                         }
 
