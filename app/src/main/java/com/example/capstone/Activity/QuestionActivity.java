@@ -31,10 +31,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private TextView tvQuizChapterNumber,tvQuizChapterTitle,tvType,tvQuestion,tvTimer,tvCount;
     private Button btnA,btnB,btnC,btnD;
     private List<Question> mQuestionList;
-    private int questionNumber;
     private CountDownTimer countdown;
-    private int currentQuestionPosition = 0;
-    private int right;
+    private int currentQuestionPosition = 0,
+            right,
+            questionNumber;
+    private String LessonName,LessonType,ChapterNumber,TestNode;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,21 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         btnD.setOnClickListener(this);
 
 
+        Intent intent = getIntent();
+        if (null != intent) {
+
+            LessonName= intent.getStringExtra("LessonName");
+            LessonType= intent.getStringExtra("LessonType");
+            ChapterNumber= intent.getStringExtra("ChapterNumber");
+            TestNode=intent.getStringExtra("TestNode");
+
+            tvQuizChapterNumber.setText("Chapter "+ChapterNumber);
+            tvQuizChapterTitle.setText(LessonName);
+            tvType.setText(LessonType);
+        }
+
+
+
         getQuestionList();
     }
 
@@ -68,18 +86,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         mQuestionList=new ArrayList();
 
 
-        //TODO: remove this later
-//        mQuestionList.add(new Question("Question 1","Option A", "Option B", "Option C", "Option D",2));
-//        mQuestionList.add(new Question("Question 2","Option B", "Option B", "Option C", "Option D",2));
-//        mQuestionList.add(new Question("Question 3","Option C", "Option D", "Option C", "Option B",2));
-//        mQuestionList.add(new Question("Question 4","Option D", "Option D", "Option C", "Option B",2));
-
         DatabaseReference databaseReference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for (DataSnapshot dataSnapshot: snapshot.child("Question").child("pre-test1").child("Items").getChildren()){
+                for (DataSnapshot dataSnapshot: snapshot.child("Question").child(TestNode).child("Items").getChildren()){
 
                     final String getQuestion = dataSnapshot.child("question").getValue(String.class);
                     final String getOption1= dataSnapshot.child("optionA").getValue(String.class);
@@ -100,10 +112,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
             }
         });
-
-
-
-
 
 
     }
@@ -229,6 +237,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
              i.putExtra("Score",right);
              i.putExtra("Total Items",mQuestionList.size());
              i.putExtra("Wrong answers",(mQuestionList.size() - right));
+             i.putExtra("Lesson Name",LessonName);
+             i.putExtra("Lesson Type",LessonType);
+             i.putExtra("Chapter Number",ChapterNumber);
 
              startActivity(i);
 

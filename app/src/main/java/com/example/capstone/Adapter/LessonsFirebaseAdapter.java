@@ -38,6 +38,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         holder.tvLessonType.setText(model.getLtypes());
 
 
+
         holder.cvLessons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +52,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                     bundle.putString("lessonType",model.getLtypes());
                     bundle.putString("lessonName",model.getLessonName());
                     bundle.putInt("ChapterNumber",model.getChapterNumber());
+                    bundle.putString("TestNode",model.getTestName());
                     testFragment.setArguments(bundle);
 
                     activity.getSupportFragmentManager()
@@ -85,6 +87,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
     class myViewHolder extends RecyclerView.ViewHolder{
         private TextView lessonTitle,lessonNumber,tvLessonType;
         private CardView cvLessons;
+
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);

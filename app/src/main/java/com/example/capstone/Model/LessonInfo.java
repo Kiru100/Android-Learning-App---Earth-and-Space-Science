@@ -5,21 +5,31 @@ public class LessonInfo extends ChapterInfo {
     private String LessonName;
     private String Ltypes;
     private String YoutubeURL;
+    private String TestName;
 
 
     public LessonInfo(){
 
     }
 
-    public LessonInfo(int lessonNumber, String lessonName, String ltypes, String youtubeURL) {
+    public LessonInfo(int lessonNumber, String lessonName, String ltypes, String youtubeURL, String testName) {
         LessonNumber = lessonNumber;
         LessonName = lessonName;
         Ltypes = ltypes;
         YoutubeURL = youtubeURL;
+        TestName = testName;
     }
 
     public int getLessonNumber() {
         return LessonNumber;
+    }
+
+    public String getTestName() {
+        return TestName;
+    }
+
+    public void setTestName(String testName) {
+        TestName = testName;
     }
 
     public void setLessonNumber(int lessonNumber) {

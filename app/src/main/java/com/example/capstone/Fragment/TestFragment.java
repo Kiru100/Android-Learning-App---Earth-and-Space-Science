@@ -15,6 +15,7 @@ import com.example.capstone.R;
 public class TestFragment extends Fragment {
     private TextView lessonTitle,tvTestType,tvChapterNumber;
     private Button btnAttempt;
+    private String LessonName,LessonType,ChapterNumber,TestNode;
 
     public TestFragment() {
         // Required empty public constructor
@@ -33,17 +34,27 @@ public class TestFragment extends Fragment {
 
         Bundle bundle = getArguments();
         bundle.getString("lessonType");
+        TestNode=bundle.getString("TestNode");
 
-        lessonTitle.setText(bundle.getString("lessonName"));
-        tvTestType.setText(bundle.getString("lessonType"));
-        tvChapterNumber.setText(String.valueOf(bundle.getInt("ChapterNumber")));
+        LessonName=bundle.getString("lessonName");
+        LessonType=bundle.getString("lessonType");
+        ChapterNumber=String.valueOf(bundle.getInt("ChapterNumber"));
 
-        btnAttempt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), QuestionActivity.class));
+        lessonTitle.setText(LessonName);
+        tvTestType.setText(LessonType);
+        tvChapterNumber.setText(ChapterNumber);
 
-            }
+        btnAttempt.setOnClickListener(v -> {
+
+            Intent i = new Intent(getContext(), QuestionActivity.class);
+            i.putExtra("LessonName", LessonName);
+            i.putExtra("LessonType", LessonType);
+            i.putExtra("ChapterNumber",ChapterNumber);
+            i.putExtra("TestNode",TestNode);
+
+
+            startActivity(i);
+
         });
 
 
