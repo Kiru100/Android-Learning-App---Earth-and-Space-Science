@@ -73,7 +73,7 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
     }
 
     class myViewHolder extends RecyclerView.ViewHolder {
-        private FirebaseMethods mFirebaseMethods;
+
         private TextView tvChapterTitle;
         private CardView rlChapters;
         private ProgressBar progress;
@@ -82,7 +82,6 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mFirebaseMethods = new FirebaseMethods(itemView.getContext());
             tvChapterTitle = itemView.findViewById(R.id.tvChapterTitle);
             rlChapters = itemView.findViewById(R.id.rlChapters);
             progress = itemView.findViewById(R.id.progress);

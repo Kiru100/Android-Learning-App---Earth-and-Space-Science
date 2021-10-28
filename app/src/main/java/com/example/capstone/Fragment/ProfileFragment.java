@@ -44,6 +44,7 @@ public class ProfileFragment extends Fragment {
         reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
         userID=student.getUid();
 
+
         final TextView ProfileFName =rootView.findViewById(R.id.ProfileFName);
         final TextView ProfileLName =rootView.findViewById(R.id.ProfileLName);
         final TextView ProfileEmail= rootView.findViewById(R.id.ProfileEmail);

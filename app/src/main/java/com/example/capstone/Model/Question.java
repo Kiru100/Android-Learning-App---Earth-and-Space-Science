@@ -6,7 +6,7 @@ public class Question {
     private String optionB;
     private String optionC;
     private String optionD;
-    int correctAnswer;
+    private int correctAnswer;
 
     public Question(String question, String optionA, String optionB, String optionC, String optionD, int correctAnswer) {
         this.question = question;

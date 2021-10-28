@@ -1,5 +1,6 @@
 package com.example.capstone.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
@@ -15,7 +16,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.capstone.Model.Question;
+import com.example.capstone.Model.Student;
 import com.example.capstone.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +33,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private List<Question> mQuestionList;
     private int questionNumber;
     private CountDownTimer countdown;
+    private int currentQuestionPosition = 0;
+    private int right;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +50,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         tvCount=findViewById(R.id.tvCount);
 
         //buttons
-        btnA=(Button)findViewById(R.id.btnA);
-        btnB=(Button)findViewById(R.id.btnB);
-        btnC=(Button)findViewById(R.id.btnC);
-        btnD=(Button)findViewById(R.id.btnD);
+        btnA=findViewById(R.id.btnA);
+        btnB=findViewById(R.id.btnB);
+        btnC=findViewById(R.id.btnC);
+        btnD=findViewById(R.id.btnD);
 
         btnA.setOnClickListener(this);
         btnB.setOnClickListener(this);
@@ -57,12 +66,45 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void getQuestionList() {
         mQuestionList=new ArrayList();
-        mQuestionList.add(new Question("Question 1","Option A", "Option B", "Option C", "Option D",2));
-        mQuestionList.add(new Question("Question 2","Option B", "Option B", "Option C", "Option D",2));
-        mQuestionList.add(new Question("Question 3","Option C", "Option D", "Option C", "Option B",2));
-        mQuestionList.add(new Question("Question 4","Option D", "Option D", "Option C", "Option B",2));
 
-        setQuestion();
+
+        //TODO: remove this later
+//        mQuestionList.add(new Question("Question 1","Option A", "Option B", "Option C", "Option D",2));
+//        mQuestionList.add(new Question("Question 2","Option B", "Option B", "Option C", "Option D",2));
+//        mQuestionList.add(new Question("Question 3","Option C", "Option D", "Option C", "Option B",2));
+//        mQuestionList.add(new Question("Question 4","Option D", "Option D", "Option C", "Option B",2));
+
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot: snapshot.child("Question").child("pre-test1").child("Items").getChildren()){
+
+                    final String getQuestion = dataSnapshot.child("question").getValue(String.class);
+                    final String getOption1= dataSnapshot.child("optionA").getValue(String.class);
+                    final String getOption2= dataSnapshot.child("optionB").getValue(String.class);
+                    final String getOption3= dataSnapshot.child("optionC").getValue(String.class);
+                    final String getOption4= dataSnapshot.child("optionD").getValue(String.class);
+                    final int getCorrectAnswer= dataSnapshot.child("answer").getValue(int.class);
+
+                    Question question=new Question(getQuestion,getOption1,getOption2,getOption3,getOption4,getCorrectAnswer);
+                    mQuestionList.add(question);
+
+                }
+                setQuestion();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
 
     }
 
@@ -74,7 +116,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         btnC.setText(mQuestionList.get(0).getOptionC());
         btnD.setText(mQuestionList.get(0).getOptionD());
 
-        tvCount.setText(String.valueOf(1)+"/"+String.valueOf(mQuestionList.size()));
+        tvCount.setText(String.valueOf(1)+ "/"+String.valueOf(mQuestionList.size()));
     
         startTimer();
 
@@ -130,7 +172,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         if(selectedButton==mQuestionList.get(questionNumber).getCorrectAnswer()){
             //answer
             ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-
+            right++;
         }else{
             ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
@@ -184,7 +226,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         }else{
             //go to score act
              Intent i= new Intent(QuestionActivity.this,ScoreActivity.class);
+             i.putExtra("Score",right);
+             i.putExtra("Total Items",mQuestionList.size());
+             i.putExtra("Wrong answers",(mQuestionList.size() - right));
+
              startActivity(i);
+
              QuestionActivity.this.finish();
         }
 
