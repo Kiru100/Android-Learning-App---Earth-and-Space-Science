@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.QuestionActivity">
+    tools:context=".Activity.QuestionActivity"
+    android:background="@color/gitblack">
 
     <TextView
         android:id="@+id/tvQuizChapterNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/gitwhite"
         android:text="Chapter number"
+        android:textColor="@color/gitwhite"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,7 +22,9 @@
         android:id="@+id/tvQuizChapterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/gitwhite"
         android:text="@string/chapter_title"
+        android:textColor="@color/gitwhite"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/tvQuizChapterNumber" />
 
@@ -36,7 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:backgroundTint="@color/gitwhite"
         android:text="pre-test (test type)"
+        android:textColor="@color/gitwhite"
         app:layout_constraintBottom_toTopOf="@+id/btnA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -46,7 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:backgroundTint="@color/gitwhite"
         android:text="question number and question"
+        android:textColor="@color/gitwhite"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvType" />
@@ -58,6 +67,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="A"
+        android:textColor="@color/gitblack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
@@ -70,6 +80,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:text="B"
+        android:textColor="@color/gitblack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnA" />
@@ -82,6 +93,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:text="C"
+        android:textColor="@color/gitblack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnB" />
@@ -94,6 +106,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:text="D"
+        android:textColor="@color/gitblack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnC" />
@@ -110,7 +123,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/gitwhite"
         android:text="timer"
+        android:textColor="@color/gitwhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCount" />
 
@@ -119,7 +134,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/gitwhite"
         android:text="current and cap number"
+        android:textColor="@color/gitwhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />

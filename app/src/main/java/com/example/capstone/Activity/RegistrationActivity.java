@@ -8,11 +8,14 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -37,6 +40,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private  TextView tvHaveAccount,btnRegister;
     private EditText edtFirstName, edtLastName, edtEmail, edtPassword;
 
+    private CheckBox cbRegistrationShowPassword;
+
     private Spinner spinnerSection;
 
     private ProgressBar progressBar;
@@ -59,7 +64,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         tvHaveAccount.setOnClickListener(this);
 
 
-        btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
 
         edtFirstName =  findViewById(R.id.edtFirstName);
@@ -69,11 +74,24 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         progressBar= findViewById(R.id.loginprogressBar);
 
+        cbRegistrationShowPassword=findViewById(R.id.cbRegistrationShowPassword);
+
 
         //Spinner Array Adapter
         ArrayAdapter aa= new ArrayAdapter(RegistrationActivity.this,android.R.layout.simple_spinner_item,StudentSections);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSection.setAdapter(aa);
+
+        //checkbox show password
+        cbRegistrationShowPassword.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked){
+                edtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                edtPassword.setSelection(edtPassword.length());
+            }else{
+                edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                edtPassword.setSelection(edtPassword.length());
+            }
+        });
 
     }
     @Override

@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentLessons"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.LessonFragment"
-    android:id="@+id/fragmentLessons"
-    android:background="@drawable/gradientbg">
+    android:background="@color/gitblack"
+    tools:context=".Fragment.LessonFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLessons"
@@ -24,23 +24,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/chapter_title"
+        android:textColor="#E4CFCF"
         app:layout_constraintBottom_toTopOf="@+id/rvLessons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#E4CFCF"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/tvChapterNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#E4CFCF"
         app:layout_constraintBottom_toBottomOf="@+id/tvChapter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toEndOf="@+id/tvChapter"
-        app:layout_constraintTop_toTopOf="@+id/tvChapter"
-        android:textColor="#E4CFCF"/>
+        app:layout_constraintTop_toTopOf="@+id/tvChapter" />
 
     <TextView
         android:id="@+id/tvChapter"

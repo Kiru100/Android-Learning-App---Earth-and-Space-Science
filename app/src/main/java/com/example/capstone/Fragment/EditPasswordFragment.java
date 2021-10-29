@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +55,8 @@ public class EditPasswordFragment extends Fragment {
                 public void onComplete(@NonNull Task<Void> task) {
                        if(task.isSuccessful()){
                            Toast.makeText(getContext(), "Please check your email to reset your password.", Toast.LENGTH_LONG).show();
+                           final NavController navController = Navigation.findNavController(view);
+                           navController.navigate(R.id.action_editPassword_to_manageAccount);
                        }
                 }
             });

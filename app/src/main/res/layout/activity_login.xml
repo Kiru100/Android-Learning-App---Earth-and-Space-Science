@@ -4,49 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientbg"
+    android:background="@color/gitblack"
     tools:context=".Activity.LoginActivity">
 
-        <ImageView
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="108dp"
         android:layout_height="108dp"
         android:layout_marginTop="8dp"
-        android:contentDescription="TODO"
         android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvLogin"
+        app:layout_constraintStart_toStartOf="@+id/tvLogin"
         app:layout_constraintTop_toBottomOf="@+id/tvLogin"
         app:srcCompat="@drawable/logo" />
 
     <TextView
+        android:textSize="20sp"
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:fontFamily="@font/segoe_ui_bold"
         android:text="@string/login"
         android:textColor="#F1EAEA"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias=".08" />
 
     <EditText
+
+        android:fontFamily="@font/segoe_ui"
+        android:padding="10dp"
         android:id="@+id/edtEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-
-        android:backgroundTint="#F2F2F2"
+        android:drawablePadding="12dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_email_24"
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:textColor="#F2F2F2"
+        android:textColor="@color/gitwhite"
         android:textColorHighlight="#EFBEBE"
-        android:textColorHint="#E4B2B2"
+        android:textColorHint="@color/gitgray"
         android:textColorLink="#836B6B"
         app:layout_constraintBottom_toTopOf="@+id/edtPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,35 +59,39 @@
         app:layout_constraintVertical_bias="0.45" />
 
     <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
 
-        android:backgroundTint="#F2F2F2"
+        android:fontFamily="@font/segoe_ui"
+        android:id="@+id/edtPassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="12dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:textColor="#E4B2B2"
-        android:textColorHint="#E4B2B2"
+        android:padding="10dp"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
         app:layout_constraintEnd_toEndOf="@+id/edtEmail"
         app:layout_constraintStart_toStartOf="@+id/edtEmail"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
 
     <Button
+        android:fontFamily="@font/segoe_ui"
         android:id="@+id/btnLogin"
-        android:layout_width="214dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="@string/login"
-        android:textColor="#0C0B0B"
-        app:layout_constraintEnd_toEndOf="@+id/edtPassword"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+        android:textColor="@color/gitblack"
+        app:layout_constraintStart_toStartOf="@+id/cbShowPassword"
+        app:layout_constraintTop_toBottomOf="@+id/cbShowPassword" />
 
     <TextView
+        android:fontFamily="@font/segoe_ui"
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,6 +102,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <TextView
+        android:fontFamily="@font/segoe_ui"
         android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -118,6 +126,17 @@
         app:layout_constraintStart_toStartOf="@+id/tvForgotPassword"
         app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
         app:layout_constraintVertical_bias="0.35000002" />
+
+    <CheckBox
+        android:id="@+id/cbShowPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/gitwhite"
+        android:text="Show Password"
+        android:textColor="@color/gitwhite"
+        app:layout_constraintStart_toStartOf="@+id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

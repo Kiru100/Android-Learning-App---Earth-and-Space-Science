@@ -72,7 +72,11 @@
         android:id="@+id/editPassword"
         android:name="com.example.capstone.Fragment.EditPasswordFragment"
         android:label="fragment_edit_password"
-        tools:layout="@layout/fragment_edit_password" />
+        tools:layout="@layout/fragment_edit_password" >
+        <action
+            android:id="@+id/action_editPassword_to_manageAccount"
+            app:destination="@id/manageAccount" />
+    </fragment>
     <fragment
         android:id="@+id/testFragment"
         android:name="com.example.capstone.Fragment.TestFragment"

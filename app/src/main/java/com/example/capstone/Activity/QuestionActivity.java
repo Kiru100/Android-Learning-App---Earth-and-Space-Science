@@ -2,7 +2,6 @@ package com.example.capstone.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -14,9 +13,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.capstone.Model.Question;
-import com.example.capstone.Model.Student;
 import com.example.capstone.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,8 +29,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private Button btnA,btnB,btnC,btnD;
     private List<Question> mQuestionList;
     private CountDownTimer countdown;
-    private int currentQuestionPosition = 0,
-            right,
+    private int right,
             questionNumber;
     private String LessonName,LessonType,ChapterNumber,TestNode;
 
@@ -179,10 +175,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private void checkAnswer(int selectedButton, View view) {
         if(selectedButton==mQuestionList.get(questionNumber).getCorrectAnswer()){
             //answer
-            ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            view.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             right++;
         }else{
-            ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+            view.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
             switch(mQuestionList.get(questionNumber).getCorrectAnswer()){
                 case 1:
@@ -278,7 +274,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                                     break;
                             }
                             if (viewNumber!=0){
-                                ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                                view.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
                                 //   ((Button))view.setBackgroundTintList(ColorStateList.valueOf()); TODO:reset color of selected button
                             }
 

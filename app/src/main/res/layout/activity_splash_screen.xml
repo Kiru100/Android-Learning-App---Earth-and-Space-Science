@@ -4,17 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SplashScreen"
-    android:background="@drawable/gradientbg"
-    >
+    android:background="@color/gitblack"
+    android:foregroundTint="#A31313"
+    tools:context=".Activity.SplashScreen">
 
     <ImageView
         android:id="@+id/SplashLogo"
-        android:layout_width="255dp"
-        android:layout_height="287dp"
+        android:layout_width="223dp"
+        android:layout_height="228dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressTint="#5E1717"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SplashLogo"
+        app:layout_constraintVertical_bias="0.679" />
 </androidx.constraintlayout.widget.ConstraintLayout>

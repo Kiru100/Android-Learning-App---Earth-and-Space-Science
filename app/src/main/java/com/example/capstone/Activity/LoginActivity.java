@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -28,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     boolean connected = false;
 
     private TextView register,tvForgotPassword;
+
+    private CheckBox cbShowPassword;
 
     private EditText edtEmail,edtPassword;
     private Button btnLogin;
@@ -53,11 +59,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         progressBar=findViewById(R.id.loginprogressBar);
 
+        cbShowPassword=findViewById(R.id.cbShowPassword);
 
         mAuth=FirebaseAuth.getInstance();
 
-
-
+        cbShowPassword.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked){
+                edtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                edtPassword.setSelection(edtPassword.length());
+            }else{
+                edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                edtPassword.setSelection(edtPassword.length());
+            }
+        });
     }
 
 

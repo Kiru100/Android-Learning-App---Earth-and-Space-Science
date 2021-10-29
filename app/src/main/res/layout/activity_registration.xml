@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientbg"
-    tools:context=".Activity.RegistrationActivity"
-    android:textColor="#E4B2B2">
-
+    android:background="@color/gitblack"
+    android:textColor="@color/gitgray"
+    tools:context=".Activity.RegistrationActivity">
 
 
     <ImageView
@@ -15,78 +14,82 @@
         android:layout_width="169dp"
         android:layout_height="126dp"
         android:layout_marginTop="68dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@drawable/logo" />
 
     <EditText
+        android:drawablePadding="12dp"
         android:id="@+id/edtFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:backgroundTint="#F2F2F2"
+        android:drawableStart="@drawable/ic_baseline_person_24"
         android:ems="10"
         android:hint="@string/first_name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColor="#E4B2B2"
-        android:textColorHint="#E4B2B2"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
+        android:drawablePadding="12dp"
         android:id="@+id/edtLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#F2F2F2"
+        android:drawableStart="@drawable/ic_baseline_person_24"
         android:ems="10"
         android:hint="@string/last_name"
         android:minHeight="48dp"
-        android:textColor="#E4B2B2"
-        android:textColorHint="#E4B2B2"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
         app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
         app:layout_constraintStart_toStartOf="@+id/edtFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/edtFirstName"
-       />
+        app:layout_constraintTop_toBottomOf="@+id/edtFirstName" />
 
     <EditText
+        android:drawablePadding="12dp"
         android:id="@+id/edtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#F2F2F2"
+        android:drawableStart="@drawable/ic_baseline_email_24"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:textColor="#E4B2B2"
-        android:textColorHint="#E4B2B2"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
         app:layout_constraintEnd_toEndOf="@+id/edtLastName"
         app:layout_constraintStart_toStartOf="@+id/edtLastName"
-        app:layout_constraintTop_toBottomOf="@+id/edtLastName"
-       />
+        app:layout_constraintTop_toBottomOf="@+id/edtLastName" />
 
     <EditText
+        android:drawablePadding="12dp"
         android:id="@+id/edtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#F2F2F2"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColor="#E4B2B2"
-        android:textColorHint="#E4B2B2"
+        android:textColorHint="@color/gitgray"
         app:layout_constraintEnd_toEndOf="@+id/edtEmail"
         app:layout_constraintStart_toStartOf="@+id/edtEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -107,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:text="@string/do_you_have_an_account_yet_click_here"
-        android:textColor="#E4B2B2"
+        android:textColor="@color/gitwhite"
         android:textColorHint="#E4B2B2"
         app:layout_constraintEnd_toEndOf="@+id/btnRegister"
         app:layout_constraintStart_toStartOf="@+id/btnRegister"
@@ -130,16 +133,25 @@
         android:id="@+id/spinnerSection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:backgroundTint="@color/design_default_color_on_primary"
         android:foregroundTint="#F1EBEB"
         android:minHeight="48dp"
         android:textColorHint="#E4B2B2"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
-        app:layout_constraintStart_toStartOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+        app:layout_constraintStart_toStartOf="@+id/cbRegistrationShowPassword"
+        app:layout_constraintTop_toBottomOf="@+id/cbRegistrationShowPassword"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <CheckBox
+        android:id="@+id/cbRegistrationShowPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/gitwhite"
+        android:text="@string/show_password"
+        android:textColor="@color/gitwhite"
+        app:layout_constraintStart_toStartOf="@+id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

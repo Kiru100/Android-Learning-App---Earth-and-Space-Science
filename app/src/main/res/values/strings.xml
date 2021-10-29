@@ -27,10 +27,12 @@
     <string name="about">About</string>
     <string name="current_email">Current Email</string>
     <string name="confirm">Confirm</string>
-    <string name="enter_new_email_adress">Enter new email adress.</string>
+    <string name="enter_new_email_adress">Enter new email address.</string>
     <string name="re_enter_new_email_adress">Re-enter new email address.</string>
     <string name="edit_email">Edit Email</string>
     <string name="attempt">Attempt</string>
+    <string name="show_password">Show Password</string>
+
 
     //firebase
     <string name="field_email">semail</string>
@@ -39,6 +41,7 @@
     <string name="dbname_chapter">Chapter</string>
     <string name="dbname_lesson">Lesson</string>
     <string name="todo">TODO</string>
+
 
 
 </resources>
