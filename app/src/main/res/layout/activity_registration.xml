@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,9 @@
     android:textColor="@color/gitgray"
     tools:context=".Activity.RegistrationActivity">
 
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="169dp"
@@ -21,17 +23,18 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:drawablePadding="12dp"
         android:id="@+id/edtFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:backgroundTint="#F2F2F2"
+        android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_person_24"
-        android:ems="10"
+        android:drawablePadding="12dp"
+        android:ems="12"
         android:hint="@string/first_name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:padding="10dp"
         android:textColor="@color/gitwhite"
         android:textColorHint="@color/gitgray"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
@@ -39,14 +42,15 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
+        android:padding="10dp"
         android:drawablePadding="12dp"
         android:id="@+id/edtLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#F2F2F2"
+        android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_person_24"
-        android:ems="10"
+        android:ems="12"
         android:hint="@string/last_name"
         android:minHeight="48dp"
         android:textColor="@color/gitwhite"
@@ -56,14 +60,15 @@
         app:layout_constraintTop_toBottomOf="@+id/edtFirstName" />
 
     <EditText
+        android:padding="10dp"
         android:drawablePadding="12dp"
         android:id="@+id/edtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#F2F2F2"
+        android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_email_24"
-        android:ems="10"
+        android:ems="12"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
@@ -74,14 +79,15 @@
         app:layout_constraintTop_toBottomOf="@+id/edtLastName" />
 
     <EditText
+        android:padding="10dp"
         android:drawablePadding="12dp"
         android:id="@+id/edtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#F2F2F2"
+        android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:ems="10"
+        android:ems="12"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -151,7 +157,8 @@
         android:text="@string/show_password"
         android:textColor="@color/gitwhite"
         app:layout_constraintStart_toStartOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+        tools:ignore="TouchTargetSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
