@@ -31,7 +31,7 @@
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_pre_test.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_profile.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_settings.xml" value="0.27239583333333334" />
-        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/listview_items_chapters.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/listview_items_chapters.xml" value="0.1" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/try32.xml" value="0.3619791666666667" />
       </map>
     </option>
@@ -45,7 +45,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.9" />
+        <option name="scale" value="0.1" />
       </ProjectState>
     </option>
   </component>
