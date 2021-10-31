@@ -137,12 +137,11 @@
 
     <Spinner
         android:id="@+id/spinnerSection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/design_default_color_on_primary"
-        android:foregroundTint="#F1EBEB"
+        android:layout_width="247dp"
+        android:layout_height="48dp"
+        android:background="@drawable/style_spinner"
         android:minHeight="48dp"
-        android:textColorHint="#E4B2B2"
+
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
         app:layout_constraintStart_toStartOf="@+id/cbRegistrationShowPassword"

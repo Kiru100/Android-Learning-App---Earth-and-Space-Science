@@ -38,30 +38,17 @@ public class LessonFragment extends Fragment {
 
         Bundle bundle = getArguments();
         int chapternumber=bundle.getInt("id");
-
+        System.out.println(chapternumber);
         tvChapterNumber.setText(String.valueOf(bundle.getInt("ChapterNumber")));
         tvChapterTitle.setText(bundle.getString("ChapterName"));
 
-        switch (chapternumber){
-            case 0:
                 options= new FirebaseRecyclerOptions.Builder<LessonInfo>()
                         .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
                                 .getReference()
-                                .child("Lesson/LessonSet1"), LessonInfo.class)
+                                .child("Lesson")
+                                .child(String.valueOf(chapternumber+1)), LessonInfo.class)
                                 .build();
 
-               break;
-            case 1:
-                 options =
-                         new FirebaseRecyclerOptions.Builder<LessonInfo>()
-                                 .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                                         .getReference()
-                                         .child("Lesson/LessonSet2"), LessonInfo.class)
-                                         .build();
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + chapternumber);
-        }
 
         fadapter = new LessonsFirebaseAdapter(options);
         rvLessons.setAdapter(fadapter);
