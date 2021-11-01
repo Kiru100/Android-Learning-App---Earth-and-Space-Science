@@ -9,7 +9,7 @@
     <string name="dbname_chapter">Chapter</string>
     <string name="dbname_lesson">Lesson</string>
 
-    <string name="app_name">Capstone</string>
+    <string name="app_name">Gaea</string>
     <string name="reset_password">Reset</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
@@ -40,7 +40,7 @@
     <string name="attempt">Attempt</string>
     <string name="show_password">Show Password</string>
     <string name="todo">TODO</string>
-
+    <string name="enter_your_email">Enter your email</string>
 
 
 </resources>

@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gitblack"
+    android:background="@drawable/ic_layer1"
     tools:context=".Activity.LoginActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="0dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/tvLogin"
+        app:layout_constraintEnd_toEndOf="@+id/tvLogin"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintStart_toStartOf="@+id/tvLogin"
+        app:layout_constraintWidth_percent=".20"
+        app:srcCompat="@drawable/logo" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="169dp"
-            android:layout_height="167dp"
-            android:src="@drawable/logo"
-            app:layout_constraintBottom_toTopOf="@+id/edtEmail"
-            app:layout_constraintEnd_toEndOf="@+id/tvLogin"
-            app:layout_constraintStart_toStartOf="@+id/tvLogin"
-            app:layout_constraintTop_toBottomOf="@+id/tvLogin"
-            app:srcCompat="@drawable/logo" />
-
-        <TextView
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/segoe_ui_bold"
-            android:text="@string/login"
-            android:textColor="#F1EAEA"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toTopOf="@+id/edtEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline11"
-            app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/login"
+        android:textColor="#F1EAEA"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/edtEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.003"
+        app:layout_constraintStart_toStartOf="@+id/edtEmail"
+        app:layout_constraintTop_toTopOf="@+id/guideline11"
+        app:layout_constraintVertical_bias="0.96" />
 
         <EditText
 
             android:id="@+id/edtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/ic_baseline_email_24"
             android:drawablePadding="12dp"
@@ -57,11 +57,9 @@
             android:textColorLink="#836B6B"
             app:layout_constraintBottom_toTopOf="@+id/edtPassword"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
-            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toTopOf="@+id/guideline13"
-            app:layout_constraintVertical_bias="0.94"
-            android:autofillHints="emailAddress" />
+            app:layout_constraintVertical_bias="0.94" />
 
         <EditText
             android:id="@+id/edtPassword"
@@ -84,43 +82,45 @@
             app:layout_constraintTop_toBottomOf="@+id/edtEmail"
             android:autofillHints="password" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:ems="15"
-            android:fontFamily="@font/segoe_ui"
-            android:text="@string/login"
-            android:textColor="@color/gitblack"
-            app:layout_constraintBottom_toTopOf="@+id/guideline12"
-            app:layout_constraintEnd_toEndOf="@+id/edtPassword"
-            app:layout_constraintStart_toStartOf="@+id/cbShowPassword"
-            app:layout_constraintTop_toBottomOf="@+id/cbShowPassword" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="7"
+        android:fontFamily="@font/segoe_ui"
+        android:text="@string/login"
+        android:textColor="@color/gitblack"
+        app:layout_constraintBottom_toTopOf="@+id/guideline12"
+        app:layout_constraintStart_toStartOf="@+id/cbShowPassword"
+        app:layout_constraintTop_toBottomOf="@+id/cbShowPassword"
+        app:layout_constraintVertical_bias="0.099" />
 
-        <TextView
-            android:id="@+id/tvForgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:fontFamily="@font/segoe_ui"
-            android:text="@string/forgot_password"
-            android:textColor="#F2F2F2"
-            app:layout_constraintStart_toStartOf="@+id/btnLogin"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+    <TextView
 
-        <TextView
-            android:id="@+id/tvRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:fontFamily="@font/segoe_ui"
-            android:text="@string/register"
-            android:textColor="#F2F2F2"
-            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-            app:layout_constraintHorizontal_bias="0.978"
-            app:layout_constraintStart_toEndOf="@+id/tvForgotPassword"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        android:textStyle="bold"
+        android:id="@+id/tvForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui"
+        android:text="@string/forgot_password"
+        android:textColor="@color/gitred"
+        app:layout_constraintBottom_toBottomOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="@+id/edtPassword"
+        app:layout_constraintTop_toTopOf="@+id/btnLogin" />
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/segoe_ui"
+        android:text="@string/register"
+        android:textColor="@color/gitred"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNotMember"
+        app:layout_constraintStart_toEndOf="@+id/tvNotMember"
+        app:layout_constraintTop_toTopOf="@+id/tvNotMember"
+        app:layout_constraintVertical_bias="0.483" />
 
         <ProgressBar
             android:id="@+id/loginprogressBar"
@@ -129,22 +129,22 @@
             android:layout_height="wrap_content"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tvRegister"
-            app:layout_constraintHorizontal_bias="0.505"
-            app:layout_constraintStart_toStartOf="@+id/tvForgotPassword"
-            app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.764"
+            app:layout_constraintStart_toEndOf="@+id/tvRegister"
+            app:layout_constraintTop_toTopOf="@+id/guideline12"
             app:layout_constraintVertical_bias="1.0" />
 
-        <CheckBox
-            android:id="@+id/cbShowPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/gitwhite"
-            android:text="@string/show_password"
-            android:textColor="@color/gitwhite"
-            app:layout_constraintStart_toStartOf="@+id/edtPassword"
-            app:layout_constraintTop_toBottomOf="@+id/edtPassword"
-            tools:ignore="TouchTargetSizeCheck" />
+    <CheckBox
+        android:id="@+id/cbShowPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/gitwhite"
+        android:text="@string/show_password"
+        android:textColor="@color/gitwhite"
+        app:layout_constraintStart_toStartOf="@+id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+        tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"
@@ -172,16 +172,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.91" />
+            app:layout_constraintGuide_percent=".92" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.51" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".45" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tvNotMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You are not a member?"
+        android:textColor="@color/gitwhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toTopOf="@+id/guideline12"
+        app:layout_constraintVertical_bias="0.49" />
+
+    <TextView
+        android:id="@+id/tvtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aldrich"
+        android:text="Gaea"
+        android:textColor="@color/gitwhite"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLogin"
+        app:layout_constraintEnd_toEndOf="@+id/edtEmail"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

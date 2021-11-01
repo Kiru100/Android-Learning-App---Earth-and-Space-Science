@@ -1,32 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gitblack"
+    android:background="@drawable/ic_registrationbg"
     android:textColor="@color/gitgray"
     tools:context=".Activity.RegistrationActivity">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="169dp"
-        android:layout_height="126dp"
-        android:layout_marginTop="68dp"
-        android:contentDescription="@string/todo"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/tvLogin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/register"
+        android:textColor="#F1EAEA"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="@+id/guideline16"
+        app:layout_constraintHeight_percent=".2"
+        app:layout_constraintStart_toStartOf="@+id/guideline17"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714"
+        app:layout_constraintWidth_percent=".2"
         app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/edtFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_person_24"
         android:drawablePadding="12dp"
@@ -37,65 +60,74 @@
         android:padding="10dp"
         android:textColor="@color/gitwhite"
         android:textColorHint="@color/gitgray"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintBottom_toTopOf="@+id/edtLastName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogin2"
+        app:layout_constraintVertical_bias="0.73" />
 
     <EditText
-        android:padding="10dp"
-        android:drawablePadding="12dp"
-        android:id="@+id/edtLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/ic_baseline_person_24"
-        android:ems="12"
-        android:hint="@string/last_name"
-        android:minHeight="48dp"
-        android:textColor="@color/gitwhite"
-        android:textColorHint="@color/gitgray"
-        app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
-        app:layout_constraintStart_toStartOf="@+id/edtFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/edtFirstName" />
-
-    <EditText
-        android:padding="10dp"
-        android:drawablePadding="12dp"
         android:id="@+id/edtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawablePadding="12dp"
         android:ems="12"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:padding="10dp"
         android:textColor="@color/gitwhite"
         android:textColorHint="@color/gitgray"
+        app:layout_constraintBottom_toTopOf="@+id/edtPassword"
         app:layout_constraintEnd_toEndOf="@+id/edtLastName"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edtLastName"
         app:layout_constraintTop_toBottomOf="@+id/edtLastName" />
 
     <EditText
-        android:padding="10dp"
-        android:drawablePadding="12dp"
         android:id="@+id/edtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="12dp"
         android:ems="12"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:padding="10dp"
         android:textColor="#E4B2B2"
         android:textColorHint="@color/gitgray"
+        app:layout_constraintBottom_toTopOf="@+id/cbRegistrationShowPassword"
         app:layout_constraintEnd_toEndOf="@+id/edtEmail"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edtEmail"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+
+    <EditText
+        android:id="@+id/edtLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawablePadding="12dp"
+        android:ems="12"
+        android:hint="@string/last_name"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
+        app:layout_constraintBottom_toTopOf="@+id/edtEmail"
+        app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/edtFirstName" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -137,16 +169,18 @@
 
     <Spinner
         android:id="@+id/spinnerSection"
-        android:layout_width="247dp"
-        android:layout_height="48dp"
+        android:layout_width="182dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/style_spinner"
-        android:minHeight="48dp"
 
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="@+id/cbRegistrationShowPassword"
         app:layout_constraintTop_toBottomOf="@+id/cbRegistrationShowPassword"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintVertical_bias="0.72"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <CheckBox
         android:id="@+id/cbRegistrationShowPassword"
@@ -158,6 +192,20 @@
         app:layout_constraintStart_toStartOf="@+id/edtPassword"
         app:layout_constraintTop_toBottomOf="@+id/edtPassword"
         tools:ignore="TouchTargetSizeCheck" />
-</androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="40dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

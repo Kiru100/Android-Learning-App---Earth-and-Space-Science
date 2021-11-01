@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -46,7 +47,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     private ProgressBar progressBar;
 
-    String [] StudentSections={"Section 1","Section 2","Section 3","Section 4","Section 5"};
+    String [] StudentSections={"Section","Section 1","Section 2","Section 3","Section 4","Section 5"};
 
 
     @Override
@@ -141,6 +142,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         if (password.length() < 6) {
             edtPassword.setError("Minimum password length should be 6 characters!");
             edtPassword.requestFocus();
+            return;
+        }
+        if(section.equals("Section")){
+            TextView errorText = (TextView)spinnerSection.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setText("Section required");//changes the selected item text to this
             return;
         }
         progressBar.setVisibility(View.VISIBLE);
