@@ -6,7 +6,6 @@
             <stroke android:color="@color/gitwhite"/>
             <corners android:radius="10dp"/>
             <stroke android:color="@color/gitwhite" android:width="2dp"/>
-
         </shape>
     </item>
 
@@ -14,7 +13,7 @@
         <shape android:shape="rectangle">
             <stroke android:color="@color/gitwhite"/>
             <corners android:radius="10dp"/>
-            <stroke android:color="@color/gitgray" android:width="1dp"/>
+            <stroke android:color="@color/gitgray" android:width="2dp"/>
         </shape>
     </item>
 

@@ -25,7 +25,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="register">Register</string>
-    <string name="do_you_have_an_account_yet_click_here">Do you have an account yet? Click Here</string>
+    <string name="do_you_have_an_account_yet_click_here">Do you have an account yet?</string>
     <string name="lesson">Lesson</string>
     <string name="section">Section</string>
     <string name="home">HOME</string>
@@ -41,6 +41,7 @@
     <string name="show_password">Show Password</string>
     <string name="todo">TODO</string>
     <string name="enter_your_email">Enter your email</string>
+    <string name="sign_in">Sign In</string>
 
 
 </resources>

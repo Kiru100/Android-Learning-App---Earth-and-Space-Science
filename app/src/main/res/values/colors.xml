@@ -10,6 +10,7 @@
     <color name="gitlight">#505358</color>
     <color name="githint">#CDCDCF</color>
     <color name="gitred">#d4314d</color>
+    <color name="gitpurewhite">#ffffff</color>
 
 
 </resources>

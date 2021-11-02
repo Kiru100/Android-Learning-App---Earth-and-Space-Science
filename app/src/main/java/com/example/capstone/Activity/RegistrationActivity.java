@@ -31,6 +31,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
@@ -46,8 +49,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private Spinner spinnerSection;
 
     private ProgressBar progressBar;
-
-    String [] StudentSections={"Section","Section 1","Section 2","Section 3","Section 4","Section 5"};
 
 
     @Override
@@ -79,19 +80,19 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
         //Spinner Array Adapter
-        ArrayAdapter aa= new ArrayAdapter(RegistrationActivity.this,android.R.layout.simple_spinner_item,StudentSections);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        String [] StudentSections={"Section","Section 1","Section 2","Section 3","Section 4","Section 5"};
+        ArrayList<String> arrayList=new ArrayList<>(Arrays.asList(StudentSections));
+        ArrayAdapter<String> aa= new ArrayAdapter<>(this,R.layout.spinner_text_style,arrayList);
         spinnerSection.setAdapter(aa);
 
         //checkbox show password
         cbRegistrationShowPassword.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked){
                 edtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                edtPassword.setSelection(edtPassword.length());
             }else{
                 edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                edtPassword.setSelection(edtPassword.length());
             }
+            edtPassword.setSelection(edtPassword.length());
         });
 
     }

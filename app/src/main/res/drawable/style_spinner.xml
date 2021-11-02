@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-            <layer-list>
-                <item>
-                    <shape android:shape="rectangle">
-                        <solid android:color="@color/gitwhite"/>
-                            <corners android:radius="10dp"/>
-                        <padding android:right="10dp"/>
-                    </shape>
-                </item>
 
-                <item>
-                   <bitmap android:gravity="center|end" android:src="@drawable/ic_down"/>
-                </item>
-            </layer-list>
+    <item android:state_enabled="true" >
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/gitblack"/>
+                    <corners android:radius="10dp"/>
+                    <padding android:left="10dp" android:right="10dp"/>
+                    <stroke android:width="2px" android:color="@color/gitwhite" />
+                </shape>
+            </item>
+            <item>
+                <bitmap android:gravity="center|start" android:src="@drawable/ic_down2"/>
+            </item>
+        </layer-list>
+
+
     </item>
+
+
+
 </selector>

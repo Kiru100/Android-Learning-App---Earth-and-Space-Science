@@ -4,25 +4,31 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable-anydpi/ic_down.xml" value="0.24527027027027026" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable-anydpi/ic_down2.xml" value="0.287109375" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/bottom_nav_color.xml" value="0.24527027027027026" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/custom_button.xml" value="0.3828125" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/custom_input.xml" value="0.3828125" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/get.xml" value="0.3828125" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/gradientbg.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.24177631578947367" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.3828125" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.3310810810810811" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_down.xml" value="0.24527027027027026" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_layer.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_layer1.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_layerbasicbg.xml" value="0.24177631578947367" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_layered.xml" value="0.287109375" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_tag_faces_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/style_spinner.xml" value="0.24527027027027026" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/font/font.xml" value="0.396875" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout-land/activity_registration.xml" value="0.26611842105263156" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_forgot_password.xml" value="0.205859375" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_lesson.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_login.xml" value="0.2898148148148148" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_main.xml" value="0.22013888888888888" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_menu.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_question.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_registration.xml" value="0.205078125" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_registration.xml" value="0.2354515050167224" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_score.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_splash_screen.xml" value="0.31574074074074077" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/cardviewlessons.xml" value="0.27239583333333334" />
@@ -39,6 +45,7 @@
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_profile.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_settings.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/listview_items_chapters.xml" value="0.23783783783783785" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/spinner_text_style.xml" value="0.23157894736842105" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/try32.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23783783783783785" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/mipmap-anydpi-v26/ealogo_round.xml" value="0.2483108108108108" />
