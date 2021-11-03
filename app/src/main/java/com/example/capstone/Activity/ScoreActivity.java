@@ -49,7 +49,8 @@ public class ScoreActivity extends AppCompatActivity {
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
-
+           this.onBackPressed();
+           finish();
         });
 
     }

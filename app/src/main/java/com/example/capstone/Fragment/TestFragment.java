@@ -54,7 +54,7 @@ public class TestFragment extends Fragment {
 
 
             startActivity(i);
-
+            getActivity().onBackPressed();
         });
 
 
