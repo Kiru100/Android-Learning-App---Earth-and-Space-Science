@@ -96,7 +96,7 @@ public class EditEmailFragment extends Fragment {
 
 
                                         final NavController navController = Navigation.findNavController(getView());
-                                        navController.navigate(R.id.action_editEmail_to_manageAccount);
+                                        navController.navigate(R.id.action_editEmail_to_settingsFragment);
                                         Toast.makeText(getActivity(), "You successfully changed your email.", Toast.LENGTH_SHORT).show();
                                     }
                                     else{

@@ -49,7 +49,6 @@ public class LessonFragment extends Fragment {
                                 .child(String.valueOf(chapternumber+1)), LessonInfo.class)
                                 .build();
 
-
         fadapter = new LessonsFirebaseAdapter(options);
         rvLessons.setAdapter(fadapter);
 

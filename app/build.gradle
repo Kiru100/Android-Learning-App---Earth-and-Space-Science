@@ -53,4 +53,5 @@ dependencies {
     def fragment_version = "1.3.6"
     implementation "androidx.fragment:fragment:$fragment_version"
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

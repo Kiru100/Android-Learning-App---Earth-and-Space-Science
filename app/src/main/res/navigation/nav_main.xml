@@ -15,19 +15,21 @@
             app:destination="@id/lessons" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.capstone.Fragment.ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.capstone.Fragment.SettingsFragment"
         tools:layout="@layout/fragment_settings" >
         <action
-            android:id="@+id/action_settingsFragment_to_manageAccount"
-            app:destination="@id/manageAccount" />
-        <action
             android:id="@+id/action_settingsFragment_to_fragmentAbout"
             app:destination="@id/fragmentAbout" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editEmail"
+            app:destination="@id/editEmail" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editPassword"
+            app:destination="@id/editPassword" />
+        <action
+            android:id="@+id/action_settingsFragment_to_changePersonalDetails"
+            app:destination="@id/changePersonalDetails" />
     </fragment>
     <fragment
         android:id="@+id/definitionFragment"
@@ -43,18 +45,6 @@
             app:destination="@id/testFragment" />
     </fragment>
     <fragment
-        android:id="@+id/manageAccount"
-        android:name="com.example.capstone.Fragment.ManageAccountFragment"
-        android:label="fragment_manage_account"
-        tools:layout="@layout/fragment_manage_account" >
-        <action
-            android:id="@+id/action_manageAccount_to_editEmail"
-            app:destination="@id/editEmail" />
-        <action
-            android:id="@+id/action_manageAccount_to_editPassword"
-            app:destination="@id/editPassword" />
-    </fragment>
-    <fragment
         android:id="@+id/fragmentAbout"
         android:name="com.example.capstone.Fragment.AboutFragment"
         android:label="fragment_about"
@@ -65,8 +55,8 @@
         android:label="fragment_edit_email"
         tools:layout="@layout/fragment_edit_email" >
         <action
-            android:id="@+id/action_editEmail_to_manageAccount"
-            app:destination="@id/manageAccount" />
+            android:id="@+id/action_editEmail_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/editPassword"
@@ -74,13 +64,18 @@
         android:label="fragment_edit_password"
         tools:layout="@layout/fragment_edit_password" >
         <action
-            android:id="@+id/action_editPassword_to_manageAccount"
-            app:destination="@id/manageAccount" />
+            android:id="@+id/action_editPassword_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/testFragment"
         android:name="com.example.capstone.Fragment.TestFragment"
         android:label="fragment_pre_test"
         tools:layout="@layout/fragment_pre_test" />
+    <fragment
+        android:id="@+id/changePersonalDetails"
+        android:name="com.example.capstone.ChangePersonalDetails"
+        android:label="fragment_change_personal_details"
+        tools:layout="@layout/fragment_change_personal_details" />
 
 </navigation>

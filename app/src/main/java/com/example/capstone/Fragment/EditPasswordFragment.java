@@ -56,7 +56,7 @@ public class EditPasswordFragment extends Fragment {
                        if(task.isSuccessful()){
                            Toast.makeText(getContext(), "Please check your email to reset your password.", Toast.LENGTH_LONG).show();
                            final NavController navController = Navigation.findNavController(view);
-                           navController.navigate(R.id.action_editPassword_to_manageAccount);
+                           navController.navigate(R.id.action_editPassword_to_settingsFragment);
                        }
                 }
             });

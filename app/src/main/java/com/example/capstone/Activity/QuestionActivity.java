@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
@@ -120,8 +121,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         btnC.setText(mQuestionList.get(0).getOptionC());
         btnD.setText(mQuestionList.get(0).getOptionD());
 
-        tvCount.setText(String.valueOf(1)+ "/"+String.valueOf(mQuestionList.size()));
-    
+        String totalScore=String.valueOf(1)+ "/"+String.valueOf(mQuestionList.size());
+        tvCount.setText(totalScore);
         startTimer();
 
         questionNumber=0;
@@ -135,6 +136,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 if(millisUntilFinished<10000){
                     tvTimer.setText(String.valueOf(millisUntilFinished/1000));
                 }
+                if(millisUntilFinished<10000){
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                }
+
             }
             @Override
             public void onFinish() {
@@ -167,6 +172,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
             default:
         }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         countdown.cancel();
         checkAnswer(selectedButton,v);
 

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/definitionFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:title="@string/definition"
+        android:visible="true" />
 
     <item
         android:id="@+id/homeFragment"
@@ -10,25 +16,18 @@
         android:visible="true" />
 
     <item
-        android:id="@+id/definitionFragment"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_menu_book_24"
-        android:title="@string/definition"
-        android:visible="true" />
-
-    <item
         android:id="@+id/settingsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="SETTINGS"
         android:visible="true" />
 
-    <item
-        android:id="@+id/profileFragment"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="@string/profile"
-        android:visible="true" />
+<!--    <item-->
+<!--        android:id="@+id/profileFragment"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_baseline_person_24"-->
+<!--        android:title="@string/profile"-->
+<!--        android:visible="true" />-->
 
 
 </menu>

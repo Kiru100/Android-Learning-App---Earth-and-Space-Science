@@ -20,6 +20,7 @@
         app:menu="@menu/bottom_navigation_menu"
         app:itemIconTint="@color/nav_color"
         app:itemTextColor="@color/gitwhite"
+        android:elevation="300dp"
         />
 
     <fragment

@@ -42,6 +42,7 @@
     <string name="todo">TODO</string>
     <string name="enter_your_email">Enter your email</string>
     <string name="sign_in">Sign In</string>
+    <string name="reset_password_message">Note: Please click on the button “Reset password” in order to update your password. We will send you an email to your account’s email address, where you can change your password.</string>
 
 
 </resources>
