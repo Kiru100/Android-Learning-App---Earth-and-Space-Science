@@ -9,109 +9,156 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
 
+
+    <Button
+        android:id="@+id/btnConfirmEditEmail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@null"
+        android:text="@string/confirm"
+        android:textColor="@color/gitwhite"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline26"
+        app:layout_constraintEnd_toStartOf="@+id/guideline25"
+        app:layout_constraintHeight_percent=".06"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintWidth_percent=".60" />
+
+    <EditText
+        android:id="@+id/edtNewEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawablePadding="12dp"
+        android:ems="12"
+        android:hint="@string/enter_new_email_address"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:minEms="12"
+        android:padding="10dp"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/edtConfirmNewEmail"
+        app:layout_constraintEnd_toStartOf="@+id/guideline25"
+        app:layout_constraintHeight_percent=".06"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintVertical_bias="0.464"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent=".60" />
+
+    <EditText
+        android:id="@+id/edtConfirmNewEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawablePadding="12dp"
+        android:ems="12"
+        android:hint="@string/re_enter_new_email_address"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnConfirmEditEmail"
+        app:layout_constraintEnd_toStartOf="@+id/guideline25"
+        app:layout_constraintHeight_percent=".06"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/edtNewEmail"
+        app:layout_constraintWidth_percent=".60" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/edit_email"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/settings"
         android:textColor="@color/gitwhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06999999" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
         android:text="@string/current_email"
         android:textColor="@color/gitwhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/edtNewEmail"
+        app:layout_constraintEnd_toStartOf="@+id/guideline25"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.06999999" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintVertical_bias="0.262" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="85dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="140dp" />
+        app:layout_constraintGuide_percent=".1" />
 
     <TextView
         android:id="@+id/tvCurrentEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
         android:textColor="@color/gitwhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <EditText
-        android:id="@+id/edtNewEmail"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline25"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/gitwhite"
-        android:ems="10"
-        android:hint="@string/enter_new_email_address"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="@color/gitwhite"
-        android:textColorHint="@color/gitgray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".9" />
 
-        app:layout_constraintHorizontal_bias="0.06"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".20" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="76dp"
+        android:layout_height="73dp"
+        android:src="@drawable/ic_baseline_settings_24"
+        app:layout_constraintBottom_toTopOf="@+id/guideline27"
+        app:layout_constraintEnd_toStartOf="@+id/guideline25"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.224" />
-
-    <EditText
-        android:id="@+id/edtConfirmNewEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@color/gitwhite"
-        android:ems="10"
-        android:hint="@string/re_enter_new_email_address"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="@color/gitwhite"
-        android:textColorHint="@color/gitgray"
-        app:layout_constraintEnd_toEndOf="@+id/edtNewEmail"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtNewEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewEmail" />
-
-    <Button
-        android:id="@+id/btnConfirmEditEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/confirm"
-        app:layout_constraintEnd_toEndOf="@+id/edtConfirmNewEmail"
-        app:layout_constraintStart_toStartOf="@+id/edtConfirmNewEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtConfirmNewEmail" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvpasswordTest"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/gitwhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/btnConfirmEditEmail" />
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/edit_email"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

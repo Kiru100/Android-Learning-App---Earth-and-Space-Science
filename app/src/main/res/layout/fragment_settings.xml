@@ -24,7 +24,6 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-
         android:id="@+id/circleImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -34,7 +33,7 @@
         app:layout_constraintHeight_percent=".09"
         app:layout_constraintStart_toStartOf="@+id/guideline22"
         app:layout_constraintTop_toTopOf="@+id/guideline21"
-        app:layout_constraintWidth_percent=".15" />
+        app:layout_constraintWidth_percent=".12" />
 
     <Button
         android:id="@+id/btnChangePersonalDetails"
