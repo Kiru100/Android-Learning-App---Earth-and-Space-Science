@@ -57,15 +57,11 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 Student studentProfile= snapshot.getValue(Student.class);
                 String sfname=studentProfile.getSFname();
                 String slname=studentProfile.getSLname();
-
                 String FullName=sfname+" "+slname;
-
                 tvFirstLastName.setText(FullName);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 

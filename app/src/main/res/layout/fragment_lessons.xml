@@ -5,8 +5,9 @@
     android:id="@+id/fragmentLessons"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gitblack"
+    android:background="@drawable/ic_bgsettings"
     tools:context=".Fragment.LessonFragment">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLessons"
@@ -15,47 +16,75 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintTop_toTopOf="@+id/guideline38"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvChapterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/segoe_ui_bold"
         android:text="@string/chapter_title"
-        android:textColor="#E4CFCF"
-        app:layout_constraintBottom_toTopOf="@+id/rvLessons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/tvChapterNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#E4CFCF"
-        app:layout_constraintBottom_toBottomOf="@+id/tvChapter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toEndOf="@+id/tvChapter"
-        app:layout_constraintTop_toTopOf="@+id/tvChapter" />
+        android:textColor="@color/gitwhite"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChapterImage"
+        app:layout_constraintStart_toEndOf="@+id/ivChapterImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvChapter"
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/tvChapter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/segoe_ui"
         android:foregroundTint="#E3D2D2"
-
         android:text="Chapter"
-        android:textColor="#E4CFCF"
-        app:layout_constraintBottom_toTopOf="@+id/rvLessons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/gitwhite"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvChapterTitle"
+        app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivChapterImage"
+        app:layout_constraintTop_toTopOf="@+id/ivChapterImage"
+        app:layout_constraintVertical_bias="0.39"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageView
+
+        android:id="@+id/ivChapterImage"
+        android:layout_width="121dp"
+        android:layout_height="117dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline38"
+        app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline37"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228" />
+        app:srcCompat="?attr/actionModeSelectAllDrawable" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".95" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

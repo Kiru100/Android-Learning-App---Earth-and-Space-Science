@@ -1,5 +1,6 @@
 package com.example.capstone.Fragment;
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.capstone.Adapter.LessonsFirebaseAdapter;
 import com.example.capstone.Model.LessonInfo;
 import com.example.capstone.R;
@@ -20,7 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LessonFragment extends Fragment {
     private LessonsFirebaseAdapter fadapter;
-    private TextView tvChapterNumber,tvChapterTitle;
+    private TextView tvChapter,tvChapterTitle;
+    private ImageView ivChapterImage;
 
     public LessonFragment() { }
 
@@ -30,23 +34,28 @@ public class LessonFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_lessons, container, false);
         RecyclerView rvLessons = rootView.findViewById(R.id.rvLessons);
 
-        tvChapterNumber=rootView.findViewById(R.id.tvChapterNumber);
+        tvChapter=rootView.findViewById(R.id.tvChapter);
         tvChapterTitle=rootView.findViewById(R.id.tvChapterTitle);
+        ivChapterImage=rootView.findViewById(R.id.ivChapterImage);
 
         rvLessons.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         FirebaseRecyclerOptions<LessonInfo> options;
 
         Bundle bundle = getArguments();
-        int chapternumber=bundle.getInt("id");
-        System.out.println(chapternumber);
-        tvChapterNumber.setText(String.valueOf(bundle.getInt("ChapterNumber")));
+        int chapterNum=bundle.getInt("id")+1;
+        String ImageURL=bundle.getString("LessonImage");
+
+        Glide.with(this).load(ImageURL).into(ivChapterImage);
+
+        String chapterNumber="Chapter "+chapterNum;
+        tvChapter.setText(chapterNumber);
         tvChapterTitle.setText(bundle.getString("ChapterName"));
 
                 options= new FirebaseRecyclerOptions.Builder<LessonInfo>()
                         .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
                                 .getReference()
                                 .child("Lesson")
-                                .child(String.valueOf(chapternumber+1)), LessonInfo.class)
+                                .child(String.valueOf(chapterNum)), LessonInfo.class)
                                 .build();
 
         fadapter = new LessonsFirebaseAdapter(options);

@@ -54,6 +54,7 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
             bundle.putInt("id",holder.getBindingAdapterPosition());
             bundle.putString("ChapterName",model.getChapterName());
             bundle.putInt("ChapterNumber",model.getChapterNumber());
+            bundle.putString("LessonImage",model.getLessonChapterImageURl());
             lessonsfrags.setArguments(bundle);
             pre.setArguments(bundle);
 

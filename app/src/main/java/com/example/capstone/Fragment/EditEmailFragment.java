@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +41,8 @@ public class EditEmailFragment extends Fragment {
    private EditText edtNewEmail,edtConfirmNewEmail;
 
     private FirebaseUser student;
+
+    private FirebaseAuth auth;
 
     private FirebaseMethods mFirebaseMethods;
 
@@ -63,12 +66,7 @@ public class EditEmailFragment extends Fragment {
         Button btnConfirmEditEmail = rootView.findViewById(R.id.btnConfirmEditEmail);
         getEmail(rootView);
 
-        btnConfirmEditEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                confirmEmail();
-            }
-        });
+        btnConfirmEditEmail.setOnClickListener(view -> confirmEmail());
 
         return rootView;
     }
@@ -82,7 +80,6 @@ public class EditEmailFragment extends Fragment {
                 .getCredential(auth.getCurrentUser().getEmail(), password);
         user.reauthenticate(credential)
                 .addOnCompleteListener(task -> {
-
                     //change email here
                     FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
                     user1.updateEmail(edtNewEmail.getText().toString())
@@ -94,18 +91,24 @@ public class EditEmailFragment extends Fragment {
                                         //TODO:prompt if fail or success as well as check if password is incorrect
                                         mFirebaseMethods.updateEmail(edtNewEmail.getText().toString());
 
-
                                         final NavController navController = Navigation.findNavController(getView());
                                         navController.navigate(R.id.action_editEmail_to_settingsFragment);
                                         Toast.makeText(getActivity(), "You successfully changed your email.", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else{
-                                        Toast.makeText(getContext(), "Check your password.", Toast.LENGTH_SHORT).show();
+                                    }  else{
+                                        auth.fetchSignInMethodsForEmail(edtNewEmail.getText().toString()).addOnCompleteListener(task11 -> {
+                                            boolean isNewUser = task11.getResult().getSignInMethods().isEmpty();
+
+                                            if (isNewUser) {
+                                                Toast.makeText(getContext(), "Check your password.", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(getContext(), "Email already exist. \n Please try again.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
                                     }
                                 }
                             });
                 });
-
     }
 
     private void confirmDialog() {
@@ -121,6 +124,7 @@ public class EditEmailFragment extends Fragment {
     public void confirmEmail(){
         String email =  edtNewEmail.getText().toString().trim();
         String confirmEmail=edtConfirmNewEmail.getText().toString().trim();
+        auth = FirebaseAuth.getInstance();
 
         if (email.isEmpty()) {
             edtNewEmail.setError("Email is required");
@@ -146,14 +150,23 @@ public class EditEmailFragment extends Fragment {
             edtConfirmNewEmail.setError("Email don't match.");
             edtConfirmNewEmail.requestFocus();
             return;
-        }else {
+
+        }if(email.equals(auth.getCurrentUser().getEmail())){
+            edtConfirmNewEmail.setError("Please provide new email.");
+            edtNewEmail.setError("Please provide new email.");
+            edtNewEmail.requestFocus();
+            return;
+        }else
+            {
             confirmDialog();
         }
+
     }
 
     public void getEmail(View view){
         student=FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                                                        .getReference("Students");
         String userID = student.getUid();
 
         final TextView CurrentEmail=view.findViewById(R.id.tvCurrentEmail);

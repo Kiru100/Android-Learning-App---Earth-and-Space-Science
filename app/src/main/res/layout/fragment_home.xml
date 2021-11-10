@@ -5,22 +5,21 @@
     android:id="@+id/fragmentHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.HomeFragment"
-    android:background="@drawable/ic_homegb">
+    android:background="@drawable/ic_layerbasicbg"
+    tools:context=".Fragment.HomeFragment">
 
     <TextView
         android:id="@+id/tvtitle3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:fontFamily="@font/aldrich"
-        android:text="Gaea"
+        android:text="@string/gaea"
         android:textColor="@color/gitwhite"
-        android:textSize="50dp"
+        android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.168" />
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChapters"
@@ -31,32 +30,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:scaleType="fitXY"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/rvChapters"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".2"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/guideline28"
+        app:layout_constraintHeight_max="120dp"
+        app:layout_constraintHeight_min="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025"
-        app:layout_constraintWidth_percent=".3" />
+        app:layout_constraintWidth_max="120dp"
+        app:layout_constraintWidth_min="100dp" />
 
     <TextView
-        android:includeFontPadding="false"
         android:id="@+id/textView13"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/segoe_ui_bold"
-        android:text="Earth and Space Science"
+        android:includeFontPadding="false"
+        android:text="@string/earth_and_space_science"
         android:textColor="@color/gitwhite"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,14 +74,19 @@
         android:fontFamily="@font/segoe_ui_bold"
         android:text="CHAPTERS"
         android:textColor="@color/gitwhite"
-        app:layout_constraintBottom_toTopOf="@+id/rvChapters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".034"
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toTopOf="@+id/guideline28"
         app:layout_constraintWidth_percent=".4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".25" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

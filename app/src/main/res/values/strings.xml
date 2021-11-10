@@ -44,6 +44,14 @@
     <string name="reset_password_message">Note: Please click on the button “Reset password” in order to update your password. We will send you an email to your account’s email address, where you can change your password.</string>
     <string name="change_password">Change Password</string>
     <string name="settings_image">Settings Image</string>
+    <string name="edit_personal_details">Edit personal details</string>
+    <string name="account">Account</string>
+    <string name="information">Information</string>
+    <string name="app_ver_1_0_1">App ver 1.0.1</string>
+    <string name="save">Save</string>
+    <string name="note_you_still_need_to_verify_your_new_email_after_successfully_changing_email">Note: You still need to verify your new email after successfully changing email.</string>
+    <string name="gaea">Gaea</string>
+    <string name="earth_and_space_science">Earth and Space Science</string>
 
 
 </resources>

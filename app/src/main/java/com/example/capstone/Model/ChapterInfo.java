@@ -4,15 +4,17 @@ public class ChapterInfo extends Student {
     private String ChapterName;
     private String ImageFile;
     private int ChapterNumber;
+    private String LessonChapterImageURl;
 
     public ChapterInfo(){
 
     }
 
-    public ChapterInfo(String chapterName, String imageFile,int ChapterNumber) {
+    public ChapterInfo(String chapterName, String imageFile, int ChapterNumber, String lessonChapterImageURl) {
        this.ChapterName = chapterName;
         this.ImageFile = imageFile;
         this.ChapterNumber=ChapterNumber;
+        LessonChapterImageURl = lessonChapterImageURl;
     }
 
     public String getChapterName() {
@@ -23,6 +25,13 @@ public class ChapterInfo extends Student {
         ChapterName = chapterName;
     }
 
+    public String getLessonChapterImageURl() {
+        return LessonChapterImageURl;
+    }
+
+    public void setLessonChapterImageURl(String lessonChapterImageURl) {
+        LessonChapterImageURl = lessonChapterImageURl;
+    }
 
     public String getImageFile() {
         return ImageFile;
