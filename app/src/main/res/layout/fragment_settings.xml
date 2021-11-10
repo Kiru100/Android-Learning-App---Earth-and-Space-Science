@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.SettingsFragment"
-    android:background="@color/gitblack">
+    android:background="@drawable/ic_newbg2">
 
 
     <Button
