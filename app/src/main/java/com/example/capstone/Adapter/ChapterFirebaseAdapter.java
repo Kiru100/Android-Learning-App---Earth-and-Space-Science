@@ -38,17 +38,18 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull ChapterInfo model) {
         holder.tvChapterTitle.setText(model.getChapterName());
         holder.progress.setProgress(model.getChapterProgress());
+        holder.tvChapterDescription.setText(model.getChapterDescription());
+        String chapterNum=String.valueOf(model.getChapterNumber());
+        holder.tvChapterNumber.setText("Chapter "+chapterNum);
         Glide.with(holder.chapterImage.getContext())
                 .load(model.getImageFile())
                 .into(holder.chapterImage);
-
 
         holder.rlChapters.setOnClickListener(view -> {
             AppCompatActivity activity = (AppCompatActivity)view.getContext();
             LessonFragment lessonsfrags=new LessonFragment();
 
             TestFragment pre=new TestFragment();
-
 
             Bundle bundle = new Bundle();
             bundle.putInt("id",holder.getBindingAdapterPosition());
@@ -79,14 +80,17 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
         private CardView rlChapters;
         private ProgressBar progress;
         private ImageView chapterImage;
+        private TextView tvChapterDescription;
+        private TextView tvChapterNumber;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            tvChapterDescription = itemView.findViewById(R.id.tvChapterDescription);
             tvChapterTitle = itemView.findViewById(R.id.tvChapterTitle);
             rlChapters = itemView.findViewById(R.id.rlChapters);
             progress = itemView.findViewById(R.id.progress);
             chapterImage= itemView.findViewById(R.id.chapterImage);
+            tvChapterNumber=itemView.findViewById(R.id.tvChapterNumber);
         }
     }
 

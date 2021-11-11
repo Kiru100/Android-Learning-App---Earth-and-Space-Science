@@ -34,7 +34,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull LessonInfo model) {
         holder.lessonTitle.setText(model.getLessonName());
-        holder.lessonNumber.setText(String.valueOf(model.getLessonNumber()));
+        holder.lessonNumber.setText(model.getLessonNumber());
         holder.tvLessonType.setText(model.getLtypes());
 
 

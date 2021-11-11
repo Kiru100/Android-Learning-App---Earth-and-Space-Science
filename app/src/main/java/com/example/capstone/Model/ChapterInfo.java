@@ -5,16 +5,26 @@ public class ChapterInfo extends Student {
     private String ImageFile;
     private int ChapterNumber;
     private String LessonChapterImageURl;
+    private String ChapterDescription;
 
     public ChapterInfo(){
 
     }
 
-    public ChapterInfo(String chapterName, String imageFile, int ChapterNumber, String lessonChapterImageURl) {
+    public ChapterInfo(String chapterName, String imageFile, int ChapterNumber, String lessonChapterImageURl, String chapterDescription) {
        this.ChapterName = chapterName;
         this.ImageFile = imageFile;
         this.ChapterNumber=ChapterNumber;
-        LessonChapterImageURl = lessonChapterImageURl;
+        this.LessonChapterImageURl = lessonChapterImageURl;
+        this.ChapterDescription = chapterDescription;
+    }
+
+    public String getChapterDescription() {
+        return ChapterDescription;
+    }
+
+    public void setChapterDescription(String chapterDescription) {
+        ChapterDescription = chapterDescription;
     }
 
     public String getChapterName() {

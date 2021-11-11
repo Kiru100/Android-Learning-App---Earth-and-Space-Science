@@ -3,29 +3,34 @@ package com.example.capstone.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import com.example.capstone.Adapter.ChapterFirebaseAdapter;
 import com.example.capstone.Model.ChapterInfo;
 import com.example.capstone.R;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
-
-
 
 public class HomeFragment extends Fragment {
 
     private ChapterFirebaseAdapter fireAdapter;
+    private RecyclerView rvChapters;
+    private ShimmerFrameLayout shimmerFrameLayout,shimmerFrameLayout1,shimmerFrameLayout2;
+    private boolean isLoaded;
 
     public HomeFragment() {
         // Required empty public constructor
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,7 +38,13 @@ public class HomeFragment extends Fragment {
 
        //TODO: Prevent fragment refresh when navigation is clicked
 
-        RecyclerView rvChapters = rootView.findViewById(R.id.rvChapters);
+        rvChapters = rootView.findViewById(R.id.rvChapters);
+
+        shimmerFrameLayout=rootView.findViewById(R.id.shimmerFrameLayout);
+        shimmerFrameLayout1=rootView.findViewById(R.id.shimmerFrameLayout1);
+        shimmerFrameLayout2=rootView.findViewById(R.id.shimmerFrameLayout2);
+
+
         rvChapters.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         //firebase
@@ -45,11 +56,13 @@ public class HomeFragment extends Fragment {
                                 .child("Chapter"), ChapterInfo.class)
                         .build();
 
+
         fireAdapter= new ChapterFirebaseAdapter(options);
         fireAdapter.notifyDataSetChanged();
         rvChapters.setAdapter(fireAdapter);
 
-    return rootView;
+
+        return rootView;
     }
 
     @Override

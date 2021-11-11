@@ -1,7 +1,7 @@
 package com.example.capstone.Model;
 
 public class LessonInfo extends ChapterInfo {
-    private int LessonNumber;
+    private String LessonNumber;
     private String LessonName;
     private String Ltypes;
     private String YoutubeURL;
@@ -12,7 +12,7 @@ public class LessonInfo extends ChapterInfo {
 
     }
 
-    public LessonInfo(int lessonNumber, String lessonName, String ltypes, String youtubeURL, String testName) {
+    public LessonInfo(String lessonNumber, String lessonName, String ltypes, String youtubeURL, String testName) {
         LessonNumber = lessonNumber;
         LessonName = lessonName;
         Ltypes = ltypes;
@@ -20,7 +20,7 @@ public class LessonInfo extends ChapterInfo {
         TestName = testName;
     }
 
-    public int getLessonNumber() {
+    public String getLessonNumber() {
         return LessonNumber;
     }
 
@@ -32,7 +32,7 @@ public class LessonInfo extends ChapterInfo {
         TestName = testName;
     }
 
-    public void setLessonNumber(int lessonNumber) {
+    public void setLessonNumber(String lessonNumber) {
         LessonNumber = lessonNumber;
     }
 

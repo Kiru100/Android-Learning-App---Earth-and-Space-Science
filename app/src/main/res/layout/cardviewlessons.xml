@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginVertical="2dp"
     android:layout_marginHorizontal="10dp"
     app:cardElevation="7dp"
     app:cardUseCompatPadding="true"
-    android:backgroundTint="@android:color/transparent"
+    app:cardCornerRadius="10dp"
     android:id="@+id/cvLessons">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:background="@drawable/lessongradiant">
 
         <TextView
             android:id="@+id/tvLessonType"
@@ -26,16 +27,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/tvLessonType" />
+            android:layout_toEndOf="@id/tvLessonType"
+            android:text="Les num" />
 
         <TextView
             android:id="@+id/lessonTitle"
+            android:text="Les Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/lessonNumber" />
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lessonTitle" />
