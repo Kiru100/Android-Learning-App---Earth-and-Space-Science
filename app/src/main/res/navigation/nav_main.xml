@@ -74,7 +74,7 @@
         tools:layout="@layout/fragment_pre_test" />
     <fragment
         android:id="@+id/changePersonalDetails"
-        android:name="com.example.capstone.ChangePersonalDetails"
+        android:name="com.example.capstone.Fragment.ChangePersonalDetails"
         android:label="fragment_change_personal_details"
         tools:layout="@layout/fragment_change_personal_details" />
 

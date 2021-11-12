@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.capstone.Activity.IntroductionActivity;
 import com.example.capstone.Activity.LessonActivity;
 import com.example.capstone.Model.LessonInfo;
 import com.example.capstone.R;
@@ -63,12 +64,21 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
 
                     //open and send data to activity
                 } else if(model.getLtypes().equals("Lesson")){
-
                     Intent i = new Intent(view.getContext(), LessonActivity.class);
                     i.putExtra("lessonType",model.getLtypes());
                     i.putExtra("lessonName",model.getLessonName());
                     i.putExtra("lessonNumber",model.getLessonNumber());
                     i.putExtra("YoutubeURL",model.getYoutubeURL());
+                    view.getContext().startActivity(i);
+                    //TODO: send data to fragment
+
+                } else if(model.getLtypes().equals("Introduction")){
+
+                    Intent i = new Intent(view.getContext(), IntroductionActivity.class);
+                    i.putExtra("lessonType",model.getLtypes());
+                    i.putExtra("lessonName",model.getLessonName());
+                    i.putExtra("chapterNumber",model.getChapterNumber());
+                    i.putExtra("lessonNumber",model.getLessonNumber());
                     view.getContext().startActivity(i);
                     //TODO: send data to fragment
                 }
