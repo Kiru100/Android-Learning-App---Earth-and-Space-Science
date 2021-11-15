@@ -21,7 +21,6 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,LessonsFirebaseAdapter.myViewHolder> {
 
-
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
@@ -38,52 +37,51 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         holder.lessonNumber.setText(model.getLessonNumber());
         holder.tvLessonType.setText(model.getLtypes());
 
+        holder.cvLessons.setOnClickListener(view -> {
+            AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
+            //open and send data to fragment (assessment)
+            if (model.getLtypes().equals("Pre-Assessment")){
+                TestFragment testFragment =new TestFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id",holder.getBindingAdapterPosition());
+                bundle.putString("lessonType",model.getLtypes());
+                bundle.putString("lessonName",model.getLessonName());
+                bundle.putInt("ChapterNumber",model.getChapterNumber());
+                bundle.putInt("testNumber",model.getTestItemNumber());
+                bundle.putString("TestNode",model.getTestName());
+                bundle.putString("chapterImageURL",model.getLessonChapterImageURl());
+                testFragment.setArguments(bundle);
 
-        holder.cvLessons.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLessons, testFragment)
+                        .addToBackStack(null)
+                        .commit();
 
-                //open and send data to fragment (assessment)
-                if (model.getLtypes().equals("Pre-Assessment")){
-                    TestFragment testFragment =new TestFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("id",holder.getBindingAdapterPosition());
-                    bundle.putString("lessonType",model.getLtypes());
-                    bundle.putString("lessonName",model.getLessonName());
-                    bundle.putInt("ChapterNumber",model.getChapterNumber());
-                    bundle.putString("TestNode",model.getTestName());
-                    testFragment.setArguments(bundle);
+                //open and send data to activity
+            } else if(model.getLtypes().equals("Lesson")){
+                Intent i = new Intent(view.getContext(), LessonActivity.class);
+                i.putExtra("lessonType",model.getLtypes());
+                i.putExtra("lessonName",model.getLessonName());
+                i.putExtra("lessonNumber",model.getLessonNumber());
+                i.putExtra("YoutubeURL",model.getYoutubeURL());
+                view.getContext().startActivity(i);
+                //TODO: send data to fragment
 
-                    activity.getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragmentLessons, testFragment)
-                            .addToBackStack(null)
-                            .commit();
+            } else if(model.getLtypes().equals("Introduction")){
 
-                    //open and send data to activity
-                } else if(model.getLtypes().equals("Lesson")){
-                    Intent i = new Intent(view.getContext(), LessonActivity.class);
-                    i.putExtra("lessonType",model.getLtypes());
-                    i.putExtra("lessonName",model.getLessonName());
-                    i.putExtra("lessonNumber",model.getLessonNumber());
-                    i.putExtra("YoutubeURL",model.getYoutubeURL());
-                    view.getContext().startActivity(i);
-                    //TODO: send data to fragment
-
-                } else if(model.getLtypes().equals("Introduction")){
-
-                    Intent i = new Intent(view.getContext(), IntroductionActivity.class);
-                    i.putExtra("lessonType",model.getLtypes());
-                    i.putExtra("lessonName",model.getLessonName());
-                    i.putExtra("chapterNumber",model.getChapterNumber());
-                    i.putExtra("lessonNumber",model.getLessonNumber());
-                    view.getContext().startActivity(i);
-                    //TODO: send data to fragment
-                }
-
+                Intent i = new Intent(view.getContext(), IntroductionActivity.class);
+                i.putExtra("introMessage",model.getIntroMessage());
+                i.putExtra("chapterObjectives",model.getChapterObjectives());
+                i.putExtra("lessonType",model.getLtypes());
+                i.putExtra("lessonName",model.getLessonName());
+                i.putExtra("chapterNumber",model.getChapterNumber());
+                i.putExtra("lessonNumber",model.getLessonNumber());
+                view.getContext().startActivity(i);
+                //TODO: send data to fragment
             }
+
         });
     }
 
@@ -95,8 +93,10 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
     }
 
     class myViewHolder extends RecyclerView.ViewHolder{
-        private TextView lessonTitle,lessonNumber,tvLessonType;
-        private CardView cvLessons;
+        private final TextView lessonTitle;
+        private final TextView lessonNumber;
+        private final TextView tvLessonType;
+        private final CardView cvLessons;
 
 
         public myViewHolder(@NonNull View itemView) {

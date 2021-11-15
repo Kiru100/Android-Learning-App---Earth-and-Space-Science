@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.IntroductionActivity"
+    android:background="@color/gitblack">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tvIntroLessonTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bowlby_one"
+            android:text="Title"
+            android:textSize="20sp"
+            android:textColor="@color/gitwhite"
+            app:layout_constraintEnd_toEndOf="@+id/tvIntroChapterNumber"
+            app:layout_constraintStart_toStartOf="@+id/tvIntroChapterNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tvIntroChapterNumber" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".05" />
+
+            <TextView
+                android:id="@+id/tvIntroChapterNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chapter Number"
+                android:textColor="@color/gitwhite"
+                app:layout_constraintEnd_toStartOf="@+id/guideline41"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toTopOf="@+id/guideline42" />
+
+            <TextView
+                android:id="@+id/tvIntroMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:justificationMode="inter_word"
+                android:paddingHorizontal="10dp"
+                android:text="Introduction"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline41"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <View
+
+                android:id="@+id/divider3"
+                android:layout_width="250dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="#F44336"
+                app:layout_constraintEnd_toStartOf="@+id/guideline41"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toBottomOf="@+id/tvIntroLessonTitle" />
+
+            <TextView
+                android:fontFamily="@font/segoe_ui"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:text="I. Introduction"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+            <TextView
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/segoe_ui"
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/ii_learning_competencies_objectives"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toBottomOf="@+id/tvIntroMessage" />
+
+            <TextView
+                android:id="@+id/tvChapterObjectives"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:justificationMode="inter_word"
+                android:text="Objectives"
+                android:textSize="16sp"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline41"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

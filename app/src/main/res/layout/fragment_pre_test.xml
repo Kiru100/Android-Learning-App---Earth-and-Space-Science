@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gitblack"
-    tools:context=".Fragment.TestFragment">
+    tools:context=".Fragment.TestFragment"
+    android:clickable="true"
+    android:focusable="true">
 
 
     <Button
@@ -14,10 +16,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/attempt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingHorizontal="40dp"
+        android:background="@drawable/custom_input"
+        app:layout_constraintBottom_toTopOf="@+id/guideline46"
+        app:layout_constraintEnd_toStartOf="@+id/guideline44"
+        app:layout_constraintStart_toStartOf="@+id/guideline43" />
 
     <TextView
         android:id="@+id/tvTestType"
@@ -25,42 +28,108 @@
         android:layout_height="wrap_content"
         android:text="Test Type"
         android:textColor="#E4E4E4"
+        android:textSize="30sp"
+
+        android:fontFamily="@font/segoe_ui_bold"
         app:layout_constraintBottom_toTopOf="@+id/btnAttempt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline44"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/guideline43"
+        app:layout_constraintTop_toBottomOf="@+id/ivChapterImage2"
+        app:layout_constraintVertical_bias="0.406" />
 
     <TextView
         android:id="@+id/tvTestTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="Test Title"
+        android:textSize="30dp"
+        android:textStyle="bold"
         android:textColor="#E4E4E4"
-        app:layout_constraintBottom_toTopOf="@+id/tvTestType"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivChapterImage2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline44"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivChapterImage2"
+        app:layout_constraintTop_toBottomOf="@+id/tvChapter" />
 
     <TextView
+        android:textSize="20sp"
         android:id="@+id/tvChapter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="Chapter"
+        android:textStyle="bold"
         android:textColor="#E4E4E4"
         app:layout_constraintBottom_toTopOf="@+id/tvTestTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".47"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline44"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivChapterImage2"
+        app:layout_constraintTop_toTopOf="@+id/ivChapterImage2"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
+        android:textSize="20sp"
         android:id="@+id/tvChapterNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:textColor="#E4E4E4"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tvChapter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toEndOf="@+id/tvChapter" />
+
+    <ImageView
+        android:id="@+id/ivChapterImage2"
+        android:layout_width="132dp"
+        android:layout_height="131dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline44"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="@+id/guideline43"
+        app:layout_constraintTop_toTopOf="@+id/guideline45"
+        tools:src="@android:drawable/spinner_background" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".9" />
+
+    <TextView
+        android:fontFamily="@font/segoe_ui_bold"
+        android:id="@+id/tvItemNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="item number"
+        app:layout_constraintEnd_toEndOf="@+id/tvTestType"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/tvTestType"
+        app:layout_constraintTop_toBottomOf="@+id/tvTestType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

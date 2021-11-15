@@ -114,23 +114,21 @@
             app:layout_constraintWidth_max="120dp"
             app:layout_constraintWidth_min="100dp" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeTextType="uniform"
-            android:fontFamily="@font/segoe_ui_bold"
-            android:includeFontPadding="false"
-            android:text="@string/earth_and_space_science"
-            android:textColor="@color/gitwhite"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".08"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toBottomOf="@+id/tvtitle3"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintWidth_percent=".5" />
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:includeFontPadding="false"
+                android:text="@string/earth_and_space_science"
+                android:textColor="@color/gitwhite"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintHeight_percent=".08"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/tvtitle3"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent=".5" />
 
             <TextView
                 android:id="@+id/textView15"

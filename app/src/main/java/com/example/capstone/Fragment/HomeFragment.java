@@ -77,7 +77,6 @@ public class HomeFragment extends Fragment {
         fireAdapter.stopListening();
     }
 
-
     //Prevent out of Bound error
     public class WrapContentLinearLayoutManager extends LinearLayoutManager {
         public WrapContentLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {

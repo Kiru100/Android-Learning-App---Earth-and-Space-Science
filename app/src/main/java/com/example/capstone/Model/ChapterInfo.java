@@ -7,6 +7,7 @@ public class ChapterInfo extends Student {
     private String LessonChapterImageURl;
     private String ChapterDescription;
 
+
     public ChapterInfo(){
 
     }
@@ -17,7 +18,9 @@ public class ChapterInfo extends Student {
         this.ChapterNumber=ChapterNumber;
         this.LessonChapterImageURl = lessonChapterImageURl;
         this.ChapterDescription = chapterDescription;
+
     }
+
 
     public String getChapterDescription() {
         return ChapterDescription;

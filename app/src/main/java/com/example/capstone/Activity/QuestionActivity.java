@@ -13,7 +13,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.example.capstone.Model.Question;
 import com.example.capstone.R;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +35,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private CountDownTimer countdown;
     private int right,
             questionNumber;
-    private String LessonName,LessonType,ChapterNumber,TestNode;
+    private String LessonName,LessonType,ChapterNumber,TestNode,imageURL;
+    private ImageView ivChapterImage3;
 
 
 
@@ -48,6 +52,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         tvQuestion=findViewById(R.id.tvQuestion);
         tvTimer=findViewById(R.id.tvTimer);
         tvCount=findViewById(R.id.tvCount);
+        ivChapterImage3=findViewById(R.id.ivChapterImage3);
 
         //buttons
         btnA=findViewById(R.id.btnA);
@@ -68,10 +73,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             LessonType= intent.getStringExtra("LessonType");
             ChapterNumber= intent.getStringExtra("ChapterNumber");
             TestNode=intent.getStringExtra("TestNode");
+           imageURL=intent.getStringExtra("imageURl");
 
             tvQuizChapterNumber.setText("Chapter "+ChapterNumber);
             tvQuizChapterTitle.setText(LessonName);
             tvType.setText(LessonType);
+            Glide.with(this).load(imageURL).into(ivChapterImage3);
         }
 
 
@@ -114,7 +121,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void setQuestion() {
-        tvTimer.setText(String.valueOf(10));
+        tvTimer.setText(String.valueOf(200));
         tvQuestion.setText(mQuestionList.get(0).getQuestion());
         btnA.setText(mQuestionList.get(0).getOptionA());
         btnB.setText(mQuestionList.get(0).getOptionB());
@@ -129,14 +136,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void startTimer() {
-        countdown=new CountDownTimer(12000,1000) {
+        countdown=new CountDownTimer(202000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                if(millisUntilFinished<10000){
+                if(millisUntilFinished<200000){
                     tvTimer.setText(String.valueOf(millisUntilFinished/1000));
                 }
-                if(millisUntilFinished<10000){
+                if(millisUntilFinished<200000){
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 }
 
@@ -230,7 +237,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
             tvCount.setText(String.valueOf(questionNumber+1)+"/"+String.valueOf(mQuestionList.size()));
 
-            tvTimer.setText(String.valueOf(10));
+            tvTimer.setText(String.valueOf(200));
             startTimer();
 
 
@@ -281,20 +288,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                                     break;
                             }
                             if (viewNumber!=0){
-                                view.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
-                                //   ((Button))view.setBackgroundTintList(ColorStateList.valueOf()); TODO:reset color of selected button
+                                view.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#55616A")));
                             }
-
                             playAnim(view,1,viewNumber);
                         }
 
                     }
-
                     @Override
                     public void onAnimationCancel(Animator animation) {
-
                     }
-
                     @Override
                     public void onAnimationRepeat(Animator animation) {
 
