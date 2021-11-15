@@ -6,6 +6,8 @@ import android.animation.Animator;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.text.LineBreaker;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -81,6 +83,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             Glide.with(this).load(imageURL).into(ivChapterImage3);
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            tvQuestion.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+        }
 
 
         getQuestionList();
