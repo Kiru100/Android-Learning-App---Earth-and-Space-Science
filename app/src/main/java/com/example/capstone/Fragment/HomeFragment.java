@@ -56,10 +56,12 @@ public class HomeFragment extends Fragment {
                                 .child("Chapter"), ChapterInfo.class)
                         .build();
 
-
         fireAdapter= new ChapterFirebaseAdapter(options);
         fireAdapter.notifyDataSetChanged();
         rvChapters.setAdapter(fireAdapter);
+
+
+
 
 
         return rootView;

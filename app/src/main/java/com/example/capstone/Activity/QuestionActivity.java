@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView tvQuizChapterNumber,tvQuizChapterTitle,tvType,tvQuestion,tvTimer,tvCount;
@@ -126,7 +127,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void setQuestion() {
-        tvTimer.setText(String.valueOf(200));
+        tvTimer.setText("2:00");
         tvQuestion.setText(mQuestionList.get(0).getQuestion());
         btnA.setText(mQuestionList.get(0).getOptionA());
         btnB.setText(mQuestionList.get(0).getOptionB());
@@ -141,21 +142,23 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void startTimer() {
-        countdown=new CountDownTimer(202000,1000) {
+        countdown=new CountDownTimer(122000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                if(millisUntilFinished<200000){
-                    tvTimer.setText(String.valueOf(millisUntilFinished/1000));
+                if(millisUntilFinished<120000){
+                    tvTimer.setText(""+String.format("%d:%d",
+                            TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                            TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)-
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                    //tvTimer.setText(String.valueOf(millisUntilFinished/1000));
                 }
-                if(millisUntilFinished<200000){
+                if(millisUntilFinished<120000){
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 }
-
             }
             @Override
             public void onFinish() {
-
                changeQuestion();
             }
         };
@@ -242,7 +245,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
             tvCount.setText(String.valueOf(questionNumber+1)+"/"+String.valueOf(mQuestionList.size()));
 
-            tvTimer.setText(String.valueOf(200));
+            tvTimer.setText("2:00");
             startTimer();
 
 
@@ -293,7 +296,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                                     break;
                             }
                             if (viewNumber!=0){
-                                view.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#55616A")));
+                                view.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#3E162E")));
                             }
                             playAnim(view,1,viewNumber);
                         }

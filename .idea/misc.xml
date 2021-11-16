@@ -31,10 +31,12 @@
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_layered.xml" value="0.287109375" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_layered_waves_haikei.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_lessonbg.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_newbg.xml" value="0.287109375" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_newbg12.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_newbg2.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_newbgdef.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_newbglesson.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_quizbg.xml" value="0.287109375" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_registrationbg.xml" value="0.3828125" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/ic_tag_faces_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/drawable/imageviewborder.xml" value="0.3828125" />
@@ -51,7 +53,7 @@
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_login.xml" value="0.2898148148148148" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_main.xml" value="0.1951388888888889" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_menu.xml" value="0.27239583333333334" />
-        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_question.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_question.xml" value="0.1798611111111111" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_registration.xml" value="0.2354515050167224" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_score.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/activity_splash_screen.xml" value="0.31574074074074077" />
