@@ -69,6 +69,8 @@
                 android:id="@+id/ivChapterImage3"
                 android:layout_width="136dp"
                 android:layout_height="132dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline48"
+                app:layout_constraintHorizontal_bias="0.19"
                 app:layout_constraintStart_toStartOf="@+id/guideline47"
                 app:layout_constraintTop_toTopOf="@+id/guideline51"
                 app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal_background" />
