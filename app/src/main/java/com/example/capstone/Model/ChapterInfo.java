@@ -7,7 +7,6 @@ public class ChapterInfo extends Student {
     private String LessonChapterImageURl;
     private String ChapterDescription;
 
-
     public ChapterInfo(){
 
     }

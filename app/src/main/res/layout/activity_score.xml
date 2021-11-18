@@ -7,136 +7,206 @@
     android:background="@color/gitblack"
     tools:context=".Activity.ScoreActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Continue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView19"
-        app:layout_constraintStart_toStartOf="@+id/textView19"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvScoreChapterNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:text="Chapter + number"
-        android:textColor="#E1DDD7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvScoreChapterTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Topic"
-        android:textColor="#E1DDD7"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/tvScoreChapterNumber" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_input"
+                android:text="Done"
+                android:paddingHorizontal="50dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline54"
+                app:layout_constraintEnd_toStartOf="@+id/guideline52"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="@+id/guideline50"
+                app:layout_constraintTop_toBottomOf="@+id/tvScoreSummany"
+                app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/tvScoreTestType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test Type"
-        android:textColor="#E1DDD7"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.23" />
+            <ImageView
+                android:id="@+id/ivChapterImage1"
+                android:layout_width="136dp"
+                android:layout_height="132dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline52"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="@+id/guideline50"
+                app:layout_constraintTop_toTopOf="@+id/guideline55"
+                app:srcCompat="@android:drawable/sym_def_app_icon" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Result"
-        android:textColor="#E1DDD7"
-        app:layout_constraintEnd_toEndOf="@+id/tvScoreTestType"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvScoreTestType"
-        app:layout_constraintTop_toBottomOf="@+id/tvScoreTestType" />
+            <TextView
+                android:id="@+id/tvScoreChapterNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Chapter + no"
+                android:textColor="#E1DDD7"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvScoreChapterTitle"
+                app:layout_constraintStart_toEndOf="@+id/ivChapterImage1"
+                app:layout_constraintTop_toTopOf="@+id/ivChapterImage1"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-    <TextView
-        android:id="@+id/tvAttemptNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:text="Attempt number"
-        android:textColor="#E1DDD7"
-        app:layout_constraintBottom_toBottomOf="@+id/textView14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView14"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/tvScoreChapterTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Topic"
+                android:textColor="#E1DDD7"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvScoreTestType"
+                app:layout_constraintStart_toEndOf="@+id/ivChapterImage1"
+                app:layout_constraintTop_toBottomOf="@+id/tvScoreChapterNumber" />
 
-    <TextView
-        android:id="@+id/tvScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:text="Correct Answer : +number"
-        android:textColor="#E1DDD7"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAttemptNumber"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/tvScoreTestType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/segoe_ui"
+                android:text="Test Type"
+                android:textColor="#E1DDD7"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivChapterImage1"
+                app:layout_constraintStart_toEndOf="@+id/ivChapterImage1"
+                app:layout_constraintTop_toBottomOf="@+id/tvScoreChapterTitle" />
 
-    <TextView
-        android:id="@+id/tvIncorrectScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Incorrent Answer : +number"
-        android:textColor="#E1DDD7"
-        app:layout_constraintStart_toStartOf="@+id/tvScore"
-        app:layout_constraintTop_toBottomOf="@+id/tvScore" />
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bungee_inline"
+                android:text="Result"
+                android:textColor="#E1DDD7"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvScore"
+                app:layout_constraintEnd_toStartOf="@+id/guideline52"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/guideline50"
+                app:layout_constraintTop_toBottomOf="@+id/ivChapterImage1"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/tvScoreSummany"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#E1DDD7"
-        android:text="Summary: score/totalitemnumber"
-        app:layout_constraintStart_toStartOf="@+id/tvIncorrectScore"
-        app:layout_constraintTop_toBottomOf="@+id/tvIncorrectScore" />
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/choice_background"
+                android:fontFamily="@font/bungee"
+                android:gravity="center"
+                android:justificationMode="inter_word"
+                android:text="Correct Answer : +number"
+                android:textColor="#E1DDD7"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvIncorrectScore"
+                app:layout_constraintEnd_toStartOf="@+id/guideline52"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline50"
+                app:layout_constraintTop_toTopOf="@+id/guideline57"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="pass or not"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvScoreSummany" />
+            <TextView
+                android:id="@+id/tvIncorrectScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/choice_background"
+                android:fontFamily="@font/bungee"
+                android:gravity="center"
+                android:text="Incorrent Answer : +number"
+                android:textColor="#E1DDD7"
+                android:textSize="20sp"
+                android:justificationMode="inter_word"
+                app:layout_constraintBottom_toTopOf="@+id/tvScoreSummany"
+                app:layout_constraintEnd_toStartOf="@+id/guideline52"
+                app:layout_constraintStart_toStartOf="@+id/guideline50"
+                app:layout_constraintTop_toBottomOf="@+id/tvScore" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+            <TextView
+                android:id="@+id/tvScoreSummany"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/choice_background"
+                android:fontFamily="@font/bungee"
+                android:gravity="center"
+                android:text="Summary: score/totalitemnumber"
+                android:textColor="#E1DDD7"
+                android:textSize="20sp"
+                android:justificationMode="inter_word"
+                app:layout_constraintBottom_toTopOf="@+id/guideline54"
+                app:layout_constraintEnd_toStartOf="@+id/guideline52"
+                app:layout_constraintStart_toStartOf="@+id/guideline50"
+                app:layout_constraintTop_toBottomOf="@+id/tvIncorrectScore" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/button"
+                app:layout_constraintStart_toStartOf="@+id/button"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline54"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".9" />
+
+            <TextView
+                android:id="@+id/tvAttemptNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="177dp"
+                tools:layout_editor_absoluteY="616dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline57"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.4" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

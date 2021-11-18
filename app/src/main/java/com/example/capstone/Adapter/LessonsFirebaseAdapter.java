@@ -51,6 +51,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                 bundle.putInt("testNumber",model.getTestItemNumber());
                 bundle.putString("TestNode",model.getTestName());
                 bundle.putString("chapterImageURL",model.getLessonChapterImageURl());
+                bundle.putString("testName",model.getTestName());
                 testFragment.setArguments(bundle);
 
                 activity.getSupportFragmentManager()
@@ -70,7 +71,6 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                 //TODO: send data to fragment
 
             } else if(model.getLtypes().equals("Introduction")){
-
                 Intent i = new Intent(view.getContext(), IntroductionActivity.class);
                 i.putExtra("introMessage",model.getIntroMessage());
                 i.putExtra("chapterObjectives",model.getChapterObjectives());

@@ -7,14 +7,24 @@ public class Question {
     private String optionC;
     private String optionD;
     private int correctAnswer;
+    private String questionImgURL;
 
-    public Question(String question, String optionA, String optionB, String optionC, String optionD, int correctAnswer) {
+    public Question(String question, String optionA, String optionB, String optionC, String optionD, int correctAnswer, String questionImgURL) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
         this.optionD = optionD;
         this.correctAnswer = correctAnswer;
+        this.questionImgURL=questionImgURL;
+    }
+
+    public String getQuestionImgURL() {
+        return questionImgURL;
+    }
+
+    public void setQuestionImgURL(String questionImgURL) {
+        this.questionImgURL = questionImgURL;
     }
 
     public String getQuestion() {

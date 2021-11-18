@@ -2,6 +2,8 @@ package com.example.capstone.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintSet;
+
 import android.animation.Animator;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -38,8 +41,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private CountDownTimer countdown;
     private int right,
             questionNumber;
-    private String LessonName,LessonType,ChapterNumber,TestNode,imageURL;
-    private ImageView ivChapterImage3;
+    private String LessonName,LessonType,ChapterNumber,TestNode,imageURL,TestName;
+    private ImageView ivChapterImage3,questionPicture;
 
 
 
@@ -56,6 +59,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         tvTimer=findViewById(R.id.tvTimer);
         tvCount=findViewById(R.id.tvCount);
         ivChapterImage3=findViewById(R.id.ivChapterImage3);
+        questionPicture=findViewById(R.id.questionPicture);
 
         //buttons
         btnA=findViewById(R.id.btnA);
@@ -76,7 +80,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             LessonType= intent.getStringExtra("LessonType");
             ChapterNumber= intent.getStringExtra("ChapterNumber");
             TestNode=intent.getStringExtra("TestNode");
-           imageURL=intent.getStringExtra("imageURl");
+             imageURL=intent.getStringExtra("imageURl");
+             TestName=intent.getStringExtra("testName");
 
             tvQuizChapterNumber.setText("Chapter "+ChapterNumber);
             tvQuizChapterTitle.setText(LessonName);
@@ -103,14 +108,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
                 for (DataSnapshot dataSnapshot: snapshot.child("Question").child(TestNode).child("Items").getChildren()){
 
+
                     final String getQuestion = dataSnapshot.child("question").getValue(String.class);
                     final String getOption1= dataSnapshot.child("optionA").getValue(String.class);
                     final String getOption2= dataSnapshot.child("optionB").getValue(String.class);
                     final String getOption3= dataSnapshot.child("optionC").getValue(String.class);
                     final String getOption4= dataSnapshot.child("optionD").getValue(String.class);
                     final int getCorrectAnswer= dataSnapshot.child("answer").getValue(int.class);
-
-                    Question question=new Question(getQuestion,getOption1,getOption2,getOption3,getOption4,getCorrectAnswer);
+                    final String imageQuestionURL= dataSnapshot.child("imgURL").getValue(String.class);
+                    Question question=new Question(getQuestion,getOption1,getOption2,getOption3,getOption4,getCorrectAnswer,imageQuestionURL);
                     mQuestionList.add(question);
 
                 }
@@ -133,6 +139,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         btnB.setText(mQuestionList.get(0).getOptionB());
         btnC.setText(mQuestionList.get(0).getOptionC());
         btnD.setText(mQuestionList.get(0).getOptionD());
+        String imgurl= mQuestionList.get(0).getQuestionImgURL();
+
+       if(imgurl!=null){
+           Glide.with(this).load(imgurl).into(questionPicture);
+           questionPicture.setVisibility(View.VISIBLE);
+       }else{
+           questionPicture.setVisibility(View.INVISIBLE);
+       }
 
         String totalScore=String.valueOf(1)+ "/"+String.valueOf(mQuestionList.size());
         tvCount.setText(totalScore);
@@ -147,7 +161,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             public void onTick(long millisUntilFinished) {
 
                 if(millisUntilFinished<120000){
-                    tvTimer.setText(""+String.format("%d:%d",
+                    tvTimer.setText(""+String.format("%02d:%02d",
                             TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                             TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)-
                             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
@@ -198,6 +212,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         if(selectedButton==mQuestionList.get(questionNumber).getCorrectAnswer()){
             //answer
             view.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            ((Button)view).setTextColor(Color.parseColor("#001220"));
             right++;
         }else{
             view.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
@@ -205,15 +220,19 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             switch(mQuestionList.get(questionNumber).getCorrectAnswer()){
                 case 1:
                     btnA.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    btnA.setTextColor(Color.parseColor("#001220"));
                     break;
                 case 2:
                     btnB.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    btnB.setTextColor(Color.parseColor("#001220"));
                     break;
                 case 3:
                     btnC.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    btnC.setTextColor(Color.parseColor("#001220"));
                     break;
                 case 4:
                     btnD.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    btnD.setTextColor(Color.parseColor("#001220"));
                     break;
 
                 default:
@@ -242,9 +261,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             playAnim(btnB,0,2);
             playAnim(btnC,0,3);
             playAnim(btnD,0,4);
+            playAnim(questionPicture,0,5);
 
             tvCount.setText(String.valueOf(questionNumber+1)+"/"+String.valueOf(mQuestionList.size()));
-
             tvTimer.setText("2:00");
             startTimer();
 
@@ -258,7 +277,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
              i.putExtra("Lesson Name",LessonName);
              i.putExtra("Lesson Type",LessonType);
              i.putExtra("Chapter Number",ChapterNumber);
-
+             i.putExtra("imgURL",imageURL);
+             i.putExtra("testName",TestName);
              startActivity(i);
 
              QuestionActivity.this.finish();
@@ -284,15 +304,33 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                                     break;
                                 case 1:
                                     ((Button)view).setText(mQuestionList.get(questionNumber).getOptionA());
+                                    ((Button)view).setTextColor(Color.parseColor("#E1DDD7"));
                                     break;
                                 case 2:
                                     ((Button)view).setText(mQuestionList.get(questionNumber).getOptionB());
+                                    ((Button)view).setTextColor(Color.parseColor("#E1DDD7"));
                                     break;
                                 case 3:
                                     ((Button)view).setText(mQuestionList.get(questionNumber).getOptionC());
+                                    ((Button)view).setTextColor(Color.parseColor("#E1DDD7"));
                                     break;
                                 case 4:
                                     ((Button)view).setText(mQuestionList.get(questionNumber).getOptionD());
+                                    ((Button)view).setTextColor(Color.parseColor("#E1DDD7"));
+                                    break;
+                                case 5:
+                                    String img=mQuestionList.get(questionNumber).getQuestionImgURL();
+                                    if (img!=null){
+                                        Glide.with(getApplicationContext()).load(img).into(questionPicture);
+                                        questionPicture.setVisibility(View.VISIBLE);
+                                        questionPicture.getLayoutParams().height = 0;
+                                        ViewGroup.LayoutParams params = questionPicture.getLayoutParams();
+                                        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                                        questionPicture.setLayoutParams(params);
+                                    }else{
+                                        questionPicture.setVisibility(View.INVISIBLE);
+                                        questionPicture.getLayoutParams().height = 0;
+                                    }
                                     break;
                             }
                             if (viewNumber!=0){

@@ -24,7 +24,7 @@ import java.util.Objects;
 public class TestFragment extends Fragment {
     private TextView lessonTitle,tvTestType,tvChapterNumber,tvItemNumber;
     private Button btnAttempt;
-    private String LessonName,LessonType,ChapterNumber,TestNode,ImageURl;
+    private String LessonName,LessonType,ChapterNumber,TestNode,ImageURl,TestName;
     private ImageView ivChapterImage2;
     private int testNumber;
 
@@ -49,7 +49,7 @@ public class TestFragment extends Fragment {
         assert bundle != null;
         bundle.getString("lessonType");
         TestNode=bundle.getString("TestNode");
-
+        TestName=bundle.getString("testName");
         LessonName=bundle.getString("lessonName");
         LessonType=bundle.getString("lessonType");
         ImageURl=bundle.getString("chapterImageURL");
@@ -76,6 +76,7 @@ public class TestFragment extends Fragment {
                         i.putExtra("ChapterNumber",ChapterNumber);
                         i.putExtra("TestNode",TestNode);
                         i.putExtra("imageURl",ImageURl);
+                        i.putExtra("testName",TestName);
                         startActivity(i);
                         requireActivity().onBackPressed();
                         break;

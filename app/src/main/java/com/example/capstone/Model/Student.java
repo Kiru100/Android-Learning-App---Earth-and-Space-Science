@@ -3,6 +3,7 @@ package com.example.capstone.Model;
 public class Student {
     private String SFname, SLname, SEmail, Ssection;
     private int ChapterProgress;
+    private String ChapterOnePreTest;
 
     public Student() {
 
@@ -14,6 +15,14 @@ public class Student {
         this.SEmail = SEmail;
         Ssection = ssection;
         ChapterProgress = chapterProgress;
+    }
+
+    public String getChapterOnePreTest() {
+        return ChapterOnePreTest;
+    }
+
+    public void setChapterOnePreTest(String chapterOnePreTest) {
+        ChapterOnePreTest = chapterOnePreTest;
     }
 
     public String getSFname() {

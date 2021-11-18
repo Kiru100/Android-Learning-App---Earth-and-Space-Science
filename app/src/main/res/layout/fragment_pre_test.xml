@@ -45,6 +45,7 @@
         android:layout_marginStart="8dp"
         android:text="Test Title"
         android:textSize="30dp"
+        android:fontFamily="@font/segoe_ui_bold"
         android:textStyle="bold"
         android:textColor="#E4E4E4"
         app:layout_constraintBottom_toBottomOf="@+id/ivChapterImage2"
