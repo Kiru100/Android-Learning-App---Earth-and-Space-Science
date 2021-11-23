@@ -17,7 +17,7 @@
        >
 
         <TextView
-            android:id="@+id/tvLessonType"
+            android:id="@+id/tvLessonTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/tvLessonType"
+            android:layout_toEndOf="@id/tvLessonTitle"
             android:fontFamily="@font/segoe_ui_bold"
             android:text="Les num"
             android:textSize="15sp" />

@@ -60,13 +60,41 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                         .addToBackStack(null)
                         .commit();
 
-                //open and send data to activity
-            } else if(model.getLtypes().equals("Lesson")){
+                //open and send data to Lesson Activity
+            }else if (model.getLtypes().equals("Activity")){
+                TestFragment testFragment =new TestFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id",holder.getBindingAdapterPosition());
+                bundle.putString("lessonType",model.getLtypes());
+                bundle.putString("lessonName",model.getLessonName());
+                bundle.putInt("ChapterNumber",model.getChapterNumber());
+                bundle.putInt("testNumber",model.getTestItemNumber());
+                bundle.putString("TestNode",model.getTestName());
+                bundle.putString("chapterImageURL",model.getLessonChapterImageURl());
+                bundle.putString("testName",model.getTestName());
+                testFragment.setArguments(bundle);
+
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLessons, testFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+                //open and send data to Lesson Activity
+            }  else if(model.getLtypes().equals("Lesson")){
                 Intent i = new Intent(view.getContext(), LessonActivity.class);
                 i.putExtra("lessonType",model.getLtypes());
                 i.putExtra("lessonName",model.getLessonName());
                 i.putExtra("lessonNumber",model.getLessonNumber());
                 i.putExtra("YoutubeURL",model.getYoutubeURL());
+                i.putExtra("lessonFirstLineString",model.getFirstLineLessonLecture());
+                i.putExtra("firstLessonImage",model.getFirstLessonImage());
+                i.putExtra("secondLineLessonLecture",model.getSecondLineLessonLecture());
+                i.putExtra("firstFigureNumber",model.getFirstFigureNumber());
+                i.putExtra("youtubeTitle",model.getYoutubeVideoTitle());
+                i.putExtra("secondLessonImage",model.getSecondLessonImage());
+                i.putExtra("secondFigureNumber",model.getSecondFigureNumber());
+                i.putExtra("lessonThirdLineString",model.getThirdLineLessonLecture());
                 view.getContext().startActivity(i);
                 //TODO: send data to fragment
 
@@ -105,7 +133,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
             cvLessons=itemView.findViewById(R.id.cvLessons);
             lessonTitle=itemView.findViewById(R.id.lessonTitle);
             lessonNumber=itemView.findViewById(R.id.lessonNumber);
-            tvLessonType=itemView.findViewById(R.id.tvLessonType);
+            tvLessonType=itemView.findViewById(R.id.tvLessonTitle);
         }
     }
 

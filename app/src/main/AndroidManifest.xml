@@ -14,6 +14,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.FindingEpicenter"
+            android:exported="false" />
+        <activity
             android:name=".Activity.IntroductionActivity"
             android:exported="false" />
         <activity
@@ -21,8 +24,11 @@
             android:exported="false" />
         <activity
             android:name=".Activity.QuestionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
-        <activity android:name=".Activity.LessonActivity" />
+        <activity
+            android:name=".Activity.LessonActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".Activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +17,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.capstone.Activity.QuestionActivity;
+import com.example.capstone.Model.FirebaseMethods;
+import com.example.capstone.Model.Score;
+import com.example.capstone.Model.Student;
 import com.example.capstone.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -27,6 +38,7 @@ public class TestFragment extends Fragment {
     private String LessonName,LessonType,ChapterNumber,TestNode,ImageURl,TestName;
     private ImageView ivChapterImage2;
     private int testNumber;
+    private FirebaseUser student;
 
     public TestFragment() {
         // Required empty public constructor
@@ -37,6 +49,7 @@ public class TestFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView=inflater.inflate(R.layout.fragment_pre_test, container, false);
+
 
         tvTestType=rootView.findViewById(R.id.tvTestType);
         lessonTitle=rootView.findViewById(R.id.tvTestTitle);
@@ -66,6 +79,30 @@ public class TestFragment extends Fragment {
         tvItemNumber.setText(tvItemNumberMessage);
 
 
+        student=FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Students");
+        String userID = student.getUid();
+        btnAttempt.setVisibility(View.VISIBLE);
+        //Know if student already took the exam TODO:get this thing back
+//        reference.child(userID).child("Chapter_"+ChapterNumber).child(TestName).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                if(snapshot.exists()){
+//                    tvItemNumber.setText("Score : "+snapshot.getValue());
+//                    btnAttempt.setVisibility(View.GONE);
+//                }else{
+//                    btnAttempt.setVisibility(View.VISIBLE);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
         btnAttempt.setOnClickListener(v -> {
             DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
                 switch (which){
@@ -90,10 +127,6 @@ public class TestFragment extends Fragment {
             builder.setMessage("Do you want to attempt "+bundle.getInt("testNumber")+" items assessment?").setPositiveButton("Yes", dialogClickListener)
                     .setNegativeButton("No", dialogClickListener).show();
         });
-
-
-
-       // String.valueOf(bundle.getInt("chapnum")
 
         return rootView;
     }

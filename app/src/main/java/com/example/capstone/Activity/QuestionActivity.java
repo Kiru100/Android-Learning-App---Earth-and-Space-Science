@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -80,8 +81,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             LessonType= intent.getStringExtra("LessonType");
             ChapterNumber= intent.getStringExtra("ChapterNumber");
             TestNode=intent.getStringExtra("TestNode");
-             imageURL=intent.getStringExtra("imageURl");
-             TestName=intent.getStringExtra("testName");
+            imageURL=intent.getStringExtra("imageURl");
+            TestName=intent.getStringExtra("testName");
+
+            if(LessonType.equals("Activity")){
+                btnC.setVisibility(View.GONE);
+                btnD.setVisibility(View.GONE);
+            }
 
             tvQuizChapterNumber.setText("Chapter "+ChapterNumber);
             tvQuizChapterTitle.setText(LessonName);
@@ -101,13 +107,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         mQuestionList=new ArrayList();
 
 
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                                         .getReference();
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot dataSnapshot: snapshot.child("Question").child(TestNode).child("Items").getChildren()){
-
 
                     final String getQuestion = dataSnapshot.child("question").getValue(String.class);
                     final String getOption1= dataSnapshot.child("optionA").getValue(String.class);

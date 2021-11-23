@@ -174,7 +174,7 @@ public class EditEmailFragment extends Fragment {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Student studentProfile= snapshot.getValue(Student.class);
+                    Student studentProfile= snapshot.getValue(Student.class);
                 if(studentProfile!=null){
                     String semail=studentProfile.getSEmail();
                     CurrentEmail.setText(semail);

@@ -9,13 +9,19 @@ public class LessonInfo extends ChapterInfo {
     private String IntroMessage;
     private String ChapterObjectives;
     private int TestItemNumber;
+    private String FirstLineLessonLecture,SecondLineLessonLecture,ThirdLineLessonLecture,
+                   FirstLessonImage,SecondLessonImage
+                    ,FirstFigureNumber,SecondFigureNumber
+                    ,YoutubeVideoTitle;
 
 
     public LessonInfo(){
 
     }
 
-    public LessonInfo(String lessonNumber, String lessonName, String ltypes, String youtubeURL, String testName, String introMessage, String chapterObjectives, int testItemNumber) {
+    public LessonInfo(String lessonNumber, String lessonName, String ltypes, String youtubeURL,
+                      String testName, String introMessage,
+                      String chapterObjectives, int testItemNumber) {
         LessonNumber = lessonNumber;
         LessonName = lessonName;
         Ltypes = ltypes;
@@ -24,6 +30,71 @@ public class LessonInfo extends ChapterInfo {
         IntroMessage = introMessage;
         ChapterObjectives = chapterObjectives;
         TestItemNumber = testItemNumber;
+    }
+
+
+    public String getThirdLineLessonLecture() {
+        return ThirdLineLessonLecture;
+    }
+
+    public void setThirdLineLessonLecture(String thirdLineLessonLecture) {
+        ThirdLineLessonLecture = thirdLineLessonLecture;
+    }
+
+    public String getSecondFigureNumber() {
+        return SecondFigureNumber;
+    }
+
+    public void setSecondFigureNumber(String secondFigureNumber) {
+        SecondFigureNumber = secondFigureNumber;
+    }
+
+    public String getSecondLessonImage() {
+        return SecondLessonImage;
+    }
+
+    public void setSecondLessonImage(String secondLessonImage) {
+        SecondLessonImage = secondLessonImage;
+    }
+
+    public String getYoutubeVideoTitle() {
+        return YoutubeVideoTitle;
+    }
+
+    public void setYoutubeVideoTitle(String youtubeVideoTitle) {
+        YoutubeVideoTitle = youtubeVideoTitle;
+    }
+
+    public String getFirstFigureNumber() {
+        return FirstFigureNumber;
+    }
+
+    public void setFirstFigureNumber(String firstFigureNumber) {
+        FirstFigureNumber = firstFigureNumber;
+    }
+
+    public String getSecondLineLessonLecture() {
+        return SecondLineLessonLecture;
+    }
+
+    public void setSecondLineLessonLecture(String secondLineLessonLecture) {
+        SecondLineLessonLecture = secondLineLessonLecture;
+    }
+
+    public String getFirstLessonImage() {
+        return FirstLessonImage;
+    }
+
+    public void setFirstLessonImage(String firstLessonImage) {
+        FirstLessonImage = firstLessonImage;
+    }
+
+    public String getFirstLineLessonLecture() {
+        return FirstLineLessonLecture;
+    }
+
+    public void setFirstLineLessonLecture(String firstLineLessonLecture) {
+        FirstLineLessonLecture = firstLineLessonLecture;
     }
 
     public int getTestItemNumber() {

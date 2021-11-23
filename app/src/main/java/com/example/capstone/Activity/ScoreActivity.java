@@ -3,7 +3,6 @@ package com.example.capstone.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.capstone.Model.Score;
 import com.example.capstone.Model.Student;
 import com.example.capstone.R;
 import com.google.firebase.auth.FirebaseAuth;
