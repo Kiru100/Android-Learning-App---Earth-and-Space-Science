@@ -79,7 +79,7 @@ public class LessonFragment extends Fragment {
 
 
     //Prevent outofbound error
-    public class WrapContentLinearLayoutManager extends LinearLayoutManager {
+    public static class WrapContentLinearLayoutManager extends LinearLayoutManager {
         public WrapContentLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
             super(context, orientation, reverseLayout);
         }

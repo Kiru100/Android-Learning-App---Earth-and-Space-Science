@@ -31,7 +31,7 @@ public class LessonActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
 
-        tvLessonTitle=findViewById(R.id.tvLessonTitle);
+        tvLessonTitle=findViewById(R.id.tvDefinitionName);
         tvFirstLine=findViewById(R.id.tvFirstLine);
         ivFirstLessonImage=findViewById(R.id.ivFirstLessonImage);
         tvSecondLine=findViewById(R.id.tvSecondLine);

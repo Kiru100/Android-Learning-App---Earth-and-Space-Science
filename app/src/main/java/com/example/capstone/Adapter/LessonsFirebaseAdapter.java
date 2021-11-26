@@ -133,7 +133,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
             cvLessons=itemView.findViewById(R.id.cvLessons);
             lessonTitle=itemView.findViewById(R.id.lessonTitle);
             lessonNumber=itemView.findViewById(R.id.lessonNumber);
-            tvLessonType=itemView.findViewById(R.id.tvLessonTitle);
+            tvLessonType=itemView.findViewById(R.id.tvDefinitionName);
         }
     }
 

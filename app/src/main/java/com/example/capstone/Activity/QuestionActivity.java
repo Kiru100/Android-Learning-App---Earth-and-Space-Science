@@ -120,6 +120,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     final String getOption2= dataSnapshot.child("optionB").getValue(String.class);
                     final String getOption3= dataSnapshot.child("optionC").getValue(String.class);
                     final String getOption4= dataSnapshot.child("optionD").getValue(String.class);
+
                     final int getCorrectAnswer= dataSnapshot.child("answer").getValue(int.class);
                     final String imageQuestionURL= dataSnapshot.child("imgURL").getValue(String.class);
                     Question question=new Question(getQuestion,getOption1,getOption2,getOption3,getOption4,getCorrectAnswer,imageQuestionURL);
@@ -141,10 +142,16 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private void setQuestion() {
         tvTimer.setText("2:00");
         tvQuestion.setText(mQuestionList.get(0).getQuestion());
-        btnA.setText(mQuestionList.get(0).getOptionA());
-        btnB.setText(mQuestionList.get(0).getOptionB());
-        btnC.setText(mQuestionList.get(0).getOptionC());
-        btnD.setText(mQuestionList.get(0).getOptionD());
+
+        String A=mQuestionList.get(0).getOptionA();
+        String B=mQuestionList.get(0).getOptionB();
+        String C=mQuestionList.get(0).getOptionC();
+        String D=mQuestionList.get(0).getOptionD();
+
+        btnA.setText(A);
+        btnB.setText(B);
+        btnC.setText(C);
+        btnD.setText(D);
         String imgurl= mQuestionList.get(0).getQuestionImgURL();
 
        if(imgurl!=null){

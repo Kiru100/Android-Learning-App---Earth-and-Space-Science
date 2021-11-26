@@ -34,7 +34,11 @@
     <fragment
         android:id="@+id/definitionFragment"
         android:name="com.example.capstone.Fragment.DefinitionFragment"
-        tools:layout="@layout/fragment_definition" />
+        tools:layout="@layout/fragment_definition" >
+        <action
+            android:id="@+id/action_definitionFragment_to_definitionmain"
+            app:destination="@id/definitionmain" />
+    </fragment>
     <fragment
         android:id="@+id/lessons"
         android:name="com.example.capstone.Fragment.LessonFragment"
@@ -77,5 +81,10 @@
         android:name="com.example.capstone.Fragment.ChangePersonalDetails"
         android:label="fragment_change_personal_details"
         tools:layout="@layout/fragment_change_personal_details" />
+    <fragment
+        android:id="@+id/definitionmain"
+        android:name="com.example.capstone.Fragment.definitionmain"
+        android:label="fragment_definitionmain"
+        tools:layout="@layout/fragment_definitionmain" />
 
 </navigation>

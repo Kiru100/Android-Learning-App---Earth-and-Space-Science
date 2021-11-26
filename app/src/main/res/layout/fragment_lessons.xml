@@ -6,14 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_newbglesson"
-    tools:context=".Fragment.LessonFragment">
+    tools:context=".Fragment.LessonFragment"
+    >
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLessons"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:fontFamily="@font/segoe_ui"
+        android:fontFamily="@font/segoe_ui_bold"
         android:foregroundTint="#E3D2D2"
         android:text="Chapter"
         android:textColor="@color/gitwhite"
@@ -60,7 +61,7 @@
         android:layout_height="117dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline38"
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="@+id/guideline37"
         app:layout_constraintTop_toTopOf="@+id/guideline56"
         app:srcCompat="?attr/actionModeSelectAllDrawable" />

@@ -8,5 +8,5 @@
         android:type="linear"
         android:angle="45"
         />
-    <stroke android:color="#BD7678" android:width="2dp"/>
+
 </shape>

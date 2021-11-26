@@ -13,11 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="14dp"
-        android:background="@drawable/lessongradiant"
-       >
+        android:background="@drawable/lessongradiant">
 
         <TextView
-            android:id="@+id/tvLessonTitle"
+            android:id="@+id/tvDefinitionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -32,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/tvLessonTitle"
+            android:layout_toEndOf="@id/tvDefinitionName"
             android:fontFamily="@font/segoe_ui_bold"
             android:text="Les num"
             android:textSize="15sp" />

@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvLessonTitle"
+                android:id="@+id/tvDefinitionName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -59,7 +59,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline6"
-                app:layout_constraintTop_toBottomOf="@+id/tvLessonTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/tvDefinitionName" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline6"
@@ -93,6 +93,7 @@
                 android:layout_marginTop="8dp"
                 android:justificationMode="inter_word"
                 android:text="TextView"
+                android:textColor="@color/gitwhite"
                 android:textSize="17.5sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -108,6 +109,7 @@
                 android:justificationMode="inter_word"
                 android:text="TextView"
                 android:textSize="17.5sp"
+                android:textColor="@color/gitwhite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintHorizontal_bias="0.0"

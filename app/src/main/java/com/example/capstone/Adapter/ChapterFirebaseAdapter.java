@@ -65,6 +65,7 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
                     .replace(R.id.fragmentHome,lessonsfrags)
                     .addToBackStack(null)
                     .commit();
+
         });
     }
     @NonNull

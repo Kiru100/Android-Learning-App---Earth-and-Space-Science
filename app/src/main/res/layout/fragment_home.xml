@@ -88,16 +88,14 @@
             </com.facebook.shimmer.ShimmerFrameLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvChapters"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView15"
-            app:layout_constraintVertical_bias="0.0" />
+                android:id="@+id/rvChapters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -152,7 +150,28 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent=".25" />
 
-          </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvChapters">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradientbg">
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    tools:layout_editor_absoluteX="164dp"
+                    tools:layout_editor_absoluteY="688dp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
