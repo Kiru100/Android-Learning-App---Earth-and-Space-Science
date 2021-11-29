@@ -16,18 +16,19 @@
         android:visible="true" />
 
     <item
+        android:id="@+id/profileFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/profile"
+        android:visible="true" />
+
+    <item
         android:id="@+id/settingsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="SETTINGS"
         android:visible="true" />
 
-<!--    <item-->
-<!--        android:id="@+id/profileFragment"-->
-<!--        android:enabled="true"-->
-<!--        android:icon="@drawable/ic_baseline_person_24"-->
-<!--        android:title="@string/profile"-->
-<!--        android:visible="true" />-->
 
 
 </menu>

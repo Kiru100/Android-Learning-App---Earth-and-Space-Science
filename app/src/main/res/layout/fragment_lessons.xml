@@ -5,7 +5,7 @@
     android:id="@+id/fragmentLessons"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_newbglesson"
+    android:background="@color/gitblack"
     tools:context=".Fragment.LessonFragment"
     >
 
@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline39"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline37"
-        app:layout_constraintTop_toTopOf="@+id/guideline38"
+        app:layout_constraintTop_toBottomOf="@+id/ivChapterImage"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView

@@ -27,21 +27,21 @@
 
         <TextView
             android:id="@+id/tvChapterDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvChapterTitle"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/segoe_ui_bold"
             android:text="Chapter Description"
-            android:textSize="17sp"
-            android:visibility="gone"/>
+            android:textSize="17sp" />
 
         <ProgressBar
             android:id="@+id/progress"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvChapterTitle"
+            android:layout_below="@id/tvChapterDescription"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10sp"
             android:progressTint="@color/design_default_color_background" />

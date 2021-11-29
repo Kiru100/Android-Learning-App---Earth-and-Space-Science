@@ -3,6 +3,7 @@ package com.example.capstone.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,13 +14,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.TextView;
 
 import com.example.capstone.Adapter.ChapterFirebaseAdapter;
 import com.example.capstone.Model.ChapterInfo;
+import com.example.capstone.Model.Student;
 import com.example.capstone.R;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
 
@@ -27,6 +36,12 @@ public class HomeFragment extends Fragment {
     private RecyclerView rvChapters;
     private ShimmerFrameLayout shimmerFrameLayout,shimmerFrameLayout1,shimmerFrameLayout2;
     private boolean isLoaded;
+    private TextView tvWelcomeName;
+    private FirebaseUser student;
+    private DatabaseReference reference;
+    private String userID;
+
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -40,9 +55,33 @@ public class HomeFragment extends Fragment {
 
         rvChapters = rootView.findViewById(R.id.rvChapters);
 
+
         shimmerFrameLayout=rootView.findViewById(R.id.shimmerFrameLayout);
         shimmerFrameLayout1=rootView.findViewById(R.id.shimmerFrameLayout1);
         shimmerFrameLayout2=rootView.findViewById(R.id.shimmerFrameLayout2);
+
+
+
+        student = FirebaseAuth.getInstance().getCurrentUser();
+        reference=FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
+        userID=student.getUid();
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Student studentProfile= snapshot.getValue(Student.class);
+                if(studentProfile!=null){
+                    String sfname=studentProfile.getSFname();
+
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
 
         rvChapters.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));

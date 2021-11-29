@@ -83,8 +83,17 @@
         tools:layout="@layout/fragment_change_personal_details" />
     <fragment
         android:id="@+id/definitionmain"
-        android:name="com.example.capstone.Fragment.definitionmain"
+        android:name="com.example.capstone.Fragment.DefinitionMain"
         android:label="fragment_definitionmain"
-        tools:layout="@layout/fragment_definitionmain" />
+        tools:layout="@layout/fragment_definitionmain" >
+        <action
+            android:id="@+id/action_definitionmain_to_definitionFragment"
+            app:destination="@id/definitionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.capstone.Fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>

@@ -40,7 +40,8 @@
         <activity android:name=".Activity.Menu" />
         <activity android:name=".Activity.RegistrationActivity" />
         <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
