@@ -8,9 +8,11 @@
     tools:context=".Fragment.ProfileFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView2"
+        android:id="@+id/civProfilePicture"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:civ_border_color="@color/gitwhite"
+        app:civ_border_width="2dp"
         android:src="@android:drawable/sym_def_app_icon"
         app:layout_constraintEnd_toStartOf="@+id/guideline66"
         app:layout_constraintHeight_percent=".2"
@@ -28,7 +30,7 @@
         android:backgroundTint="@color/gitwhite"
         app:layout_constraintEnd_toStartOf="@+id/guideline66"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/civProfilePicture" />
 
     <View
         android:id="@+id/divider4"

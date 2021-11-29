@@ -1,66 +1,207 @@
 package com.example.capstone.Fragment;
 
+import static android.app.Activity.RESULT_OK;
+import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.capstone.Model.Student;
 import com.example.capstone.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ChangePersonalDetails#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.net.URI;
+import java.util.UUID;
+
 public class ChangePersonalDetails extends Fragment {
+    private ImageView ivChangeProfilePicture;
+    private Uri imageUri;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+    private Button btnSavePersonalDetails,btnGetImage;
+    private DatabaseReference reference;
+    private EditText edtChangeFirstName,edtChangeLastName;
+    private String userID,imageID;
+    private FirebaseUser student;
+    private FirebaseAuth mAuth;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ChangePersonalDetails() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChangePersonalDetails.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ChangePersonalDetails newInstance(String param1, String param2) {
-        ChangePersonalDetails fragment = new ChangePersonalDetails();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public ChangePersonalDetails() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change_personal_details, container, false);
+       View rootview=inflater.inflate(R.layout.fragment_change_personal_details, container, false);
+
+        student = FirebaseAuth.getInstance().getCurrentUser();
+        reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
+        userID=student.getUid();
+
+        ivChangeProfilePicture=rootview.findViewById(R.id.ivChangeProfilePicture);
+        btnSavePersonalDetails=rootview.findViewById(R.id.btnSavePersonalDetails);
+        btnGetImage=rootview.findViewById(R.id.btnGetImage);
+
+        edtChangeFirstName=rootview.findViewById(R.id.edtChangeFirstName);
+        edtChangeLastName=rootview.findViewById(R.id.edtChangeLastName);
+
+        storage=FirebaseStorage.getInstance();
+        storageReference=storage.getReference();
+
+        loadImage();
+        loadFireBaseData();
+
+
+        btnGetImage.setOnClickListener(v -> {
+            choosePicture();
+        });
+
+        btnSavePersonalDetails.setOnClickListener(v -> {
+            if( imageUri!=null){
+                uploadPicture();
+            }
+            updateFirebaseName();
+        });
+
+
+       return rootview;
     }
+
+    public void loadImage(){
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Student studentProfile= snapshot.getValue(Student.class);
+                String spicture=studentProfile.getSpicture();
+                if(spicture!=null){
+                    Glide.with(getActivity()).load(spicture).into(ivChangeProfilePicture);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
+
+    private void loadFireBaseData() {
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Student studentProfile= snapshot.getValue(Student.class);
+                String sfname=studentProfile.getSFname();
+                String slname=studentProfile.getSLname();
+                edtChangeFirstName.setText(sfname);
+                edtChangeLastName.setText(slname);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void choosePicture() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,1);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode==RESULT_OK&&data!=null){
+            imageUri=data.getData();
+            ivChangeProfilePicture.setImageURI(imageUri);
+        }
+    }
+
+    private void uploadPicture() {
+
+        final ProgressDialog pd=new ProgressDialog(getActivity());
+        pd.setTitle("Uploading Image...");
+        pd.show();
+
+        final String randomKey= UUID.randomUUID().toString();
+
+        StorageReference storageRef = storageReference.child("images/"+randomKey);
+
+        storageRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        mAuth=FirebaseAuth.getInstance();
+                        String userID= mAuth.getCurrentUser().getUid();
+                        reference.child(userID).child("spicture").setValue(uri.toString());
+                        pd.dismiss();
+                        Snackbar.make(getActivity().findViewById(android.R.id.content),"Image Uploaded.",Snackbar.LENGTH_LONG).show();
+
+                        final NavController navController = Navigation.findNavController(getView());
+                        navController.navigate(R.id.action_changePersonalDetails_to_settingsFragment);
+                    }
+                });
+
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(getContext(), "Failed to Upload", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                double progressPercent=(100.00*snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
+                pd.setMessage("Progress: "+(int) progressPercent+"%");
+
+            }
+        });
+    }
+
+    public void updateFirebaseName(){
+
+        mAuth=FirebaseAuth.getInstance();
+        String userID= mAuth.getCurrentUser().getUid();
+        reference.child(userID).child("slname").setValue(edtChangeLastName.getText().toString());
+        reference.child(userID).child("sfname").setValue(edtChangeFirstName.getText().toString());
+
+    }
+
 }

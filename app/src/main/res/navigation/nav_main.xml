@@ -80,7 +80,11 @@
         android:id="@+id/changePersonalDetails"
         android:name="com.example.capstone.Fragment.ChangePersonalDetails"
         android:label="fragment_change_personal_details"
-        tools:layout="@layout/fragment_change_personal_details" />
+        tools:layout="@layout/fragment_change_personal_details" >
+        <action
+            android:id="@+id/action_changePersonalDetails_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/definitionmain"
         android:name="com.example.capstone.Fragment.DefinitionMain"

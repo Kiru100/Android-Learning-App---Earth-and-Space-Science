@@ -30,7 +30,6 @@ public class ScoreActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         mAuth=FirebaseAuth.getInstance();
-
         String userID= mAuth.getCurrentUser().getUid();
 
 

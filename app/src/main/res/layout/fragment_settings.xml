@@ -24,7 +24,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
+        android:id="@+id/ivChangeProfilePicture"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@android:drawable/sym_def_app_icon"
@@ -43,11 +43,11 @@
         android:drawableEnd="@drawable/right_arrow"
         android:drawablePadding="10dp"
         android:gravity="start|center"
-        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeProfilePicture"
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintHeight_percent=".06"
-        app:layout_constraintStart_toStartOf="@+id/circleImageView"
-        app:layout_constraintTop_toTopOf="@+id/circleImageView"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintTop_toTopOf="@+id/ivChangeProfilePicture"
         app:layout_constraintWidth_percent=".8" />
 
     <Button
@@ -114,7 +114,7 @@
         android:fontFamily="@font/segoe_ui_bold"
         android:textColor="@color/gitwhite"
         app:layout_constraintBottom_toTopOf="@+id/textView16"
-        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+        app:layout_constraintStart_toEndOf="@+id/ivChangeProfilePicture"
         app:layout_constraintTop_toBottomOf="@+id/tvSettings"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -126,7 +126,7 @@
         android:text="@string/edit_personal_details"
         android:textColor="@color/gitgray"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
-        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+        app:layout_constraintStart_toEndOf="@+id/ivChangeProfilePicture"
         app:layout_constraintTop_toBottomOf="@+id/tvFirstLastName" />
 
     <View
@@ -139,7 +139,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintHeight_percent=".002"
         app:layout_constraintStart_toStartOf="@+id/guideline22"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView"
+        app:layout_constraintTop_toBottomOf="@+id/ivChangeProfilePicture"
         app:layout_constraintWidth_percent=".8" />
 
     <View

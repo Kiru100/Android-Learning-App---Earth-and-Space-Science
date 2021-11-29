@@ -10,8 +10,10 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.capstone.Activity.LoginActivity;
 import com.example.capstone.Model.Student;
 import com.example.capstone.R;
@@ -26,7 +28,8 @@ import com.google.firebase.database.ValueEventListener;
 public class SettingsFragment extends Fragment implements View.OnClickListener {
     private FirebaseUser student;
     private DatabaseReference reference;
-    private String userID;
+    private FirebaseAuth mAuth;
+
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -43,13 +46,14 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.btnChangePassword).setOnClickListener(this);
         rootView.findViewById(R.id.btnChangePersonalDetails).setOnClickListener(this);
 
-
         student = FirebaseAuth.getInstance().getCurrentUser();
         reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
-        userID=student.getUid();
+        mAuth=FirebaseAuth.getInstance();
+        String userID= mAuth.getCurrentUser().getUid();
 
 
         final TextView tvFirstLastName =rootView.findViewById(R.id.tvFirstLastName);
+        final ImageView ivChangeProfilePicture= rootView.findViewById(R.id.ivChangeProfilePicture);
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -57,8 +61,15 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 Student studentProfile= snapshot.getValue(Student.class);
                 String sfname=studentProfile.getSFname();
                 String slname=studentProfile.getSLname();
+                String spicture=studentProfile.getSpicture();
                 String FullName=sfname+" "+slname;
+
+                if(spicture!=null){
+                    Glide.with(getActivity()).load(spicture).into(ivChangeProfilePicture);
+                }
+
                 tvFirstLastName.setText(FullName);
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
