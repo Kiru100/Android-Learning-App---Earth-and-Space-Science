@@ -1,22 +1,31 @@
 package com.example.capstone.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+
 import com.example.capstone.Adapter.DefinitionFirebaseAdapter;
 import com.example.capstone.Model.DefinitionInfo;
 import com.example.capstone.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 
 
 public class DefinitionFragment extends Fragment {
     private DefinitionFirebaseAdapter fadapter;
     private RecyclerView rvDefinition;
+    private SearchView svSearchDefinition;
+    private DatabaseReference mFirebasedb;
+    FirebaseRecyclerOptions<DefinitionInfo> options;
     public DefinitionFragment() {
         // Required empty public constructor
     }
@@ -28,10 +37,13 @@ public class DefinitionFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_definition, container, false);
         rvDefinition = rootView.findViewById(R.id.rvDefinition);
+        svSearchDefinition=rootView.findViewById(R.id.svSearchDefinition);
 
 
         rvDefinition.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         FirebaseRecyclerOptions<DefinitionInfo> options;
+
+       //mFirebasedb=FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
 
         options= new FirebaseRecyclerOptions.Builder<DefinitionInfo>()
                 .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
@@ -42,10 +54,33 @@ public class DefinitionFragment extends Fragment {
         fadapter = new DefinitionFirebaseAdapter(options);
         rvDefinition.setAdapter(fadapter);
 
+        svSearchDefinition.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String search) {
+                processSearch(search);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String search) {
+                processSearch(search);
+                return false;
+            }
+        });
+
+
 
         return rootView;
     }
 
+    private void processSearch(String search) {
+        options= new FirebaseRecyclerOptions.Builder<DefinitionInfo>()
+                .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                        .getReference().child("Definition").orderByChild("DefinitionName").startAt(search).endAt(search+"\uf8ff")  ,DefinitionInfo.class).build();
+        fadapter = new DefinitionFirebaseAdapter(options);
+        fadapter.startListening();
+        rvDefinition.setAdapter(fadapter);
+    }
 
 
     @Override

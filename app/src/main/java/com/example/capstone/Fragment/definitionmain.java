@@ -32,15 +32,13 @@ public class DefinitionMain extends Fragment {
 
         ivDefinitionImage=viewroot.findViewById(R.id.ivDefinitionImage);
 
-        Bundle bundle = getArguments();
+        Bundle bundle = this.getArguments();
         if (bundle != null){
             defName=bundle.getString("DefinitionName");
             defDescription=bundle.getString("DefinitionDescription");
             defImgURL=bundle.getString("DefinitionImageURL");
-
             tvDefinitionName2.setText(defName);
             tvDefinitionDescription.setText(defDescription);
-
             Glide.with(getActivity()).load(defImgURL).into(ivDefinitionImage);
 
         }

@@ -40,7 +40,7 @@
 
     <EditText
         android:id="@+id/edtChangeLastName"
-        android:layout_width="247dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_person_24"
@@ -63,7 +63,7 @@
 
     <EditText
         android:id="@+id/edtChangeFirstName"
-        android:layout_width="247dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@drawable/custom_input"
@@ -176,8 +176,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_input"
-        android:text="Choose File"
+        android:drawableStart="@drawable/ic_baseline_drive_folder_upload_24"
         android:paddingHorizontal="10dp"
+        android:drawablePadding="8dp"
+        android:text="Choose File"
         app:layout_constraintEnd_toEndOf="@+id/ivChangeProfilePicture"
         app:layout_constraintStart_toStartOf="@+id/ivChangeProfilePicture"
         app:layout_constraintTop_toBottomOf="@+id/ivChangeProfilePicture" />

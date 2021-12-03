@@ -96,7 +96,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                 i.putExtra("secondFigureNumber",model.getSecondFigureNumber());
                 i.putExtra("lessonThirdLineString",model.getThirdLineLessonLecture());
                 view.getContext().startActivity(i);
-                //TODO: send data to fragment
+                //TODO: send data to activity
 
             } else if(model.getLtypes().equals("Introduction")){
                 Intent i = new Intent(view.getContext(), IntroductionActivity.class);

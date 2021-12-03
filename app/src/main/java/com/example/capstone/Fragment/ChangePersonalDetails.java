@@ -3,7 +3,10 @@ package com.example.capstone.Fragment;
 import static android.app.Activity.RESULT_OK;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -53,6 +56,7 @@ public class ChangePersonalDetails extends Fragment {
     private String userID,imageID;
     private FirebaseUser student;
     private FirebaseAuth mAuth;
+    private boolean isconnected;
 
     public ChangePersonalDetails() { }
 
@@ -84,12 +88,31 @@ public class ChangePersonalDetails extends Fragment {
         });
 
         btnSavePersonalDetails.setOnClickListener(v -> {
-            if( imageUri!=null){
-                uploadPicture();
+            ConnectivityManager connectivityManager = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+            if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                //we are connected to a network
+                isconnected = true;
             }
-            updateFirebaseName();
-        });
+            else{
+                isconnected = false;
+            }
 
+            if(isconnected){
+                if(imageUri!=null){
+                    uploadPicture();
+                    updateFirebaseName();
+                }else{
+                    updateFirebaseName();
+                    Snackbar.make(getActivity().findViewById(android.R.id.content),"Personal information updated successfully.",Snackbar.LENGTH_LONG).show();
+                    final NavController navController = Navigation.findNavController(getView());
+                    navController.navigate(R.id.action_changePersonalDetails_to_settingsFragment);
+                }
+            }else{
+                Snackbar.make(getActivity().findViewById(android.R.id.content),"Please connect to Internet.",Snackbar.LENGTH_LONG).show();
+            }
+
+        });
 
        return rootview;
     }
@@ -170,8 +193,7 @@ public class ChangePersonalDetails extends Fragment {
                         String userID= mAuth.getCurrentUser().getUid();
                         reference.child(userID).child("spicture").setValue(uri.toString());
                         pd.dismiss();
-                        Snackbar.make(getActivity().findViewById(android.R.id.content),"Image Uploaded.",Snackbar.LENGTH_LONG).show();
-
+                        Snackbar.make(getActivity().findViewById(android.R.id.content),"Personal information updated successfully.",Snackbar.LENGTH_LONG).show();
                         final NavController navController = Navigation.findNavController(getView());
                         navController.navigate(R.id.action_changePersonalDetails_to_settingsFragment);
                     }
@@ -196,6 +218,20 @@ public class ChangePersonalDetails extends Fragment {
     }
 
     public void updateFirebaseName(){
+        String lastname = edtChangeLastName.getText().toString();
+        String firstname = edtChangeFirstName.getText().toString();
+
+        if(lastname.isEmpty()){
+            edtChangeLastName.setError("Last name is required.");
+            edtChangeLastName.requestFocus();
+            return;
+        }
+        if(firstname.isEmpty()){
+            edtChangeLastName.setError("Last name is required.");
+            edtChangeLastName.requestFocus();
+            return;
+        }
+
 
         mAuth=FirebaseAuth.getInstance();
         String userID= mAuth.getCurrentUser().getUid();
