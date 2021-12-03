@@ -9,6 +9,8 @@
      android:elevation="10dp"
     app:cardUseCompatPadding="true">
 
+
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,6 +70,13 @@
             android:text="Chapter" />
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlhideLayout"
+        android:layout_width="350dp"
+        android:layout_height="401dp"
+        android:background="#82070707" />
+
 
 
 </androidx.cardview.widget.CardView>

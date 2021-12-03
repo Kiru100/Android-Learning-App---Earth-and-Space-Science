@@ -6,6 +6,7 @@ public class ChapterInfo extends Student {
     private int ChapterNumber;
     private String LessonChapterImageURl;
     private String ChapterDescription;
+    private boolean isAvailable;
 
     public ChapterInfo(){
 
@@ -20,6 +21,13 @@ public class ChapterInfo extends Student {
 
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 
     public String getChapterDescription() {
         return ChapterDescription;

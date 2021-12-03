@@ -6,7 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -19,6 +22,7 @@ import com.example.capstone.Fragment.TestFragment;
 import com.example.capstone.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.snackbar.Snackbar;
 
 public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,ChapterFirebaseAdapter.myViewHolder> {
 
@@ -45,28 +49,41 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
                 .load(model.getImageFile())
                 .into(holder.chapterImage);
 
-        holder.rlChapters.setOnClickListener(view -> {
-            AppCompatActivity activity = (AppCompatActivity)view.getContext();
-            LessonFragment lessonsfrags=new LessonFragment();
+        if(model.isAvailable()) {
+            holder.rlhideLayout.setVisibility(View.INVISIBLE);
+            holder.rlChapters.setOnClickListener(view -> {
+                        AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
-            TestFragment pre=new TestFragment();
+                        LessonFragment lessonsfrags=new LessonFragment();
+                        TestFragment pre=new TestFragment();
 
-            Bundle bundle = new Bundle();
-            bundle.putInt("id",holder.getBindingAdapterPosition());
-            bundle.putString("ChapterName",model.getChapterName());
-            bundle.putInt("ChapterNumber",model.getChapterNumber());
-            bundle.putString("LessonImage",model.getLessonChapterImageURl());
-            lessonsfrags.setArguments(bundle);
-            pre.setArguments(bundle);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("id",holder.getBindingAdapterPosition());
+                        bundle.putString("ChapterName",model.getChapterName());
+                        bundle.putInt("ChapterNumber",model.getChapterNumber());
+                        bundle.putString("LessonImage",model.getLessonChapterImageURl());
+                        lessonsfrags.setArguments(bundle);
+                        pre.setArguments(bundle);
+
+                        activity.getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragmentHome,lessonsfrags)
+                                .addToBackStack(null)
+                                .commit();
+            });
+        }
+        if(!model.isAvailable()){
+            holder.rlhideLayout.setVisibility(View.VISIBLE);
+            holder.rlhideLayout.setOnClickListener(view ->{
+                Toast.makeText(view.getContext(), "Chapter not available.", Toast.LENGTH_SHORT).show();
+            });
+
+        }
 
 
-            activity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentHome,lessonsfrags)
-                    .addToBackStack(null)
-                    .commit();
 
-        });
+
+
     }
     @NonNull
     @Override
@@ -77,6 +94,8 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
 
     class myViewHolder extends RecyclerView.ViewHolder {
 
+
+        private RelativeLayout rlhideLayout;
         private TextView tvChapterTitle;
         private CardView rlChapters;
         private ProgressBar progress;
@@ -92,6 +111,7 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
             progress = itemView.findViewById(R.id.progress);
             chapterImage= itemView.findViewById(R.id.chapterImage);
             tvChapterNumber=itemView.findViewById(R.id.tvChapterNumber);
+            rlhideLayout=itemView.findViewById(R.id.rlhideLayout);
         }
     }
 

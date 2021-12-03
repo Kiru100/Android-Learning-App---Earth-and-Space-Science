@@ -77,7 +77,6 @@ public class HomeFragment extends Fragment {
         });
 
 
-
         rvChapters.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         //firebase
@@ -92,10 +91,6 @@ public class HomeFragment extends Fragment {
         fireAdapter= new ChapterFirebaseAdapter(options);
         fireAdapter.notifyDataSetChanged();
         rvChapters.setAdapter(fireAdapter);
-
-
-
-
 
         return rootView;
     }
