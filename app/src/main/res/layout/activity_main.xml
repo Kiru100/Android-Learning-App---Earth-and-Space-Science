@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity"
     android:background="@color/gitblack"
-
-    >
+    android:forceDarkAllowed="false">
 
     <View
         android:id="@+id/view"

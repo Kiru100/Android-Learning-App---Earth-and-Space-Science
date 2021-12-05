@@ -85,23 +85,23 @@ public class TestFragment extends Fragment {
         String userID = student.getUid();
         btnAttempt.setVisibility(View.VISIBLE);
         //Know if student already took the exam TODO:get this thing back
-//        reference.child(userID).child("Chapter_"+ChapterNumber).child(TestName).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                if(snapshot.exists()){
-//                    tvItemNumber.setText("Score : "+snapshot.getValue());
-//                    btnAttempt.setVisibility(View.GONE);
-//                }else{
-//                    btnAttempt.setVisibility(View.VISIBLE);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        reference.child(userID).child("Chapter_"+ChapterNumber+"_Activity_Score").child(TestName).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists()){
+                    tvItemNumber.setText("Score : "+snapshot.getValue());
+                    btnAttempt.setVisibility(View.GONE);
+                }else{
+                    btnAttempt.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         btnAttempt.setOnClickListener(v -> {
             DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
@@ -124,7 +124,7 @@ public class TestFragment extends Fragment {
                 }
             };
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage("Do you want to attempt "+bundle.getInt("testNumber")+" items assessment?").setPositiveButton("Yes", dialogClickListener)
+            builder.setMessage("Do you want to attempt "+bundle.getInt("testNumber")+" items assessment?\nMake sure your internet connection is stable.").setPositiveButton("Yes", dialogClickListener)
                     .setNegativeButton("No", dialogClickListener).show();
         });
 

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
@@ -84,6 +85,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnLogin:
                 userLogin();
+                btnLogin.setEnabled(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        btnLogin.setEnabled(true);
+                    }
+                },3000);
                 break;
             case R.id.tvForgotPassword:
                 startActivity(new Intent(this, ForgotPasswordActivity.class));
@@ -129,31 +137,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         progressBar.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
 
-                if(task.isSuccessful()) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if(task.isSuccessful()) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                    if (user.isEmailVerified()) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        progressBar.setVisibility(View.GONE);
-                        finish();
-                    } else {
-                        user.sendEmailVerification();
-                        Toast.makeText(LoginActivity.this, "Check your email to verify your account", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
-                }else if (!connected){
-                    Toast.makeText(LoginActivity.this, "Please connect to the internet.", Toast.LENGTH_LONG).show();
+                if (user.isEmailVerified()) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     progressBar.setVisibility(View.GONE);
-                }else{
-                    Toast.makeText(LoginActivity.this, "Failed to login, please check your email and password.", Toast.LENGTH_LONG).show();
+                    btnLogin.setEnabled(false);
+                    finish();
+                } else {
+                    user.sendEmailVerification();
+                    Toast.makeText(LoginActivity.this, "Check your email to verify your account", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);
                 }
-
+            }else if (!connected){
+                Toast.makeText(LoginActivity.this, "Please connect to the internet.", Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
+            }else{
+                Toast.makeText(LoginActivity.this, "Failed to login, please check your email and password.", Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
             }
+
         });
 
 

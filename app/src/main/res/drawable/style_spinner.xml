@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:state_enabled="true" >
         <layer-list>
             <item>
@@ -15,8 +14,6 @@
                 <bitmap android:gravity="center|start" android:src="@drawable/ic_down2"/>
             </item>
         </layer-list>
-
-
     </item>
 
 

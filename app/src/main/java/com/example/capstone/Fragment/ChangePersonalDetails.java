@@ -53,7 +53,7 @@ public class ChangePersonalDetails extends Fragment {
     private Button btnSavePersonalDetails,btnGetImage;
     private DatabaseReference reference;
     private EditText edtChangeFirstName,edtChangeLastName;
-    private String userID,imageID;
+    private String userID;
     private FirebaseUser student;
     private FirebaseAuth mAuth;
     private boolean isconnected;

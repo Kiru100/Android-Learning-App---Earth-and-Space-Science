@@ -8,6 +8,7 @@ public class LessonInfo extends ChapterInfo {
     private String TestName;
     private String IntroMessage;
     private String ChapterObjectives;
+    private boolean isAvailable;
     private int TestItemNumber;
     private String FirstLineLessonLecture,SecondLineLessonLecture,ThirdLineLessonLecture,
                    FirstLessonImage,SecondLessonImage
@@ -32,6 +33,16 @@ public class LessonInfo extends ChapterInfo {
         TestItemNumber = testItemNumber;
     }
 
+
+    @Override
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    @Override
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 
     public String getThirdLineLessonLecture() {
         return ThirdLineLessonLecture;

@@ -2,9 +2,11 @@ package com.example.capstone.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ZoomControls;
 
 import com.bumptech.glide.Glide;
 import com.example.capstone.Model.YoutubeConfig;
@@ -26,6 +28,8 @@ public class LessonActivity extends YouTubeBaseActivity {
 
     private ImageView ivFirstLessonImage,ivSecondLessonImage;
 
+    private ZoomControls zoomControls;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,8 @@ public class LessonActivity extends YouTubeBaseActivity {
 
         viewYoutubePlayer=findViewById(R.id.viewYoutubePlayer);
 
+        zoomControls=findViewById(R.id.zoomControls);
+
 
         Intent intent = getIntent();
         if (null != intent) {
@@ -55,7 +61,6 @@ public class LessonActivity extends YouTubeBaseActivity {
             tvSecondLine.setText(lessonSecondLineString);
             lessonThirdLineString=intent.getStringExtra("lessonThirdLineString");
             tvThirdLine.setText(lessonThirdLineString);
-
 
             firstFigureNumber=intent.getStringExtra("firstFigureNumber");
             tvFirstFigureNumber.setText(firstFigureNumber);
@@ -71,14 +76,38 @@ public class LessonActivity extends YouTubeBaseActivity {
             secondLessonImageURL=intent.getStringExtra("secondLessonImage");
             Glide.with(this).load(secondLessonImageURL).into(ivSecondLessonImage);
         }
-
-
-
-
         playYoutube();
+
+        float[] textSize = {17.5f};
+
+        zoomControls.setOnZoomInClickListener(v -> {
+            textSize[0] += 1f;
+            tvFirstLine.setTextSize(textSize[0]);
+            tvSecondLine.setTextSize(textSize[0]);
+            tvThirdLine.setTextSize(textSize[0]);
+            zoomandoutdisable(textSize);
+        });
+        zoomControls.setOnZoomOutClickListener(v->{
+            textSize[0] -= 1f;
+            tvFirstLine.setTextSize(textSize[0]);
+            tvSecondLine.setTextSize(textSize[0]);
+            tvThirdLine.setTextSize(textSize[0]);
+            zoomandoutdisable(textSize);
+        });
     }
 
-
+    public void zoomandoutdisable(float[] textSize){
+        if(textSize[0]<17.5){
+            zoomControls.setIsZoomOutEnabled(false);
+        }else{
+            zoomControls.setIsZoomOutEnabled(true);
+        }
+        if(textSize[0]>25){
+            zoomControls.setIsZoomInEnabled(false);
+        }else{
+            zoomControls.setIsZoomInEnabled(true);
+        }
+    }
 
     public void playYoutube(){
 
@@ -120,9 +149,7 @@ public class LessonActivity extends YouTubeBaseActivity {
 
             }
         };
-
         viewYoutubePlayer.initialize(YoutubeConfig.getApiKey(),youtubeListener);
-
 
     }
 

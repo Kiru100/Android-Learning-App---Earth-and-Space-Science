@@ -10,6 +10,7 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -28,7 +29,7 @@
                 android:id="@+id/tvDefinitionName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/alfa_slab_one"
                 android:text="TextView"
                 android:textColor="@color/gitwhite"
@@ -37,7 +38,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline6"
-                app:layout_constraintTop_toBottomOf="@+id/tvYoutubeTitle"
+                app:layout_constraintTop_toBottomOf="@+id/zoomControls"
                 app:layout_constraintVertical_bias="0.0" />
 
             <com.google.android.youtube.player.YouTubePlayerView
@@ -108,8 +109,8 @@
                 android:layout_marginBottom="8dp"
                 android:justificationMode="inter_word"
                 android:text="TextView"
-                android:textSize="17.5sp"
                 android:textColor="@color/gitwhite"
+                android:textSize="17.5sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -153,6 +154,15 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintStart_toStartOf="@+id/guideline6"
                 app:layout_constraintTop_toBottomOf="@+id/tvSecondLine" />
+
+            <ZoomControls
+                android:id="@+id/zoomControls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline53"
+                app:layout_constraintStart_toStartOf="@+id/guideline6"
+                app:layout_constraintTop_toBottomOf="@+id/tvYoutubeTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -23,8 +23,18 @@ import com.example.capstone.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,ChapterFirebaseAdapter.myViewHolder> {
+
+    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    private DatabaseReference studentsRef= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            .getReference("Students");
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
@@ -41,13 +51,35 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull ChapterInfo model) {
         holder.tvChapterTitle.setText(model.getChapterName());
-        holder.progress.setProgress(model.getChapterProgress());
         holder.tvChapterDescription.setText(model.getChapterDescription());
         String chapterNum=String.valueOf(model.getChapterNumber());
         holder.tvChapterNumber.setText("Chapter "+chapterNum);
         Glide.with(holder.chapterImage.getContext())
                 .load(model.getImageFile())
                 .into(holder.chapterImage);
+
+
+        final long[] LessonDoneCount = new long[1];
+
+
+        String userID= mAuth.getCurrentUser().getUid();
+        studentsRef.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                LessonDoneCount[0]=snapshot.getChildrenCount();
+                float percentage = (LessonDoneCount[0]/model.getNumberofLessons())*100;
+
+                System.out.println("Total Lesson Done "+LessonDoneCount[0]);
+                System.out.println("Total Number of Lesson "+model.getNumberofLessons());
+                holder.progress.setProgress(Math.round(percentage));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         if(model.isAvailable()) {
             holder.rlhideLayout.setVisibility(View.INVISIBLE);
@@ -79,12 +111,10 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
             });
 
         }
-
-
-
-
-
     }
+
+
+
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

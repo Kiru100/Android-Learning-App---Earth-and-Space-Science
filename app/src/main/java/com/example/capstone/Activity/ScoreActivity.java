@@ -1,5 +1,6 @@
 package com.example.capstone.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -7,8 +8,11 @@ import com.example.capstone.Model.Student;
 import com.example.capstone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -67,8 +71,8 @@ public class ScoreActivity extends AppCompatActivity {
               tvScoreSummany.setText("Summary: "+score+"/"+total);
 
 
-
-            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber).child(testName).setValue(score);
+            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Activity_Score").child(testName).setValue(score);
+            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(true);
         }
 
         Button button = findViewById(R.id.button);

@@ -7,6 +7,7 @@ public class ChapterInfo extends Student {
     private String LessonChapterImageURl;
     private String ChapterDescription;
     private boolean isAvailable;
+    private float NumberofLessons;
 
     public ChapterInfo(){
 
@@ -19,6 +20,14 @@ public class ChapterInfo extends Student {
         this.LessonChapterImageURl = lessonChapterImageURl;
         this.ChapterDescription = chapterDescription;
 
+    }
+
+    public float getNumberofLessons() {
+        return NumberofLessons;
+    }
+
+    public void setNumberofLessons(float numberofLessons) {
+        NumberofLessons = numberofLessons;
     }
 
     public boolean isAvailable() {

@@ -20,23 +20,20 @@ public class SplashScreen extends AppCompatActivity {
         //TODO: Check if user is connected to the internet
 
 
-       new Handler().postDelayed(new Runnable() {
-           @Override
-           public void run() {
+       new Handler().postDelayed(() -> {
 
-               FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-               if (user != null) {
-                   // User is signed in
-                   Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                   startActivity(intent);
-                   finish();
-               } else {
-                   // User is signed out
-                   Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                   startActivity(intent);
-                   finish();
-               }
+           FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+           if (user != null) {
+               // User is signed in
+               Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+               intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+               startActivity(intent);
+               finish();
+           } else {
+               // User is signed out
+               Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+               startActivity(intent);
+               finish();
            }
        }, 3000);
     }

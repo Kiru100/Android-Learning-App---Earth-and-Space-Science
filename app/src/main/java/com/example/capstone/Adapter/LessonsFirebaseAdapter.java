@@ -1,11 +1,14 @@
 package com.example.capstone.Adapter;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,12 +17,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.capstone.Activity.IntroductionActivity;
 import com.example.capstone.Activity.LessonActivity;
 import com.example.capstone.Model.LessonInfo;
+import com.example.capstone.Model.Student;
 import com.example.capstone.R;
 import com.example.capstone.Fragment.TestFragment;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,LessonsFirebaseAdapter.myViewHolder> {
+
+    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    private DatabaseReference reference=FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            .getReference("Students");
+
+
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
@@ -37,9 +55,30 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         holder.lessonNumber.setText(model.getLessonNumber());
         holder.tvLessonType.setText(model.getLtypes());
 
-        holder.cvLessons.setOnClickListener(view -> {
-            AppCompatActivity activity = (AppCompatActivity)view.getContext();
+        String userID= mAuth.getCurrentUser().getUid();
+        reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").child(model.getLessonName()).addListenerForSingleValueEvent(new ValueEventListener() {
 
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(Objects.equals(snapshot.getValue(), true)){
+                    holder.cbLessonDone.setChecked(true);
+                }else{
+                    holder.cbLessonDone.setChecked(false);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+       // holder.cbLessonDone.setChecked();
+
+        if(model.isAvailable()){
+        holder.rlGrayLesson.setVisibility(View.INVISIBLE);
+        holder.cvLessons.setOnClickListener(view -> {
+
+            AppCompatActivity activity = (AppCompatActivity)view.getContext();
             //open and send data to fragment (assessment)
             if (model.getLtypes().equals("Pre-Assessment")){
                 TestFragment testFragment =new TestFragment();
@@ -82,6 +121,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
 
                 //open and send data to Lesson Activity
             }  else if(model.getLtypes().equals("Lesson")){
+                markAsDone(model.getChapterNumber(),model.getLessonName());
                 Intent i = new Intent(view.getContext(), LessonActivity.class);
                 i.putExtra("lessonType",model.getLtypes());
                 i.putExtra("lessonName",model.getLessonName());
@@ -99,6 +139,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                 //TODO: send data to activity
 
             } else if(model.getLtypes().equals("Introduction")){
+                markAsDone(model.getChapterNumber(),model.getLessonName());
                 Intent i = new Intent(view.getContext(), IntroductionActivity.class);
                 i.putExtra("introMessage",model.getIntroMessage());
                 i.putExtra("chapterObjectives",model.getChapterObjectives());
@@ -109,8 +150,25 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                 view.getContext().startActivity(i);
                 //TODO: send data to fragment
             }
-
         });
+        }
+        if(!model.isAvailable()){
+            holder.rlGrayLesson.setVisibility(View.VISIBLE);
+            holder.rlGrayLesson.setOnClickListener(view ->{
+                Toast.makeText(view.getContext(), "Lesson not available.", Toast.LENGTH_SHORT).show();
+            });
+        }
+    }
+
+    //Mark lesson as donne to student progress
+    public void markAsDone(int ChapterNumber,String LessonName){
+        String userID= mAuth.getCurrentUser().getUid();
+        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(true);
+    }
+
+    @Override
+    public int getItemCount() {
+        return super.getItemCount();
     }
 
     @NonNull
@@ -125,11 +183,16 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         private final TextView lessonNumber;
         private final TextView tvLessonType;
         private final CardView cvLessons;
+        private final RelativeLayout rlGrayLesson;
+        private final CheckBox cbLessonDone;
+
 
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            cbLessonDone=itemView.findViewById(R.id.cbLessonDone);
+            rlGrayLesson=itemView.findViewById(R.id.rlGrayLesson);
             cvLessons=itemView.findViewById(R.id.cvLessons);
             lessonTitle=itemView.findViewById(R.id.lessonTitle);
             lessonNumber=itemView.findViewById(R.id.lessonNumber);

@@ -8,7 +8,8 @@
     android:textColor="@color/gitgray"
     tools:context=".Activity.RegistrationActivity"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="1dp">
+    tools:layout_editor_absoluteY="1dp"
+    android:forceDarkAllowed="false">
 
 
     <TextView

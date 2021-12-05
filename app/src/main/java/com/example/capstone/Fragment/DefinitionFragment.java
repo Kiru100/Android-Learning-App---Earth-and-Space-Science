@@ -24,17 +24,18 @@ public class DefinitionFragment extends Fragment {
     private DefinitionFirebaseAdapter fadapter;
     private RecyclerView rvDefinition;
     private SearchView svSearchDefinition;
-    private DatabaseReference mFirebasedb;
     FirebaseRecyclerOptions<DefinitionInfo> options;
+
+
     public DefinitionFragment() {
-        // Required empty public constructor
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View rootView = inflater.inflate(R.layout.fragment_definition, container, false);
         rvDefinition = rootView.findViewById(R.id.rvDefinition);
         svSearchDefinition=rootView.findViewById(R.id.svSearchDefinition);
@@ -42,8 +43,6 @@ public class DefinitionFragment extends Fragment {
 
         rvDefinition.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         FirebaseRecyclerOptions<DefinitionInfo> options;
-
-       //mFirebasedb=FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
 
         options= new FirebaseRecyclerOptions.Builder<DefinitionInfo>()
                 .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
