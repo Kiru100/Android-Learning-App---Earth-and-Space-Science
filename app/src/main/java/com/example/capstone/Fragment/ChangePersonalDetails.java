@@ -105,8 +105,7 @@ public class ChangePersonalDetails extends Fragment {
                 }else{
                     updateFirebaseName();
                     Snackbar.make(getActivity().findViewById(android.R.id.content),"Personal information updated successfully.",Snackbar.LENGTH_LONG).show();
-                    final NavController navController = Navigation.findNavController(getView());
-                    navController.navigate(R.id.action_changePersonalDetails_to_settingsFragment);
+                    requireActivity().onBackPressed();
                 }
             }else{
                 Snackbar.make(getActivity().findViewById(android.R.id.content),"Please connect to Internet.",Snackbar.LENGTH_LONG).show();
@@ -159,7 +158,7 @@ public class ChangePersonalDetails extends Fragment {
     private void choosePicture() {
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+       intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent,1);
     }
 
@@ -194,8 +193,7 @@ public class ChangePersonalDetails extends Fragment {
                         reference.child(userID).child("spicture").setValue(uri.toString());
                         pd.dismiss();
                         Snackbar.make(getActivity().findViewById(android.R.id.content),"Personal information updated successfully.",Snackbar.LENGTH_LONG).show();
-                        final NavController navController = Navigation.findNavController(getView());
-                        navController.navigate(R.id.action_changePersonalDetails_to_settingsFragment);
+                        requireActivity().onBackPressed();
                     }
                 });
 

@@ -1,9 +1,11 @@
 package com.example.capstone.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ZoomControls;
@@ -29,6 +31,8 @@ public class LessonActivity extends YouTubeBaseActivity {
     private ImageView ivFirstLessonImage,ivSecondLessonImage;
 
     private ZoomControls zoomControls;
+
+    private boolean isDoneWatching;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +83,6 @@ public class LessonActivity extends YouTubeBaseActivity {
         playYoutube();
 
         float[] textSize = {17.5f};
-
         zoomControls.setOnZoomInClickListener(v -> {
             textSize[0] += 1f;
             tvFirstLine.setTextSize(textSize[0]);
@@ -97,12 +100,12 @@ public class LessonActivity extends YouTubeBaseActivity {
     }
 
     public void zoomandoutdisable(float[] textSize){
-        if(textSize[0]<17.5){
+        if(textSize[0]<=17.5){
             zoomControls.setIsZoomOutEnabled(false);
         }else{
             zoomControls.setIsZoomOutEnabled(true);
         }
-        if(textSize[0]>25){
+        if(textSize[0]>=25){
             zoomControls.setIsZoomInEnabled(false);
         }else{
             zoomControls.setIsZoomInEnabled(true);
@@ -136,6 +139,7 @@ public class LessonActivity extends YouTubeBaseActivity {
                     }
                     @Override
                     public void onVideoEnded() {
+                        isDoneWatching=true;
                     }
                     @Override
                     public void onError(YouTubePlayer.ErrorReason errorReason) {
@@ -152,5 +156,30 @@ public class LessonActivity extends YouTubeBaseActivity {
         viewYoutubePlayer.initialize(YoutubeConfig.getApiKey(),youtubeListener);
 
     }
+
+//    private class scrollviewend extends ScrollView {
+//
+//        public scrollviewend(Context context) {
+//            super(context);
+//        }
+//
+//        @Override
+//        public void setOnScrollChangeListener(OnScrollChangeListener l) {
+//            super.setOnScrollChangeListener(l);
+//        }
+//
+//        @Override
+//        protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+//            View view = (View) getChildAt(getChildCount()-1);
+//            int diff = (view.getBottom()-(getHeight()+getScrollY()));
+//
+//            if (diff == 0 && mListener != null) {
+//                mListener.onBottomReached();
+//            }
+//
+//            super.onScrollChanged(l, t, oldl, oldt);
+//        }
+    }
+
 
 }

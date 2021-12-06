@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+
+import androidx.annotation.FractionRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,19 +57,19 @@ public class DefinitionFirebaseAdapter extends FirebaseRecyclerAdapter<Definitio
         holder.cvDefinition.setOnClickListener(view -> {
             AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
-            DefinitionMain Fragment =new DefinitionMain();
+            Fragment definitionMain =new DefinitionMain();
             Bundle bundle = new Bundle();
             bundle.putString("DefinitionName",model.getDefinitionName());
             bundle.putString("DefinitionDescription",model.getDefinitionDescription());
             bundle.putString("DefinitionImageURL",model.getDefinitionImageURL());
-            Fragment.setArguments(bundle);
+            definitionMain.setArguments(bundle);
 
 //            final NavController navController = Navigation.findNavController(view);
 //            navController.navigate(R.id.action_definitionFragment_to_definitionmain);
 
-            activity.getSupportFragmentManager()
+                    activity.getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragmentDefine, Fragment)
+                    .add(R.id.fragmentDefine, definitionMain)
                     .addToBackStack(null)
                     .commit();
         });

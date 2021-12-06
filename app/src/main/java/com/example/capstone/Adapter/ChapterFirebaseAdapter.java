@@ -69,8 +69,7 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
                 LessonDoneCount[0]=snapshot.getChildrenCount();
                 float percentage = (LessonDoneCount[0]/model.getNumberofLessons())*100;
 
-                System.out.println("Total Lesson Done "+LessonDoneCount[0]);
-                System.out.println("Total Number of Lesson "+model.getNumberofLessons());
+                holder.progressText.setText("Chapter progress : "+Math.round(percentage)+"%");
                 holder.progress.setProgress(Math.round(percentage));
             }
             @Override
@@ -132,9 +131,11 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
         private ImageView chapterImage;
         private TextView tvChapterDescription;
         private TextView tvChapterNumber;
+        private TextView progressText;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+            progressText=itemView.findViewById(R.id.progressText);
             tvChapterDescription = itemView.findViewById(R.id.tvChapterDescription);
             tvChapterTitle = itemView.findViewById(R.id.tvChapterTitle);
             rlChapters = itemView.findViewById(R.id.rlChapters);

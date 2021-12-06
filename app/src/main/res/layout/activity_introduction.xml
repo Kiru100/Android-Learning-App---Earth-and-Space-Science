@@ -23,6 +23,15 @@
             android:layout_height="match_parent">
 
 
+            <ZoomControls
+                android:id="@+id/zoomControls2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline41"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
         <TextView
             android:id="@+id/tvIntroLessonTitle"
             android:layout_width="wrap_content"
@@ -68,13 +77,14 @@
 
             <TextView
                 android:id="@+id/tvIntroMessage"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:justificationMode="inter_word"
+                android:textColor="@color/gitwhite"
                 android:paddingHorizontal="10dp"
                 android:text="Introduction"
-                android:textSize="16sp"
+                android:textSize="17.5sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline41"
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
                 app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -92,40 +102,41 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvIntroLessonTitle" />
 
             <TextView
-                android:fontFamily="@font/segoe_ui"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 android:id="@+id/textView26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/segoe_ui"
                 android:text="I. Introduction"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+                app:layout_constraintTop_toBottomOf="@+id/zoomControls2" />
 
             <TextView
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/segoe_ui"
                 android:id="@+id/textView27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/segoe_ui"
                 android:text="@string/ii_learning_competencies_objectives"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
                 app:layout_constraintTop_toBottomOf="@+id/tvIntroMessage" />
 
             <TextView
                 android:id="@+id/tvChapterObjectives"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:justificationMode="inter_word"
-                android:text="Objectives"
-                android:textSize="16sp"
                 android:paddingHorizontal="10dp"
+                android:textColor="@color/gitwhite"
+                android:text="Objectives"
+                android:textSize="17.5sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline41"
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />

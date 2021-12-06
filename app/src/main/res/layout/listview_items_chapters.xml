@@ -49,10 +49,11 @@
             android:progressTint="@color/design_default_color_background" />
 
         <ImageView
+
             android:id="@+id/chapterImage"
             android:layout_width="350dp"
             android:layout_height="250dp"
-            android:layout_below="@+id/progress"
+            android:layout_below="@+id/progressText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:contentDescription="@string/chapters"
@@ -69,9 +70,18 @@
             android:fontFamily="@font/segoe_ui"
             android:text="Chapter" />
 
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progress"
+            android:layout_centerHorizontal="true"
+            android:text="0%" />
+
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/rlhideLayout"
         android:layout_width="350dp"
         android:layout_height="401dp"

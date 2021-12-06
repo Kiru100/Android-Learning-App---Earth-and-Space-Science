@@ -84,7 +84,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             imageURL=intent.getStringExtra("imageURl");
             TestName=intent.getStringExtra("testName");
 
-            if(LessonType.equals("Activity")){
+            if(LessonName.equals("Picture Recognition")){
                 btnC.setVisibility(View.GONE);
                 btnD.setVisibility(View.GONE);
             }

@@ -56,7 +56,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawableStart="@drawable/ic_baseline_help_24"
         android:drawableEnd="@drawable/right_arrow"
         android:drawablePadding="10dp"
         android:gravity="start|center"
