@@ -3,7 +3,9 @@ package com.example.capstone.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -17,6 +19,9 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class LessonActivity extends YouTubeBaseActivity {
@@ -24,7 +29,7 @@ public class LessonActivity extends YouTubeBaseActivity {
     private YouTubePlayerView viewYoutubePlayer;
 
     private String lessonFirstLineString,firstLessonImageURL,lessonSecondLineString,secondLessonImageURL,
-                    firstFigureNumber,youtubeVideoTitleString,secondFigureNumber,lessonThirdLineString;
+                    firstFigureNumber,youtubeVideoTitleString,secondFigureNumber,lessonThirdLineString,LessonName;
 
     private TextView tvLessonTitle,tvFirstLine,tvSecondLine,tvThirdLine,tvFirstFigureNumber,tvYoutubeTitle,tvSecondFigureNumber;
 
@@ -32,7 +37,13 @@ public class LessonActivity extends YouTubeBaseActivity {
 
     private ZoomControls zoomControls;
 
-    private boolean isDoneWatching;
+    private int ChapterNumber;
+
+    private ScrollView scrollView2;
+
+    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    private DatabaseReference reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            .getReference("Students");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +64,11 @@ public class LessonActivity extends YouTubeBaseActivity {
 
         zoomControls=findViewById(R.id.zoomControls);
 
+        scrollView2=findViewById(R.id.scrollView2);
 
         Intent intent = getIntent();
         if (null != intent) {
-            String LessonName= intent.getStringExtra("lessonName");
+            LessonName= intent.getStringExtra("lessonName");
             tvLessonTitle.setText(LessonName);
 
             lessonFirstLineString=intent.getStringExtra("lessonFirstLineString");
@@ -74,11 +86,14 @@ public class LessonActivity extends YouTubeBaseActivity {
             youtubeVideoTitleString=intent.getStringExtra("youtubeTitle");
             tvYoutubeTitle.setText(youtubeVideoTitleString);
 
+            ChapterNumber=intent.getIntExtra("ChapterNumber",0);
 
             firstLessonImageURL=intent.getStringExtra("firstLessonImage");
             Glide.with(this).load(firstLessonImageURL).into(ivFirstLessonImage);
             secondLessonImageURL=intent.getStringExtra("secondLessonImage");
             Glide.with(this).load(secondLessonImageURL).into(ivSecondLessonImage);
+
+
         }
         playYoutube();
 
@@ -97,7 +112,13 @@ public class LessonActivity extends YouTubeBaseActivity {
             tvThirdLine.setTextSize(textSize[0]);
             zoomandoutdisable(textSize);
         });
+
+
     }
+
+
+
+
 
     public void zoomandoutdisable(float[] textSize){
         if(textSize[0]<=17.5){
@@ -111,6 +132,9 @@ public class LessonActivity extends YouTubeBaseActivity {
             zoomControls.setIsZoomInEnabled(true);
         }
     }
+
+
+
 
     public void playYoutube(){
 
@@ -139,7 +163,15 @@ public class LessonActivity extends YouTubeBaseActivity {
                     }
                     @Override
                     public void onVideoEnded() {
-                        isDoneWatching=true;
+                        scrollView2.getViewTreeObserver().addOnScrollChangedListener(() -> {
+                            if (! scrollView2.canScrollVertically(1)) {
+                                markAsDone(ChapterNumber,LessonName);
+
+                            }
+                            if (! scrollView2.canScrollVertically(-1)) {
+                                // top of scroll view
+                            }
+                        });
                     }
                     @Override
                     public void onError(YouTubePlayer.ErrorReason errorReason) {
@@ -154,32 +186,11 @@ public class LessonActivity extends YouTubeBaseActivity {
             }
         };
         viewYoutubePlayer.initialize(YoutubeConfig.getApiKey(),youtubeListener);
-
     }
 
-//    private class scrollviewend extends ScrollView {
-//
-//        public scrollviewend(Context context) {
-//            super(context);
-//        }
-//
-//        @Override
-//        public void setOnScrollChangeListener(OnScrollChangeListener l) {
-//            super.setOnScrollChangeListener(l);
-//        }
-//
-//        @Override
-//        protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-//            View view = (View) getChildAt(getChildCount()-1);
-//            int diff = (view.getBottom()-(getHeight()+getScrollY()));
-//
-//            if (diff == 0 && mListener != null) {
-//                mListener.onBottomReached();
-//            }
-//
-//            super.onScrollChanged(l, t, oldl, oldt);
-//        }
+    public void markAsDone(int ChapterNumber,String LessonName){
+        String userID= mAuth.getCurrentUser().getUid();
+        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(true);
     }
-
 
 }

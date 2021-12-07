@@ -5,14 +5,29 @@ import android.content.Intent;
 import android.graphics.text.LineBreaker;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ZoomControls;
 
 import com.example.capstone.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class IntroductionActivity extends AppCompatActivity {
     private TextView tvIntroChapterNumber,tvIntroLessonTitle,tvIntroMessage,tvChapterObjectives;
     private ZoomControls zoomControls2;
+    private boolean isDoneReading;
+    private Button btnIntroductionNextLesson;
+    private int chapterNumber;
+    private String lessonName;
+
+    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    private DatabaseReference reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            .getReference("Students");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +39,15 @@ public class IntroductionActivity extends AppCompatActivity {
         tvIntroMessage=findViewById(R.id.tvIntroMessage);
         tvChapterObjectives=findViewById(R.id.tvChapterObjectives);
         zoomControls2=findViewById(R.id.zoomControls2);
+        btnIntroductionNextLesson=findViewById(R.id.btnIntroductionNextLesson);
 
         Intent intent = getIntent();
         if (null != intent) {
-            int chapterNumber= intent.getIntExtra("chapterNumber",0);
+             chapterNumber= intent.getIntExtra("chapterNumber",0);
             String chapterNum="Chapter "+ chapterNumber;
             tvIntroChapterNumber.setText(chapterNum);
 
-            String lessonName= intent.getStringExtra("lessonName");
+             lessonName= intent.getStringExtra("lessonName");
             tvIntroLessonTitle.setText(lessonName);
 
             String introMessage= intent.getStringExtra("introMessage");
@@ -45,11 +61,6 @@ public class IntroductionActivity extends AppCompatActivity {
             tvIntroMessage.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
             tvChapterObjectives.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
-
-
-
-
-
 
         float[] textSize = {17.5f};
         zoomControls2.setOnZoomInClickListener(v -> {
@@ -67,9 +78,26 @@ public class IntroductionActivity extends AppCompatActivity {
         });
 
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                isDoneReading=true;
+                markAsDone(chapterNumber,lessonName);
+            }
+        },60000);
+
+
+            btnIntroductionNextLesson.setOnClickListener(v -> {
+                if(isDoneReading){
+                    //send to next activity
+                    System.out.println("line 1 is clicked");
+                }else{
+                    Toast.makeText(getApplication(), "You have to read all content first before you can proceed", Toast.LENGTH_SHORT).show();
+                    System.out.println("line is clicked");
+                }
+            });
+
     }
-
-
 
 
     public void zoomandoutdisable(float[] textSize){
@@ -84,4 +112,10 @@ public class IntroductionActivity extends AppCompatActivity {
             zoomControls2.setIsZoomInEnabled(true);
         }
     }
+
+    public void markAsDone(int ChapterNumber,String LessonName){
+        String userID= mAuth.getCurrentUser().getUid();
+        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(true);
+    }
+
 }

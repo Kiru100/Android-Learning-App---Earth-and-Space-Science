@@ -1,5 +1,6 @@
 package com.example.capstone.Adapter;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,9 +56,40 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         holder.lessonNumber.setText(model.getLessonNumber());
         holder.tvLessonType.setText(model.getLtypes());
 
-        String userID= mAuth.getCurrentUser().getUid();
-        reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").child(model.getLessonName()).addListenerForSingleValueEvent(new ValueEventListener() {
 
+        String userID= mAuth.getCurrentUser().getUid();
+
+
+        final SharedPreferences[] sharedPreferences = new SharedPreferences[1];
+
+        final long[] numberofChilder = new long[1];
+        reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                numberofChilder[0] =snapshot.getChildrenCount();
+                System.out.println("in "+numberofChilder[0] );
+                if((holder.getAdapterPosition()-1)<numberofChilder[0]){
+
+                }else{
+                    holder.rlGrayLesson.setVisibility(View.VISIBLE);
+                    holder.rlGrayLesson.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(v.getContext(), "Lesson not available.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        System.out.println("out "+numberofChilder[0] );
+
+
+        reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").child(model.getLessonName()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(Objects.equals(snapshot.getValue(), true)){
@@ -72,7 +104,6 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
             }
         });
 
-       // holder.cbLessonDone.setChecked();
 
         if(model.isAvailable()){
         holder.rlGrayLesson.setVisibility(View.INVISIBLE);
@@ -121,7 +152,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
 
                 //open and send data to Lesson Activity
             }  else if(model.getLtypes().equals("Lesson")){
-                markAsDone(model.getChapterNumber(),model.getLessonName());
+               // markAsDone(model.getChapterNumber(),model.getLessonName());
                 Intent i = new Intent(view.getContext(), LessonActivity.class);
                 i.putExtra("lessonType",model.getLtypes());
                 i.putExtra("lessonName",model.getLessonName());
@@ -135,11 +166,12 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                 i.putExtra("secondLessonImage",model.getSecondLessonImage());
                 i.putExtra("secondFigureNumber",model.getSecondFigureNumber());
                 i.putExtra("lessonThirdLineString",model.getThirdLineLessonLecture());
+                i.putExtra("ChapterNumber",model.getChapterNumber());
                 view.getContext().startActivity(i);
                 //TODO: send data to activity
 
             } else if(model.getLtypes().equals("Introduction")){
-                markAsDone(model.getChapterNumber(),model.getLessonName());
+             //   markAsDone(model.getChapterNumber(),model.getLessonName());
                 Intent i = new Intent(view.getContext(), IntroductionActivity.class);
                 i.putExtra("introMessage",model.getIntroMessage());
                 i.putExtra("chapterObjectives",model.getChapterObjectives());
@@ -152,12 +184,12 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
             }
         });
         }
-        if(!model.isAvailable()){
-            holder.rlGrayLesson.setVisibility(View.VISIBLE);
-            holder.rlGrayLesson.setOnClickListener(view ->{
-                Toast.makeText(view.getContext(), "Lesson not available.", Toast.LENGTH_SHORT).show();
-            });
-        }
+//        if(!model.isAvailable()){
+//            holder.rlGrayLesson.setVisibility(View.VISIBLE);
+//            holder.rlGrayLesson.setOnClickListener(view ->{
+//                Toast.makeText(view.getContext(), "Lesson not available.", Toast.LENGTH_SHORT).show();
+//            });
+//        }
     }
 
     //Mark lesson as donne to student progress

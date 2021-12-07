@@ -263,7 +263,6 @@
                     android:id="@+id/btnChapterOneProgress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/custom_button"
                     android:paddingHorizontal="3dp"
@@ -272,13 +271,12 @@
                     app:layout_constraintEnd_toStartOf="@+id/btnChapterTwoProgress"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvChapterOnePercent" />
 
                 <Button
                     android:id="@+id/btnChapterTwoProgress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/custom_button"
                     android:paddingHorizontal="3dp"
@@ -287,6 +285,26 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/btnChapterOneProgress"
+                    app:layout_constraintTop_toBottomOf="@+id/tvChapter2Percent" />
+
+                <TextView
+                    android:id="@+id/tvChapterOnePercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="0%"
+                    app:layout_constraintEnd_toEndOf="@+id/btnChapterOneProgress"
+                    app:layout_constraintStart_toStartOf="@+id/btnChapterOneProgress"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvChapter2Percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="0%"
+                    app:layout_constraintEnd_toEndOf="@+id/btnChapterTwoProgress"
+                    app:layout_constraintStart_toStartOf="@+id/btnChapterTwoProgress"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
