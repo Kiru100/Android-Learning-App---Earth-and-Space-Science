@@ -39,13 +39,8 @@ public class ProgressFragment extends Fragment{
                              Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.fragment_progress, container, false);
 
-        button3=rootView.findViewById(R.id.button3);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().popBackStack();
-            }
-        });
+
+
 
 
 

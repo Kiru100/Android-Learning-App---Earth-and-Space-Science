@@ -79,6 +79,27 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
             }
         });
 
+        if(position==1){
+            studentsRef.child(userID).child("Chapter_1_Progress").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    System.out.println(snapshot);
+                    long ChapterPercentage= (long) snapshot.getValue();
+                    if(ChapterPercentage!=100){
+                        holder.rlhideLayout.setVisibility(View.VISIBLE);
+                        holder.rlhideLayout.setOnClickListener(view ->{
+                            Toast.makeText(view.getContext(), "You have to complete chapter one first.", Toast.LENGTH_SHORT).show();
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
 
 
         if(model.isAvailable()) {
@@ -105,10 +126,7 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
             });
         }
         if(!model.isAvailable()){
-            holder.rlhideLayout.setVisibility(View.VISIBLE);
-            holder.rlhideLayout.setOnClickListener(view ->{
-                Toast.makeText(view.getContext(), "Chapter not available.", Toast.LENGTH_SHORT).show();
-            });
+
 
         }
     }

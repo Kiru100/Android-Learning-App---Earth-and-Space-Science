@@ -142,7 +142,7 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-            <Button
+            Button
                 android:id="@+id/btnIntroductionNextLesson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -156,6 +156,16 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline41"
                 app:layout_constraintTop_toBottomOf="@+id/tvChapterObjectives"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Note: You have to read Introduction and Objectives before you can proceed."
+                app:layout_constraintEnd_toStartOf="@+id/guideline41"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toBottomOf="@+id/tvChapterObjectives" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

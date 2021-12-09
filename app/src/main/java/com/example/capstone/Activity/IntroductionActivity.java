@@ -39,7 +39,7 @@ public class IntroductionActivity extends AppCompatActivity {
         tvIntroMessage=findViewById(R.id.tvIntroMessage);
         tvChapterObjectives=findViewById(R.id.tvChapterObjectives);
         zoomControls2=findViewById(R.id.zoomControls2);
-        btnIntroductionNextLesson=findViewById(R.id.btnIntroductionNextLesson);
+     //   btnIntroductionNextLesson=findViewById(R.id.btnIntroductionNextLesson);
 
         Intent intent = getIntent();
         if (null != intent) {
@@ -87,15 +87,15 @@ public class IntroductionActivity extends AppCompatActivity {
         },60000);
 
 
-            btnIntroductionNextLesson.setOnClickListener(v -> {
-                if(isDoneReading){
-                    //send to next activity
-                    System.out.println("line 1 is clicked");
-                }else{
-                    Toast.makeText(getApplication(), "You have to read all content first before you can proceed", Toast.LENGTH_SHORT).show();
-                    System.out.println("line is clicked");
-                }
-            });
+//            btnIntroductionNextLesson.setOnClickListener(v -> {
+//                if(isDoneReading){
+//                    //send to next activity
+//                    System.out.println("line 1 is clicked");
+//                }else{
+//                    Toast.makeText(getApplication(), "You have to read all content first before you can proceed", Toast.LENGTH_SHORT).show();
+//                    System.out.println("line is clicked");
+//                }
+//            });
 
     }
 

@@ -88,6 +88,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 btnC.setVisibility(View.GONE);
                 btnD.setVisibility(View.GONE);
             }
+            if(LessonName.equals("True or False")){
+                btnC.setVisibility(View.GONE);
+                btnD.setVisibility(View.GONE);
+            }
 
             tvQuizChapterNumber.setText("Chapter "+ChapterNumber);
             tvQuizChapterTitle.setText(LessonName);

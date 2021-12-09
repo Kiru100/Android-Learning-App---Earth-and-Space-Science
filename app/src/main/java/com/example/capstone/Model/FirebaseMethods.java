@@ -51,30 +51,6 @@ public class FirebaseMethods {
                     .child(mContext.getString(R.string.field_email))
                     .setValue(email);
     }
-    public void getChapterProgress(View view){
-
-        final ProgressBar progressBar=view.findViewById(R.id.progress);
-
-        DatabaseReference ref= myRef.child(mContext.getString(R.string.dbname_students)).child("userID").child(mContext.getString(R.string.chapter_progress));
-
-        ValueEventListener eventListener=new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Student student = snapshot.getValue(Student.class);
-                if(student!=null){
-                    int progress=student.getChapterProgress();
-                    progressBar.setProgress(progress);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        ref.addListenerForSingleValueEvent(eventListener);
-    }
-
-
 
 
 

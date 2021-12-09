@@ -2,19 +2,18 @@ package com.example.capstone.Model;
 
 public class Student {
     private String SFname, SLname, SEmail, Ssection,Spicture;
-    private int ChapterProgress;
     private String ChapterOnePreTest;
 
     public Student() {
 
     }
 
-    public Student(String SFname, String SLname, String SEmail, String ssection, int chapterProgress) {
+    public Student(String SFname, String SLname, String SEmail, String ssection) {
         this.SFname = SFname;
         this.SLname = SLname;
         this.SEmail = SEmail;
         Ssection = ssection;
-        ChapterProgress = chapterProgress;
+
     }
 
     public String getSpicture() {
@@ -65,12 +64,5 @@ public class Student {
         Ssection = ssection;
     }
 
-    public int getChapterProgress() {
-        return ChapterProgress;
-    }
-
-    public void setChapterProgress(int chapterProgress) {
-        ChapterProgress = chapterProgress;
-    }
 }
 

@@ -64,9 +64,6 @@ public class DefinitionFirebaseAdapter extends FirebaseRecyclerAdapter<Definitio
             bundle.putString("DefinitionImageURL",model.getDefinitionImageURL());
             definitionMain.setArguments(bundle);
 
-//            final NavController navController = Navigation.findNavController(view);
-//            navController.navigate(R.id.action_definitionFragment_to_definitionmain);
-
                     activity.getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.fragmentDefine, definitionMain)

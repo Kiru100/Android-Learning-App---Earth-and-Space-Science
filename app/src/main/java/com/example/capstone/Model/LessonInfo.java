@@ -13,7 +13,8 @@ public class LessonInfo extends ChapterInfo {
     private String FirstLineLessonLecture,SecondLineLessonLecture,ThirdLineLessonLecture,
                    FirstLessonImage,SecondLessonImage
                     ,FirstFigureNumber,SecondFigureNumber
-                    ,YoutubeVideoTitle;
+                    ,YoutubeVideoTitle
+                     ,LessonReference;
 
 
     public LessonInfo(){
@@ -33,6 +34,14 @@ public class LessonInfo extends ChapterInfo {
         TestItemNumber = testItemNumber;
     }
 
+
+    public String getLessonReference() {
+        return LessonReference;
+    }
+
+    public void setLessonReference(String lessonReference) {
+        LessonReference = lessonReference;
+    }
 
     @Override
     public boolean isAvailable() {

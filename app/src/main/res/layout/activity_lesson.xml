@@ -25,40 +25,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btnIntroductionNextLesson2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/custom_button"
-                android:drawableEnd="@drawable/right_arrow"
-                android:text="Next"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline53"
-                app:layout_constraintTop_toBottomOf="@+id/tvThirdLine"
-                app:layout_constraintVertical_bias="0.100000024" />
-
-            <Button
-                android:id="@+id/btnIntroductionNextLesson3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/custom_button"
-                android:drawableStart="@drawable/left_arrow"
-                android:paddingEnd="5dp"
-                android:text="Previous"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline6"
-                app:layout_constraintTop_toBottomOf="@+id/tvThirdLine"
-                app:layout_constraintVertical_bias="0.100000024" />
-
             <TextView
                 android:id="@+id/tvDefinitionName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/alfa_slab_one"
                 android:text="TextView"
                 android:textColor="@color/gitwhite"
@@ -67,7 +38,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline6"
-                app:layout_constraintTop_toBottomOf="@+id/zoomControls"
+                app:layout_constraintTop_toBottomOf="@+id/tvYoutubeTitle"
                 app:layout_constraintVertical_bias="0.0" />
 
             <com.google.android.youtube.player.YouTubePlayerView
@@ -82,6 +53,7 @@
                 android:id="@+id/tvFirstLine"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:justificationMode="inter_word"
                 android:text="TextView"
                 android:textColor="@color/gitwhite"
@@ -166,8 +138,8 @@
                 android:id="@+id/tvYoutubeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:gravity="center"
+                android:text="TextView"
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintStart_toStartOf="@+id/guideline6"
                 app:layout_constraintTop_toBottomOf="@+id/viewYoutubePlayer" />
@@ -182,14 +154,28 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline6"
                 app:layout_constraintTop_toBottomOf="@+id/tvSecondLine" />
 
-            <ZoomControls
-                android:id="@+id/zoomControls"
+            <TextView
+                android:id="@+id/tvLessonReference"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline53"
                 app:layout_constraintStart_toStartOf="@+id/guideline6"
-                app:layout_constraintTop_toBottomOf="@+id/tvYoutubeTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/divider4"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="409dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="32dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvThirdLine" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

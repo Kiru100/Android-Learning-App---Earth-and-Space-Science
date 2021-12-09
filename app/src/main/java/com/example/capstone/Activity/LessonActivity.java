@@ -29,13 +29,11 @@ public class LessonActivity extends YouTubeBaseActivity {
     private YouTubePlayerView viewYoutubePlayer;
 
     private String lessonFirstLineString,firstLessonImageURL,lessonSecondLineString,secondLessonImageURL,
-                    firstFigureNumber,youtubeVideoTitleString,secondFigureNumber,lessonThirdLineString,LessonName;
+                    firstFigureNumber,youtubeVideoTitleString,secondFigureNumber,lessonThirdLineString,LessonName,lessonReference;
 
-    private TextView tvLessonTitle,tvFirstLine,tvSecondLine,tvThirdLine,tvFirstFigureNumber,tvYoutubeTitle,tvSecondFigureNumber;
+    private TextView tvLessonTitle,tvFirstLine,tvSecondLine,tvThirdLine,tvFirstFigureNumber,tvYoutubeTitle,tvSecondFigureNumber,tvLessonReference;
 
     private ImageView ivFirstLessonImage,ivSecondLessonImage;
-
-    private ZoomControls zoomControls;
 
     private int ChapterNumber;
 
@@ -59,10 +57,9 @@ public class LessonActivity extends YouTubeBaseActivity {
         ivSecondLessonImage=findViewById(R.id.ivSecondLessonImage);
         tvSecondFigureNumber=findViewById(R.id.tvSecondFigureNumber);
         tvThirdLine=findViewById(R.id.tvThirdLine);
+        tvLessonReference=findViewById(R.id.tvLessonReference);
 
         viewYoutubePlayer=findViewById(R.id.viewYoutubePlayer);
-
-        zoomControls=findViewById(R.id.zoomControls);
 
         scrollView2=findViewById(R.id.scrollView2);
 
@@ -86,6 +83,9 @@ public class LessonActivity extends YouTubeBaseActivity {
             youtubeVideoTitleString=intent.getStringExtra("youtubeTitle");
             tvYoutubeTitle.setText(youtubeVideoTitleString);
 
+            lessonReference=intent.getStringExtra("LessonReference");
+            tvLessonReference.setText(lessonReference);
+
             ChapterNumber=intent.getIntExtra("ChapterNumber",0);
 
             firstLessonImageURL=intent.getStringExtra("firstLessonImage");
@@ -93,48 +93,10 @@ public class LessonActivity extends YouTubeBaseActivity {
             secondLessonImageURL=intent.getStringExtra("secondLessonImage");
             Glide.with(this).load(secondLessonImageURL).into(ivSecondLessonImage);
 
-
         }
         playYoutube();
 
-        float[] textSize = {17.5f};
-        zoomControls.setOnZoomInClickListener(v -> {
-            textSize[0] += 1f;
-            tvFirstLine.setTextSize(textSize[0]);
-            tvSecondLine.setTextSize(textSize[0]);
-            tvThirdLine.setTextSize(textSize[0]);
-            zoomandoutdisable(textSize);
-        });
-        zoomControls.setOnZoomOutClickListener(v->{
-            textSize[0] -= 1f;
-            tvFirstLine.setTextSize(textSize[0]);
-            tvSecondLine.setTextSize(textSize[0]);
-            tvThirdLine.setTextSize(textSize[0]);
-            zoomandoutdisable(textSize);
-        });
-
-
     }
-
-
-
-
-
-    public void zoomandoutdisable(float[] textSize){
-        if(textSize[0]<=17.5){
-            zoomControls.setIsZoomOutEnabled(false);
-        }else{
-            zoomControls.setIsZoomOutEnabled(true);
-        }
-        if(textSize[0]>=25){
-            zoomControls.setIsZoomInEnabled(false);
-        }else{
-            zoomControls.setIsZoomInEnabled(true);
-        }
-    }
-
-
-
 
     public void playYoutube(){
 
@@ -166,7 +128,6 @@ public class LessonActivity extends YouTubeBaseActivity {
                         scrollView2.getViewTreeObserver().addOnScrollChangedListener(() -> {
                             if (! scrollView2.canScrollVertically(1)) {
                                 markAsDone(ChapterNumber,LessonName);
-
                             }
                             if (! scrollView2.canScrollVertically(-1)) {
                                 // top of scroll view
@@ -192,5 +153,6 @@ public class LessonActivity extends YouTubeBaseActivity {
         String userID= mAuth.getCurrentUser().getUid();
         reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(true);
     }
+
 
 }

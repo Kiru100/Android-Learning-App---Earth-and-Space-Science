@@ -85,7 +85,7 @@ public class ProfileFragment extends Fragment {
         btnChapterTwoProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendToAnotherFragment("Earth's Enterior",2);
+                sendToAnotherFragment("Earth's Interior",2);
             }
         });
 
@@ -109,10 +109,5 @@ public class ProfileFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
 
-
     }
-
-
-
-
 }
