@@ -58,18 +58,15 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         String userID= mAuth.getCurrentUser().getUid();
 
 
-        final SharedPreferences[] sharedPreferences = new SharedPreferences[1];
-
         final long[] numberofChilder = new long[1];
         reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                numberofChilder[0] =snapshot.getChildrenCount();
-                System.out.println("in "+numberofChilder[0] );
-                if((holder.getAdapterPosition()-1)<numberofChilder[0]){
+                numberofChilder[0]=snapshot.getChildrenCount();
+
+                if((holder.getAdapterPosition()-1)<numberofChilder[0]+1){
                     holder.rlGrayLesson.setVisibility(View.INVISIBLE);
                     holder.cvLessons.setOnClickListener(view -> {
-
                         AppCompatActivity activity = (AppCompatActivity)view.getContext();
                         //open and send data to fragment (assessment)
                         if (model.getLtypes().equals("Pre-Assessment")){
@@ -161,7 +158,6 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
 
             }
         });
-        System.out.println("out "+numberofChilder[0] );
 
 
         reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").child(model.getLessonName()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -179,92 +175,6 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
             }
         });
 
-
-        if(model.isAvailable()){
-//        holder.rlGrayLesson.setVisibility(View.INVISIBLE);
-//        holder.cvLessons.setOnClickListener(view -> {
-//
-//            AppCompatActivity activity = (AppCompatActivity)view.getContext();
-//            //open and send data to fragment (assessment)
-//            if (model.getLtypes().equals("Pre-Assessment")){
-//                TestFragment testFragment =new TestFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putInt("id",holder.getBindingAdapterPosition());
-//                bundle.putString("lessonType",model.getLtypes());
-//                bundle.putString("lessonName",model.getLessonName());
-//                bundle.putInt("ChapterNumber",model.getChapterNumber());
-//                bundle.putInt("testNumber",model.getTestItemNumber());
-//                bundle.putString("TestNode",model.getTestName());
-//                bundle.putString("chapterImageURL",model.getLessonChapterImageURl());
-//                bundle.putString("testName",model.getTestName());
-//                testFragment.setArguments(bundle);
-//
-//                activity.getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.fragmentLessons, testFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//
-//                //open and send data to Lesson Activity
-//            }else if (model.getLtypes().equals("Activity")){
-//                TestFragment testFragment =new TestFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putInt("id",holder.getBindingAdapterPosition());
-//                bundle.putString("lessonType",model.getLtypes());
-//                bundle.putString("lessonName",model.getLessonName());
-//                bundle.putInt("ChapterNumber",model.getChapterNumber());
-//                bundle.putInt("testNumber",model.getTestItemNumber());
-//                bundle.putString("TestNode",model.getTestName());
-//                bundle.putString("chapterImageURL",model.getLessonChapterImageURl());
-//                bundle.putString("testName",model.getTestName());
-//                testFragment.setArguments(bundle);
-//
-//                activity.getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.fragmentLessons, testFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//
-//                //open and send data to Lesson Activity
-//            }  else if(model.getLtypes().equals("Lesson")){
-//               // markAsDone(model.getChapterNumber(),model.getLessonName());
-//                Intent i = new Intent(view.getContext(), LessonActivity.class);
-//                i.putExtra("lessonType",model.getLtypes());
-//                i.putExtra("lessonName",model.getLessonName());
-//                i.putExtra("lessonNumber",model.getLessonNumber());
-//                i.putExtra("YoutubeURL",model.getYoutubeURL());
-//                i.putExtra("lessonFirstLineString",model.getFirstLineLessonLecture());
-//                i.putExtra("firstLessonImage",model.getFirstLessonImage());
-//                i.putExtra("secondLineLessonLecture",model.getSecondLineLessonLecture());
-//                i.putExtra("firstFigureNumber",model.getFirstFigureNumber());
-//                i.putExtra("youtubeTitle",model.getYoutubeVideoTitle());
-//                i.putExtra("secondLessonImage",model.getSecondLessonImage());
-//                i.putExtra("secondFigureNumber",model.getSecondFigureNumber());
-//                i.putExtra("lessonThirdLineString",model.getThirdLineLessonLecture());
-//                i.putExtra("ChapterNumber",model.getChapterNumber());
-//                view.getContext().startActivity(i);
-//                //TODO: send data to activity
-//
-//            } else if(model.getLtypes().equals("Introduction")){
-//             //   markAsDone(model.getChapterNumber(),model.getLessonName());
-//                Intent i = new Intent(view.getContext(), IntroductionActivity.class);
-//                i.putExtra("introMessage",model.getIntroMessage());
-//                i.putExtra("chapterObjectives",model.getChapterObjectives());
-//                i.putExtra("lessonType",model.getLtypes());
-//                i.putExtra("lessonName",model.getLessonName());
-//                i.putExtra("chapterNumber",model.getChapterNumber());
-//                i.putExtra("lessonNumber",model.getLessonNumber());
-//                view.getContext().startActivity(i);
-//                //TODO: send data to fragment
-//            }
-//        });
-        }
-//        if(!model.isAvailable()){
-//            holder.rlGrayLesson.setVisibility(View.VISIBLE);
-//            holder.rlGrayLesson.setOnClickListener(view ->{
-//                Toast.makeText(view.getContext(), "Lesson not available.", Toast.LENGTH_SHORT).show();
-//            });
-//        }
     }
 
     //Mark lesson as donne to student progress

@@ -19,9 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class IntroductionActivity extends AppCompatActivity {
     private TextView tvIntroChapterNumber,tvIntroLessonTitle,tvIntroMessage,tvChapterObjectives;
-    private ZoomControls zoomControls2;
-    private boolean isDoneReading;
-    private Button btnIntroductionNextLesson;
     private int chapterNumber;
     private String lessonName;
 
@@ -38,7 +35,7 @@ public class IntroductionActivity extends AppCompatActivity {
         tvIntroLessonTitle=findViewById(R.id.tvIntroLessonTitle);
         tvIntroMessage=findViewById(R.id.tvIntroMessage);
         tvChapterObjectives=findViewById(R.id.tvChapterObjectives);
-        zoomControls2=findViewById(R.id.zoomControls2);
+       // zoomControls2=findViewById(R.id.zoomControls2);
      //   btnIntroductionNextLesson=findViewById(R.id.btnIntroductionNextLesson);
 
         Intent intent = getIntent();
@@ -61,27 +58,26 @@ public class IntroductionActivity extends AppCompatActivity {
             tvIntroMessage.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
             tvChapterObjectives.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
-
-        float[] textSize = {17.5f};
-        zoomControls2.setOnZoomInClickListener(v -> {
-            textSize[0] += 1f;
-            tvIntroMessage.setTextSize(textSize[0]);
-            tvChapterObjectives.setTextSize(textSize[0]);
-
-            zoomandoutdisable(textSize);
-        });
-        zoomControls2.setOnZoomOutClickListener(v->{
-            textSize[0] -= 1f;
-            tvIntroMessage.setTextSize(textSize[0]);
-            tvChapterObjectives.setTextSize(textSize[0]);
-            zoomandoutdisable(textSize);
-        });
+//
+//        float[] textSize = {17.5f};
+//        zoomControls2.setOnZoomInClickListener(v -> {
+//            textSize[0] += 1f;
+//            tvIntroMessage.setTextSize(textSize[0]);
+//            tvChapterObjectives.setTextSize(textSize[0]);
+//
+//            zoomandoutdisable(textSize);
+//        });
+//        zoomControls2.setOnZoomOutClickListener(v->{
+//            textSize[0] -= 1f;
+//            tvIntroMessage.setTextSize(textSize[0]);
+//            tvChapterObjectives.setTextSize(textSize[0]);
+//            zoomandoutdisable(textSize);
+//        });
 
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                isDoneReading=true;
                 markAsDone(chapterNumber,lessonName);
             }
         },60000);
@@ -100,18 +96,18 @@ public class IntroductionActivity extends AppCompatActivity {
     }
 
 
-    public void zoomandoutdisable(float[] textSize){
-        if(textSize[0]<=17.5){
-            zoomControls2.setIsZoomOutEnabled(false);
-        }else{
-            zoomControls2.setIsZoomOutEnabled(true);
-        }
-        if(textSize[0]>=25){
-            zoomControls2.setIsZoomInEnabled(false);
-        }else{
-            zoomControls2.setIsZoomInEnabled(true);
-        }
-    }
+//    public void zoomandoutdisable(float[] textSize){
+//        if(textSize[0]<=17.5){
+//            zoomControls2.setIsZoomOutEnabled(false);
+//        }else{
+//            zoomControls2.setIsZoomOutEnabled(true);
+//        }
+//        if(textSize[0]>=25){
+//            zoomControls2.setIsZoomInEnabled(false);
+//        }else{
+//            zoomControls2.setIsZoomInEnabled(true);
+//        }
+//    }
 
     public void markAsDone(int ChapterNumber,String LessonName){
         String userID= mAuth.getCurrentUser().getUid();

@@ -24,16 +24,7 @@
             android:layout_height="match_parent">
 
 
-            <ZoomControls
-                android:id="@+id/zoomControls2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/guideline41"
-                app:layout_constraintStart_toStartOf="@+id/guideline40"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
-
-        <TextView
+            <TextView
             android:id="@+id/tvIntroLessonTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,13 +98,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/segoe_ui"
                 android:text="I. Introduction"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
-                app:layout_constraintTop_toBottomOf="@+id/zoomControls2" />
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
             <TextView
                 android:id="@+id/textView27"
@@ -142,30 +133,20 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-            Button
-                android:id="@+id/btnIntroductionNextLesson"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/custom_button"
-                android:drawableEnd="@drawable/right_arrow"
-                android:text="Next"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline41"
-                app:layout_constraintTop_toBottomOf="@+id/tvChapterObjectives"
-                app:layout_constraintVertical_bias="0.0" />
-
             <TextView
                 android:id="@+id/textView38"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="Note: You have to read Introduction and Objectives before you can proceed."
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline41"
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
-                app:layout_constraintTop_toBottomOf="@+id/tvChapterObjectives" />
+                app:layout_constraintTop_toBottomOf="@+id/tvChapterObjectives"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
