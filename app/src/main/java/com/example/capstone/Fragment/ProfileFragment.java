@@ -49,6 +49,8 @@ public class ProfileFragment extends Fragment {
         final TextView ProfileLName =rootView.findViewById(R.id.ProfileLName);
         final TextView ProfileEmail= rootView.findViewById(R.id.ProfileEmail);
         final TextView ProfileSection= rootView.findViewById(R.id.ProfileSection);
+        final TextView ChapterOneProgress= rootView.findViewById(R.id.tvChapterOnePercent);
+        final TextView ChapterTwoProgress= rootView.findViewById(R.id.tvChapter2Percent);
         final ImageView civProfilePicture= rootView.findViewById(R.id.civProfilePicture);
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -61,8 +63,17 @@ public class ProfileFragment extends Fragment {
                     String semail=studentProfile.getSEmail();
                     String ssection=studentProfile.getSsection();
                     String spicture=studentProfile.getSpicture();
+                    int Chapter_1_Progress= studentProfile.getChapter_1_Progress();
+                    int Chapter_2_Progress= studentProfile.getChapter_2_Progress();
+
                     if(spicture!=null){
                         Glide.with(getActivity()).load(spicture).into(civProfilePicture);
+                    }
+                    if(Chapter_1_Progress!=0){
+                        ChapterOneProgress.setText(Chapter_1_Progress+"%");
+                    }
+                    if(Chapter_2_Progress!=0){
+                        ChapterTwoProgress.setText(Chapter_2_Progress+"%");
                     }
                     ProfileFName.setText(sfname);
                     ProfileLName.setText(slname);

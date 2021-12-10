@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -39,6 +40,10 @@ public class LessonActivity extends YouTubeBaseActivity {
 
     private ScrollView scrollView2;
 
+    private boolean isDoneWatching;
+
+    private Button btnDone;
+
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
     private DatabaseReference reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
             .getReference("Students");
@@ -58,6 +63,8 @@ public class LessonActivity extends YouTubeBaseActivity {
         tvSecondFigureNumber=findViewById(R.id.tvSecondFigureNumber);
         tvThirdLine=findViewById(R.id.tvThirdLine);
         tvLessonReference=findViewById(R.id.tvLessonReference);
+
+        btnDone=findViewById(R.id.btnDone);
 
         viewYoutubePlayer=findViewById(R.id.viewYoutubePlayer);
 
@@ -96,6 +103,17 @@ public class LessonActivity extends YouTubeBaseActivity {
         }
         playYoutube();
 
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isDoneWatching){
+                    Toast.makeText(getApplication(), "You have to watch the video until the very end.", Toast.LENGTH_SHORT).show();
+                }else{
+                    onBackPressed();
+                }
+            }
+        });
+
     }
 
     public void playYoutube(){
@@ -125,6 +143,7 @@ public class LessonActivity extends YouTubeBaseActivity {
                     }
                     @Override
                     public void onVideoEnded() {
+                        isDoneWatching=true;
                         scrollView2.getViewTreeObserver().addOnScrollChangedListener(() -> {
                             if (! scrollView2.canScrollVertically(1)) {
                                 markAsDone(ChapterNumber,LessonName);

@@ -64,12 +64,12 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 numberofChilder[0]=snapshot.getChildrenCount();
 
-                if((holder.getAdapterPosition()-1)<numberofChilder[0]+1){
+                if((holder.getAdapterPosition()-1)<numberofChilder[0]){
                     holder.rlGrayLesson.setVisibility(View.INVISIBLE);
                     holder.cvLessons.setOnClickListener(view -> {
                         AppCompatActivity activity = (AppCompatActivity)view.getContext();
                         //open and send data to fragment (assessment)
-                        if (model.getLtypes().equals("Pre-Assessment")){
+                        if (model.getLtypes().equals("Pre-Assessment")||model.getLtypes().equals("Post-Assessment")){
                             TestFragment testFragment =new TestFragment();
                             Bundle bundle = new Bundle();
                             bundle.putInt("id",holder.getBindingAdapterPosition());

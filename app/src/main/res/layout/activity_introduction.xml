@@ -140,12 +140,24 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="32dp"
                 android:text="Note: You have to read Introduction and Objectives before you can proceed."
+                app:layout_constraintEnd_toStartOf="@+id/guideline41"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline40"
+                app:layout_constraintTop_toBottomOf="@+id/tvChapterObjectives" />
+
+            <Button
+                android:id="@+id/btnDone2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/custom_input"
+                android:text="Done"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline41"
                 app:layout_constraintStart_toStartOf="@+id/guideline40"
-                app:layout_constraintTop_toBottomOf="@+id/tvChapterObjectives"
+                app:layout_constraintTop_toBottomOf="@+id/textView38"
                 app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

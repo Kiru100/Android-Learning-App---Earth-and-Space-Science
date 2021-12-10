@@ -22,6 +22,10 @@ public class IntroductionActivity extends AppCompatActivity {
     private int chapterNumber;
     private String lessonName;
 
+    private boolean isdone;
+
+    private Button btnDone2;
+
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
     private DatabaseReference reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
             .getReference("Students");
@@ -35,6 +39,7 @@ public class IntroductionActivity extends AppCompatActivity {
         tvIntroLessonTitle=findViewById(R.id.tvIntroLessonTitle);
         tvIntroMessage=findViewById(R.id.tvIntroMessage);
         tvChapterObjectives=findViewById(R.id.tvChapterObjectives);
+        btnDone2=findViewById(R.id.btnDone2);
        // zoomControls2=findViewById(R.id.zoomControls2);
      //   btnIntroductionNextLesson=findViewById(R.id.btnIntroductionNextLesson);
 
@@ -79,9 +84,17 @@ public class IntroductionActivity extends AppCompatActivity {
             @Override
             public void run() {
                 markAsDone(chapterNumber,lessonName);
+                isdone=true;
             }
         },60000);
 
+
+        btnDone2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 //            btnIntroductionNextLesson.setOnClickListener(v -> {
 //                if(isDoneReading){
