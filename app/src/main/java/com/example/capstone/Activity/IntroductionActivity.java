@@ -92,7 +92,11 @@ public class IntroductionActivity extends AppCompatActivity {
         btnDone2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!isdone){
+                    Toast.makeText(getApplication(), "You have to read all content first before you can proceed", Toast.LENGTH_SHORT).show();
+                }else{
+                    onBackPressed();
+                }
             }
         });
 
