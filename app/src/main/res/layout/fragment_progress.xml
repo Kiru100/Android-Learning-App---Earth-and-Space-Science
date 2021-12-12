@@ -33,39 +33,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+
         app:layout_constraintGuide_percent=".9" />
 
     <TextView
-        android:textColor="@color/gitwhite"
-        android:textSize="15sp"
-        android:id="@+id/textView34"
+        android:id="@+id/tvChapterNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
         android:text="Chapter Number"
+        android:textColor="@color/gitwhite"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline67"
         app:layout_constraintEnd_toStartOf="@+id/guideline70"
         app:layout_constraintStart_toStartOf="@+id/guideline69"
-        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+        app:layout_constraintTop_toTopOf="@+id/guideline67" />
 
     <TextView
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/gitwhite"
-        android:id="@+id/textView35"
+        android:id="@+id/tvChapterName"
+        android:fontFamily="@font/segoe_ui_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chapter Name"
         app:layout_constraintEnd_toStartOf="@+id/guideline70"
         app:layout_constraintStart_toStartOf="@+id/guideline69"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChapterNumber2" />
 
     <TextView
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
         android:text="My Progress"
         android:textColor="@color/gitwhite"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvChapterNumber2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline70"
+        app:layout_constraintStart_toStartOf="@+id/guideline69" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStudentProgress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline70"
         app:layout_constraintStart_toStartOf="@+id/guideline69"
-        app:layout_constraintTop_toTopOf="@+id/guideline67" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChapterName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

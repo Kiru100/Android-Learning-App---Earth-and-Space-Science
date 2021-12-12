@@ -71,7 +71,7 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
 
                 holder.progressText.setText("Chapter progress : "+Math.round(percentage)+"%");
                 holder.progress.setProgress(Math.round(percentage));
-                studentsRef.child(userID).child("Chapter_"+model.getChapterNumber()+"_Progress").setValue(Math.round(percentage));
+                studentsRef.child(userID).child("chapter_"+model.getChapterNumber()+"_Progress").setValue(Math.round(percentage));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -80,7 +80,7 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
         });
 
         if(position==1){
-            studentsRef.child(userID).child("Chapter_1_Progress").addListenerForSingleValueEvent(new ValueEventListener() {
+            studentsRef.child(userID).child("chapter_1_Progress").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     System.out.println(snapshot);

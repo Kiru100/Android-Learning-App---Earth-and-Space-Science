@@ -14,6 +14,8 @@ import android.widget.Toast;
 import android.widget.ZoomControls;
 
 import com.bumptech.glide.Glide;
+import com.example.capstone.Model.LessonDoneInfo;
+import com.example.capstone.Model.MarkAsDoneInfo;
 import com.example.capstone.Model.YoutubeConfig;
 import com.example.capstone.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -23,6 +25,8 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
 
 
 public class LessonActivity extends YouTubeBaseActivity {
@@ -41,6 +45,8 @@ public class LessonActivity extends YouTubeBaseActivity {
     private ScrollView scrollView2;
 
     private boolean isDoneWatching;
+
+    private boolean isDoneReading;
 
     private Button btnDone;
 
@@ -107,7 +113,11 @@ public class LessonActivity extends YouTubeBaseActivity {
             @Override
             public void onClick(View v) {
                 if(!isDoneWatching){
-                    Toast.makeText(getApplication(), "You have to watch the video until the very end.", Toast.LENGTH_SHORT).show();
+                    if(!isDoneReading){
+                        Toast.makeText(getApplication(), "You have to read all content and watch the video until the very end", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(getApplication(), "You have to watch the video until the very end.", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     onBackPressed();
                 }
@@ -147,6 +157,7 @@ public class LessonActivity extends YouTubeBaseActivity {
                         scrollView2.getViewTreeObserver().addOnScrollChangedListener(() -> {
                             if (! scrollView2.canScrollVertically(1)) {
                                 markAsDone(ChapterNumber,LessonName);
+                                isDoneReading=true;
                             }
                             if (! scrollView2.canScrollVertically(-1)) {
                                 // top of scroll view
@@ -169,8 +180,10 @@ public class LessonActivity extends YouTubeBaseActivity {
     }
 
     public void markAsDone(int ChapterNumber,String LessonName){
+        String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
         String userID= mAuth.getCurrentUser().getUid();
-        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(true);
+        MarkAsDoneInfo lessonDoneInfo = new MarkAsDoneInfo(mydate,LessonName,true,"lecture");
+        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(lessonDoneInfo);
     }
 
 

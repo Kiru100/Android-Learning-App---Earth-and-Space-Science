@@ -12,10 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ZoomControls;
 
+import com.example.capstone.Model.LessonDoneInfo;
+import com.example.capstone.Model.MarkAsDoneInfo;
 import com.example.capstone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
 
 public class IntroductionActivity extends AppCompatActivity {
     private TextView tvIntroChapterNumber,tvIntroLessonTitle,tvIntroMessage,tvChapterObjectives;
@@ -127,8 +131,10 @@ public class IntroductionActivity extends AppCompatActivity {
 //    }
 
     public void markAsDone(int ChapterNumber,String LessonName){
+        String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
         String userID= mAuth.getCurrentUser().getUid();
-        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(true);
+        MarkAsDoneInfo lessonDoneInfo = new MarkAsDoneInfo(mydate,LessonName,true,"lecture");
+        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(lessonDoneInfo);
     }
 
 }

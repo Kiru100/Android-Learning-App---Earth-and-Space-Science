@@ -175,7 +175,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         if (task.isSuccessful()){
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             user.sendEmailVerification();
-                            Student student=new Student(fname,lname,email,section);
+                            Student student=new Student(fname,lname,email,section,0,0);
 
                             FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

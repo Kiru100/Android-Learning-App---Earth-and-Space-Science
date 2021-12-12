@@ -10,11 +10,20 @@ public class Student {
 
     }
 
-    public Student(String SFname, String SLname, String SEmail, String ssection) {
+    public Student(String SFname, String SLname, String SEmail, String ssection, int chapter_1_Progress, int chapter_2_Progress) {
         this.SFname = SFname;
         this.SLname = SLname;
         this.SEmail = SEmail;
         Ssection = ssection;
+        Chapter_1_Progress = chapter_1_Progress;
+        Chapter_2_Progress = chapter_2_Progress;
+    }
+
+    public Student(String SFname, String SLname, String SEmail, String ssection) {
+        this.SFname = SFname;
+        this.SLname = SLname;
+        this.SEmail = SEmail;
+        this.Ssection = ssection;
 
     }
 

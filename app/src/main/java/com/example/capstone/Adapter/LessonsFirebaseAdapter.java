@@ -160,7 +160,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         });
 
 
-        reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").child(model.getLessonName()).addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").child(model.getLessonName()).child("done").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(Objects.equals(snapshot.getValue(), true)){

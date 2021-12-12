@@ -29,11 +29,11 @@
         <TextView
             android:id="@+id/tvChapterDescription"
             android:layout_width="250dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvChapterTitle"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/segoe_ui_bold"
+            android:gravity="center"
             android:text="Chapter Description"
             android:textSize="17sp" />
 

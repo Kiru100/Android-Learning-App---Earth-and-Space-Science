@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +16,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.capstone.Activity.QuestionActivity;
-import com.example.capstone.Model.FirebaseMethods;
-import com.example.capstone.Model.Score;
-import com.example.capstone.Model.Student;
 import com.example.capstone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,8 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Objects;
 
 
 public class TestFragment extends Fragment {
@@ -85,7 +79,8 @@ public class TestFragment extends Fragment {
         String userID = student.getUid();
         btnAttempt.setVisibility(View.VISIBLE);
         //Know if student already took the exam TODO:get this thing back
-        reference.child(userID).child("Chapter_"+ChapterNumber+"_Activity_Score").child(TestName).addListenerForSingleValueEvent(new ValueEventListener() {
+
+        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).child("lessonScore").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 

@@ -2,8 +2,11 @@ package com.example.capstone.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.bumptech.glide.Glide;
+import com.example.capstone.Model.MarkAsDoneInfo;
 import com.example.capstone.Model.Student;
 import com.example.capstone.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,6 +53,7 @@ public class ScoreActivity extends AppCompatActivity {
         if (null != intent) {
 
             String score= String.valueOf(intent.getIntExtra("Score",0));
+            int scoreInt=intent.getIntExtra("Score",0);
             String total= String.valueOf(intent.getIntExtra("Total Items",0));
             String incorrect= String.valueOf(intent.getIntExtra("Wrong answers",0));
             String LessonTitle= intent.getStringExtra("Lesson Name");
@@ -70,9 +74,13 @@ public class ScoreActivity extends AppCompatActivity {
             tvIncorrectScore.setText("Incorrect Answer: "+incorrect);
               tvScoreSummany.setText("Summary: "+score+"/"+total);
 
+            String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+            MarkAsDoneInfo markAsDoneInfo=new MarkAsDoneInfo(mydate,LessonTitle,scoreInt,true,"activity");
+
 
             mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Activity_Score").child(testName).setValue(score);
-            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(true);
+            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
         }
 
         Button button = findViewById(R.id.button);
