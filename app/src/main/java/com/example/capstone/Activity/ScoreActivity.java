@@ -60,7 +60,6 @@ public class ScoreActivity extends AppCompatActivity {
             String LessonType= intent.getStringExtra("Lesson Type");
             String ChapterNumber= intent.getStringExtra("Chapter Number");
             String imgURL= intent.getStringExtra("imgURL");
-            String testName=intent.getStringExtra("testName");
 
             if(LessonType.equals("Pre-Assessment")){
                 tvAttemptNumber.setVisibility(View.GONE);
@@ -79,7 +78,6 @@ public class ScoreActivity extends AppCompatActivity {
             MarkAsDoneInfo markAsDoneInfo=new MarkAsDoneInfo(mydate,LessonTitle,scoreInt,true,"activity");
 
 
-            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Activity_Score").child(testName).setValue(score);
             mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
         }
 

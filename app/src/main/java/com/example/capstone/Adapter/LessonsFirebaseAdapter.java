@@ -54,9 +54,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         holder.lessonNumber.setText(model.getLessonNumber());
         holder.tvLessonType.setText(model.getLtypes());
 
-
         String userID= mAuth.getCurrentUser().getUid();
-
 
         final long[] numberofChilder = new long[1];
         reference.child(userID).child("Chapter_"+model.getChapterNumber()+"_Mark_as_Done").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -110,7 +108,6 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
 
                             //open and send data to Lesson Activity
                         }  else if(model.getLtypes().equals("Lesson")){
-                            // markAsDone(model.getChapterNumber(),model.getLessonName());
                             Intent i = new Intent(view.getContext(), LessonActivity.class);
                             i.putExtra("lessonType",model.getLtypes());
                             i.putExtra("lessonName",model.getLessonName());
@@ -130,7 +127,6 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                             //TODO: send data to activity
 
                         } else if(model.getLtypes().equals("Introduction")){
-                            //   markAsDone(model.getChapterNumber(),model.getLessonName());
                             Intent i = new Intent(view.getContext(), IntroductionActivity.class);
                             i.putExtra("introMessage",model.getIntroMessage());
                             i.putExtra("chapterObjectives",model.getChapterObjectives());
@@ -144,12 +140,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                     });
                 }else{
                     holder.rlGrayLesson.setVisibility(View.VISIBLE);
-                    holder.rlGrayLesson.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(v.getContext(), "You have to finish previous lesson or activity.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    holder.rlGrayLesson.setOnClickListener(v -> Toast.makeText(v.getContext(), "You have to finish previous lesson or activity.", Toast.LENGTH_SHORT).show());
                 }
             }
 
