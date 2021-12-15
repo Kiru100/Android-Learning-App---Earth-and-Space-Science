@@ -12,60 +12,121 @@
     <RelativeLayout
         android:id="@+id/rlLesson"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/lessongradiant"
-        android:padding="14dp">
+       >
 
-        <TextView
-            android:id="@+id/tvDefinitionName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/cbLessonDone"
-            android:fontFamily="@font/segoe_ui_bold"
-            android:paddingStart="7dp"
-            android:text="@string/lesson"
-            android:textSize="15sp" />
+        <RelativeLayout
+            android:id="@+id/rlMainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/lessonNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/tvDefinitionName"
-            android:fontFamily="@font/segoe_ui_bold"
-            android:text="0"
-            android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tvDefinitionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/ivLesson"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="@string/lesson"
+                android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/lessonTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/lessonNumber"
-            android:fontFamily="@font/segoe_ui_bold"
-            android:gravity="center_vertical"
-            android:text="Les Title"
-            android:textSize="15sp" />
+            <TextView
+                android:id="@+id/lessonNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/tvDefinitionName"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="0"
+                android:textSize="15sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lessonTitle"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/segoe_ui_bold" />
+            <TextView
+                android:id="@+id/lessonTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvDefinitionName"
+                android:layout_alignStart="@+id/tvDefinitionName"
+                android:layout_marginTop="0dp"
+                android:layout_toStartOf="@+id/cbLessonDone"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:gravity="center_vertical"
+                android:text="Les Title"
+                android:textSize="15sp" />
 
-        <CheckBox
-            android:id="@+id/cbLessonDone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:clickable="false" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lessonTitle"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/segoe_ui_bold" />
 
+            <CheckBox
+                android:id="@+id/cbLessonDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
+                android:clickable="false" />
+
+            <ImageView
+                android:id="@+id/ivLesson"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <ImageView
+                android:id="@+id/btnDownArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cbLessonDone"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="5dp"
+                android:src="@drawable/arrow_down" />
+            <ImageView
+                android:id="@+id/btnUpArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/arrow_up"
+                android:layout_below="@+id/tvLessonDescription"
+                android:visibility="gone"
+                android:paddingEnd="4dp"/>
+
+            <TextView
+                android:id="@+id/tvLessonDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lessonTitle"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="0dp"
+                android:visibility="gone"
+                android:layout_toStartOf="@+id/btnUpArrow"
+                android:text="Descriptionjaskldjaksldaasdjkasldasjdklasjdklasjkldasjaskdlajskdjaskldjaskldjklasjdlkasjlkdjaslkdjlkasdjlkasjlkasjdklajsd" />
+
+        </RelativeLayout>
+        
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/rlMainLayout"-->
+<!--            android:id="@+id/expandedLayout"-->
+
+<!--           >-->
+<!--            -->
+
+<!--           -->
+<!--        </RelativeLayout>-->
 
     </RelativeLayout>
+
+
+
+
     <RelativeLayout
         android:id="@+id/rlGrayLesson"
         android:layout_width="match_parent"

@@ -202,9 +202,9 @@
         android:fontFamily="@font/aldrich"
         android:text="Gaea"
         android:textColor="@color/gitwhite"
-        android:textSize="50dp"
+        android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tvLogin"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/edtEmail"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -218,7 +218,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvLogin"
         app:layout_constraintEnd_toEndOf="@+id/tvtitle"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tvtitle" />
+        app:layout_constraintStart_toStartOf="@+id/tvtitle"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

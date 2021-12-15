@@ -2,10 +2,13 @@ package com.example.capstone.Adapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.capstone.Activity.IntroductionActivity;
 import com.example.capstone.Activity.LessonActivity;
+import com.example.capstone.Model.ChapterInfo;
 import com.example.capstone.Model.LessonInfo;
 import com.example.capstone.Model.Student;
 import com.example.capstone.R;
@@ -53,6 +57,43 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         holder.lessonTitle.setText(model.getLessonName());
         holder.lessonNumber.setText(model.getLessonNumber());
         holder.tvLessonType.setText(model.getLtypes());
+        holder.tvLessonDescription.setText(model.getLessonDescription());
+
+        holder.btnDownArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.tvLessonDescription.setVisibility(View.VISIBLE);
+                holder.btnDownArrow.setVisibility(View.GONE);
+                holder.btnUpArrow.setVisibility(View.VISIBLE);
+
+                new Handler().postDelayed(() -> {
+                    holder.tvLessonDescription.setVisibility(View.GONE);
+                    holder.btnDownArrow.setVisibility(View.VISIBLE);
+                    holder.btnUpArrow.setVisibility(View.GONE);
+                },10000);
+            }
+        });
+        holder.btnUpArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.tvLessonDescription.setVisibility(View.GONE);
+                holder.btnDownArrow.setVisibility(View.VISIBLE);
+                holder.btnUpArrow.setVisibility(View.GONE);
+            }
+        });
+
+        String LessonType= model.getLtypes();
+        if(LessonType.equals("Introduction")){
+            holder.ivLesson.setImageResource(R.drawable.classroom);
+        }else if(LessonType.equals("Lesson")){
+            holder.ivLesson.setImageResource(R.drawable.reading);
+        }else if(LessonType.equals("Activity")){
+            holder.ivLesson.setImageResource(R.drawable.development);
+        }else if(LessonType.equals("Pre-Assessment")||LessonType.equals("Post-Assessment")){
+            holder.ivLesson.setImageResource(R.drawable.test);
+        }
+
+
 
         String userID= mAuth.getCurrentUser().getUid();
 
@@ -124,7 +165,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                             i.putExtra("ChapterNumber",model.getChapterNumber());
                             i.putExtra("LessonReference",model.getLessonReference());
                             view.getContext().startActivity(i);
-                            //TODO: send data to activity
+
 
                         } else if(model.getLtypes().equals("Introduction")){
                             Intent i = new Intent(view.getContext(), IntroductionActivity.class);
@@ -135,12 +176,12 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                             i.putExtra("chapterNumber",model.getChapterNumber());
                             i.putExtra("lessonNumber",model.getLessonNumber());
                             view.getContext().startActivity(i);
-                            //TODO: send data to fragment
+
                         }
                     });
                 }else{
                     holder.rlGrayLesson.setVisibility(View.VISIBLE);
-                    holder.rlGrayLesson.setOnClickListener(v -> Toast.makeText(v.getContext(), "You have to finish previous lesson or activity.", Toast.LENGTH_SHORT).show());
+                   holder.rlGrayLesson.setOnClickListener(v -> Toast.makeText(v.getContext(), "You have to finish previous lesson or activity.", Toast.LENGTH_SHORT).show());
                 }
             }
 
@@ -193,18 +234,25 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         private final CardView cvLessons;
         private final RelativeLayout rlGrayLesson;
         private final CheckBox cbLessonDone;
-
+        private final ImageView ivLesson;
+        private final ImageView btnUpArrow,btnDownArrow;
+        private final TextView tvLessonDescription;
 
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            tvLessonDescription=itemView.findViewById(R.id.tvLessonDescription);
+            btnUpArrow=itemView.findViewById(R.id.btnUpArrow);
+            btnDownArrow=itemView.findViewById(R.id.btnDownArrow);
+            ivLesson=itemView.findViewById(R.id.ivLesson);
             cbLessonDone=itemView.findViewById(R.id.cbLessonDone);
             rlGrayLesson=itemView.findViewById(R.id.rlGrayLesson);
             cvLessons=itemView.findViewById(R.id.cvLessons);
             lessonTitle=itemView.findViewById(R.id.lessonTitle);
             lessonNumber=itemView.findViewById(R.id.lessonNumber);
             tvLessonType=itemView.findViewById(R.id.tvDefinitionName);
+
         }
     }
 

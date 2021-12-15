@@ -78,7 +78,7 @@ public class DefinitionFragment extends Fragment {
     private void processSearch(String search) {
         options= new FirebaseRecyclerOptions.Builder<DefinitionInfo>()
                 .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                        .getReference().child("Definition").orderByChild("DefinitionName").startAt(search).endAt(search+"\uf8ff")  ,DefinitionInfo.class).build();
+                        .getReference().child("Definition").orderByChild("DefinitionName").startAt(search.toUpperCase()).endAt(search.toLowerCase()+"\uf8ff")  ,DefinitionInfo.class).build();
         fadapter = new DefinitionFirebaseAdapter(options);
         fadapter.startListening();
         rvDefinition.setAdapter(fadapter);

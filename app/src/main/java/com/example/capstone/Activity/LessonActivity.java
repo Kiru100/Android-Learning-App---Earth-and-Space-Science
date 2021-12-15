@@ -141,8 +141,8 @@ public class LessonActivity extends YouTubeBaseActivity {
                     }
                     @Override
                     public void onLoaded(String s) {
-                        youTubePlayer.pause();
-                        youTubePlayer.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION);
+                       //youTubePlayer.pause();
+                       youTubePlayer.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION);
                     }
                     @Override
                     public void onAdStarted() {
@@ -150,6 +150,7 @@ public class LessonActivity extends YouTubeBaseActivity {
                     }
                     @Override
                     public void onVideoStarted() {
+
                     }
                     @Override
                     public void onVideoEnded() {

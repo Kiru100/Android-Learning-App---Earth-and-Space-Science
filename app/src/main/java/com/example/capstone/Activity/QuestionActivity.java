@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -129,6 +130,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     final String imageQuestionURL= dataSnapshot.child("imgURL").getValue(String.class);
                     Question question=new Question(getQuestion,getOption1,getOption2,getOption3,getOption4,getCorrectAnswer,imageQuestionURL);
                     mQuestionList.add(question);
+                    Collections.shuffle(mQuestionList);
 
                 }
                 setQuestion();
@@ -145,8 +147,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void setQuestion() {
         tvTimer.setText("2:00");
-        tvQuestion.setText(mQuestionList.get(0).getQuestion());
-
+        tvQuestion.setText((questionNumber+1)+". "+mQuestionList.get(0).getQuestion());
         String A=mQuestionList.get(0).getOptionA();
         String B=mQuestionList.get(0).getOptionB();
         String C=mQuestionList.get(0).getOptionC();
@@ -317,7 +318,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                         if(value==0){
                             switch(viewNumber){
                                 case 0:
-                                    ((TextView)view).setText(mQuestionList.get(questionNumber).getQuestion());
+                                    ((TextView)view).setText((questionNumber+1)+". "+mQuestionList.get(questionNumber).getQuestion());
                                     break;
                                 case 1:
                                     ((Button)view).setText(mQuestionList.get(questionNumber).getOptionA());

@@ -6,10 +6,12 @@ public class LessonInfo extends ChapterInfo {
     private String Ltypes;
     private String YoutubeURL;
     private String TestName;
+    private String LessonDescription;
     private String IntroMessage;
     private String ChapterObjectives;
     private boolean isAvailable;
     private int TestItemNumber;
+    private boolean isExpanded;
     private String FirstLineLessonLecture,SecondLineLessonLecture,ThirdLineLessonLecture,
                    FirstLessonImage,SecondLessonImage
                     ,FirstFigureNumber,SecondFigureNumber
@@ -32,8 +34,24 @@ public class LessonInfo extends ChapterInfo {
         IntroMessage = introMessage;
         ChapterObjectives = chapterObjectives;
         TestItemNumber = testItemNumber;
+        isExpanded=false;
     }
 
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+
+    public String getLessonDescription() {
+        return LessonDescription;
+    }
+
+    public void setLessonDescription(String lessonDescription) {
+        LessonDescription = lessonDescription;
+    }
+
+    public void setExpanded(boolean expanded) {
+        isExpanded = expanded;
+    }
 
     public String getLessonReference() {
         return LessonReference;
