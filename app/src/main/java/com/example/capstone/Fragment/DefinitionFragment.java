@@ -50,7 +50,7 @@ public class DefinitionFragment extends Fragment {
         options= new FirebaseRecyclerOptions.Builder<DefinitionInfo>()
                 .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
                         .getReference()
-                        .child("Definition"),DefinitionInfo.class)
+                        .child("Definition").orderByChild("DefinitionName"),DefinitionInfo.class)
                 .build();
 
         fadapter = new DefinitionFirebaseAdapter(options);
@@ -70,15 +70,15 @@ public class DefinitionFragment extends Fragment {
             }
         });
 
-
-
         return rootView;
     }
 
     private void processSearch(String search) {
         options= new FirebaseRecyclerOptions.Builder<DefinitionInfo>()
                 .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                        .getReference().child("Definition").orderByChild("DefinitionName").startAt(search.toUpperCase()).endAt(search.toLowerCase()+"\uf8ff")  ,DefinitionInfo.class).build();
+                        .getReference().child("Definition").orderByKey()
+                        .startAt(search.toLowerCase()).endAt(search.toLowerCase()+"\uf8ff"),DefinitionInfo.class).build();
+
         fadapter = new DefinitionFirebaseAdapter(options);
         fadapter.startListening();
         rvDefinition.setAdapter(fadapter);

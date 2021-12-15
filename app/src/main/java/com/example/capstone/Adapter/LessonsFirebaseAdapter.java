@@ -52,6 +52,8 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         super(options);
     }
 
+
+
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull LessonInfo model) {
         holder.lessonTitle.setText(model.getLessonName());
@@ -85,15 +87,25 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         String LessonType= model.getLtypes();
         if(LessonType.equals("Introduction")){
             holder.ivLesson.setImageResource(R.drawable.classroom);
+            holder.tvLessonDescription.setVisibility(View.GONE);
+            holder.btnDownArrow.setVisibility(View.VISIBLE);
+            holder.btnUpArrow.setVisibility(View.GONE);
         }else if(LessonType.equals("Lesson")){
             holder.ivLesson.setImageResource(R.drawable.reading);
+            holder.tvLessonDescription.setVisibility(View.GONE);
+            holder.btnDownArrow.setVisibility(View.VISIBLE);
+            holder.btnUpArrow.setVisibility(View.GONE);
         }else if(LessonType.equals("Activity")){
             holder.ivLesson.setImageResource(R.drawable.development);
+            holder.tvLessonDescription.setVisibility(View.GONE);
+            holder.btnDownArrow.setVisibility(View.GONE);
+            holder.btnUpArrow.setVisibility(View.GONE);
         }else if(LessonType.equals("Pre-Assessment")||LessonType.equals("Post-Assessment")){
             holder.ivLesson.setImageResource(R.drawable.test);
+            holder.tvLessonDescription.setVisibility(View.GONE);
+            holder.btnDownArrow.setVisibility(View.GONE);
+            holder.btnUpArrow.setVisibility(View.GONE);
         }
-
-
 
         String userID= mAuth.getCurrentUser().getUid();
 
@@ -209,11 +221,6 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
 
     }
 
-    //Mark lesson as donne to student progress
-    public void markAsDone(int ChapterNumber,String LessonName){
-        String userID= mAuth.getCurrentUser().getUid();
-        reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).setValue(true);
-    }
 
     @Override
     public int getItemCount() {
