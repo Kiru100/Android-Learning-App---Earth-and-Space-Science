@@ -83,7 +83,6 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
             studentsRef.child(userID).child("chapter_1_Progress").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    System.out.println(snapshot);
                     long ChapterPercentage= (long) snapshot.getValue();
                     if(ChapterPercentage!=100){
                         holder.rlhideLayout.setVisibility(View.VISIBLE);

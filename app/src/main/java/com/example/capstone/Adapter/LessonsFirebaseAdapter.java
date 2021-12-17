@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +54,6 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
     }
 
 
-
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull LessonInfo model) {
         holder.lessonTitle.setText(model.getLessonName());
@@ -90,21 +90,25 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
             holder.tvLessonDescription.setVisibility(View.GONE);
             holder.btnDownArrow.setVisibility(View.VISIBLE);
             holder.btnUpArrow.setVisibility(View.GONE);
+
         }else if(LessonType.equals("Lesson")){
             holder.ivLesson.setImageResource(R.drawable.reading);
             holder.tvLessonDescription.setVisibility(View.GONE);
             holder.btnDownArrow.setVisibility(View.VISIBLE);
             holder.btnUpArrow.setVisibility(View.GONE);
+
         }else if(LessonType.equals("Activity")){
             holder.ivLesson.setImageResource(R.drawable.development);
             holder.tvLessonDescription.setVisibility(View.GONE);
             holder.btnDownArrow.setVisibility(View.GONE);
             holder.btnUpArrow.setVisibility(View.GONE);
+
         }else if(LessonType.equals("Pre-Assessment")||LessonType.equals("Post-Assessment")){
             holder.ivLesson.setImageResource(R.drawable.test);
             holder.tvLessonDescription.setVisibility(View.GONE);
             holder.btnDownArrow.setVisibility(View.GONE);
             holder.btnUpArrow.setVisibility(View.GONE);
+
         }
 
         String userID= mAuth.getCurrentUser().getUid();
@@ -116,7 +120,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                 numberofChilder[0]=snapshot.getChildrenCount();
 
                 if((holder.getAdapterPosition()-1)<numberofChilder[0]){
-                    holder.rlGrayLesson.setVisibility(View.INVISIBLE);
+                    holder.rlGrayLesson.setVisibility(View.GONE);
                     holder.cvLessons.setOnClickListener(view -> {
                         AppCompatActivity activity = (AppCompatActivity)view.getContext();
                         //open and send data to fragment (assessment)
@@ -192,7 +196,9 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                         }
                     });
                 }else{
-                    holder.rlGrayLesson.setVisibility(View.VISIBLE);
+                    RelativeLayout relativeLayout = (RelativeLayout)holder.rlGrayLesson;
+                    relativeLayout.getLayoutParams().height=holder.rlLesson.getHeight();
+                   holder.rlGrayLesson.setVisibility(View.VISIBLE);
                    holder.rlGrayLesson.setOnClickListener(v -> Toast.makeText(v.getContext(), "You have to finish previous lesson or activity.", Toast.LENGTH_SHORT).show());
                 }
             }
@@ -244,11 +250,14 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
         private final ImageView ivLesson;
         private final ImageView btnUpArrow,btnDownArrow;
         private final TextView tvLessonDescription;
-
+        private final RelativeLayout rlLesson;
+        private final RelativeLayout rlMainLayout;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            rlMainLayout=itemView.findViewById(R.id.rlMainLayout);
+            rlLesson=itemView.findViewById(R.id.rlLesson);
             tvLessonDescription=itemView.findViewById(R.id.tvLessonDescription);
             btnUpArrow=itemView.findViewById(R.id.btnUpArrow);
             btnDownArrow=itemView.findViewById(R.id.btnDownArrow);
