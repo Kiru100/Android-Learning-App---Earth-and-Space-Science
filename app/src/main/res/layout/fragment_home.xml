@@ -27,15 +27,19 @@
             <TextView
                 android:id="@+id/tvtitle3"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/aldrich"
-                android:text="@string/gaea"
+                android:text="Pangea"
+                android:includeFontPadding="false"
                 android:textColor="@color/gitwhite"
                 android:textSize="50sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView6"
-                app:layout_constraintTop_toTopOf="@+id/imageView6" />
+                app:layout_constraintTop_toTopOf="@+id/imageView6"
+                app:layout_constraintVertical_bias="1.0" />
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmerFrameLayout"
@@ -122,7 +126,6 @@
                 android:id="@+id/textView13"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/segoe_ui_bold"
                 android:includeFontPadding="false"
@@ -130,7 +133,9 @@
                 android:text="@string/earth_and_space_science"
                 android:textColor="@color/gitwhite"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent=".08"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView6"
                 app:layout_constraintTop_toBottomOf="@+id/tvtitle3"
                 app:layout_constraintVertical_bias="0.0"

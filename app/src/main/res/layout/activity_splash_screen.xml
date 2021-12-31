@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aldrich"
-        android:text="Gaea"
+        android:text="Pangea"
         android:textColor="@color/gitwhite"
         android:textSize="50dp"
         android:textStyle="bold"
