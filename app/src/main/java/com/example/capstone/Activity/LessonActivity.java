@@ -167,7 +167,6 @@ public class LessonActivity extends YouTubeBaseActivity {
                     }
                     @Override
                     public void onError(YouTubePlayer.ErrorReason errorReason) {
-                        Toast.makeText(getApplicationContext(), errorReason.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

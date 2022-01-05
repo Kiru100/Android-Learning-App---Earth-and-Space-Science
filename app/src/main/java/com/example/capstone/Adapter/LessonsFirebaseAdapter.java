@@ -135,6 +135,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                             bundle.putString("TestNode",model.getTestName());
                             bundle.putString("chapterImageURL",model.getLessonChapterImageURl());
                             bundle.putString("testName",model.getTestName());
+                            bundle.putBoolean("isDone", holder.cbLessonDone.isChecked());
                             testFragment.setArguments(bundle);
 
                             activity.getSupportFragmentManager()
@@ -155,6 +156,7 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                             bundle.putString("TestNode",model.getTestName());
                             bundle.putString("chapterImageURL",model.getLessonChapterImageURl());
                             bundle.putString("testName",model.getTestName());
+                            bundle.putBoolean("isDone", holder.cbLessonDone.isChecked());
                             testFragment.setArguments(bundle);
 
                             activity.getSupportFragmentManager()

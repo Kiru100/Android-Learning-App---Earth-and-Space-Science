@@ -16,7 +16,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/attempt"
-        android:visibility="gone"
         android:paddingHorizontal="40dp"
         android:background="@drawable/custom_input"
         app:layout_constraintBottom_toTopOf="@+id/guideline46"
@@ -123,16 +122,36 @@
         app:layout_constraintGuide_percent=".9" />
 
     <TextView
-        android:fontFamily="@font/segoe_ui_bold"
         android:id="@+id/tvItemNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textSize="20sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/segoe_ui_bold"
         android:text="item number"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tvTestType"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/tvTestType"
         app:layout_constraintTop_toBottomOf="@+id/tvTestType" />
+
+    <TextView
+        android:id="@+id/tvAttemptLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvTestType"
+        app:layout_constraintEnd_toStartOf="@+id/guideline44"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvattemptmessage" />
+
+    <TextView
+        android:id="@+id/tvattemptmessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Attempt Left :"
+        app:layout_constraintBottom_toTopOf="@+id/tvTestType"
+        app:layout_constraintEnd_toStartOf="@+id/guideline44"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="@+id/guideline43" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

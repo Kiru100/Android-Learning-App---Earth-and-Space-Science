@@ -28,6 +28,7 @@ public class ScoreActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+    private DatabaseReference reference;
 
 
     @Override
@@ -36,6 +37,7 @@ public class ScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_score);
 
         mDatabase = FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
         mAuth=FirebaseAuth.getInstance();
         String userID= mAuth.getCurrentUser().getUid();
 
@@ -77,8 +79,47 @@ public class ScoreActivity extends AppCompatActivity {
 
             MarkAsDoneInfo markAsDoneInfo=new MarkAsDoneInfo(mydate,LessonTitle,scoreInt,true,"activity");
 
+            System.out.println("User Id "+userID);
+            System.out.println("ChapterNumber "+ChapterNumber);
+            System.out.println("Lesson Title "+LessonTitle);
+            System.out.println("Chapter_"+ChapterNumber+"_Mark_as_Done");
 
-            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+            reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    System.out.println("Snapshot Value "+snapshot.getValue());
+                    if(LessonType.equals("Activity")){
+                        if(snapshot.getValue()==null){
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(1);
+                        }else if(String.valueOf(snapshot.getValue()).equals("1")){
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
+                        }
+                    }else if(LessonType.equals("Post-Assessment")){
+                        if(snapshot.getValue()==null){
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(2);
+                        }else if(String.valueOf(snapshot.getValue()).equals("2")){
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(1);
+                        }else if(String.valueOf(snapshot.getValue()).equals("1")){
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
+                        }
+                    }else if(LessonType.equals("Pre-Assessment")){
+                        mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                        mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
         }
 
         Button button = findViewById(R.id.button);
