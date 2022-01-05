@@ -79,37 +79,37 @@ public class ScoreActivity extends AppCompatActivity {
 
             MarkAsDoneInfo markAsDoneInfo=new MarkAsDoneInfo(mydate,LessonTitle,scoreInt,true,"activity");
 
-            System.out.println("User Id "+userID);
-            System.out.println("ChapterNumber "+ChapterNumber);
-            System.out.println("Lesson Title "+LessonTitle);
-            System.out.println("Chapter_"+ChapterNumber+"_Mark_as_Done");
 
             reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     System.out.println("Snapshot Value "+snapshot.getValue());
-                    if(LessonType.equals("Activity")){
-                        if(snapshot.getValue()==null){
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(1);
-                        }else if(String.valueOf(snapshot.getValue()).equals("1")){
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
-                        }
-                    }else if(LessonType.equals("Post-Assessment")){
-                        if(snapshot.getValue()==null){
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(2);
-                        }else if(String.valueOf(snapshot.getValue()).equals("2")){
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(1);
-                        }else if(String.valueOf(snapshot.getValue()).equals("1")){
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
-                            mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
-                        }
-                    }else if(LessonType.equals("Pre-Assessment")){
-                        mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
-                        mDatabase.child("Students").child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
+                    switch (LessonType) {
+                        case "Activity":
+                            if (snapshot.getValue() == null) {
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).child("attempt").setValue(1);
+                            } else if (String.valueOf(snapshot.getValue()).equals("1")) {
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
+                            }
+                            break;
+                        case "Post-Assessment":
+                            if (snapshot.getValue() == null) {
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).child("attempt").setValue(2);
+                            } else if (String.valueOf(snapshot.getValue()).equals("2")) {
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).child("attempt").setValue(1);
+                            } else if (String.valueOf(snapshot.getValue()).equals("1")) {
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                                mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
+                            }
+                            break;
+                        case "Pre-Assessment":
+                            mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).setValue(markAsDoneInfo);
+                            mDatabase.child("Students").child(userID).child("Chapter_" + ChapterNumber + "_Mark_as_Done").child(LessonTitle).child("attempt").setValue(0);
+                            break;
                     }
 
                 }

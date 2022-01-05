@@ -73,60 +73,62 @@ public class TestFragment extends Fragment {
         reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
         mAuth=FirebaseAuth.getInstance();
         String userID= mAuth.getCurrentUser().getUid();
-        System.out.println(userID);
 
-        System.out.println("Lesson Name "+LessonName);
-        System.out.println("Chapter Number "+ChapterNumber);
+
         reference.child(userID).child("Chapter_"+ChapterNumber+"_Mark_as_Done").child(LessonName).child("attempt").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 System.out.println("Attempt Number "+snapshot.getValue());
 
-                if(LessonType.equals("Activity")){
-                    if((snapshot.getValue()==null)){
-                        tvAttemptLeft.setVisibility(View.VISIBLE);
-                        tvattemptmessage.setVisibility(View.VISIBLE);
-                        tvAttemptLeft.setText("2");
-                    }else if(String.valueOf(snapshot.getValue()).equals("1")){
-                        tvAttemptLeft.setVisibility(View.VISIBLE);
-                        tvattemptmessage.setVisibility(View.VISIBLE);
-                        tvAttemptLeft.setText("1");
-                    }else{
-                        tvAttemptLeft.setVisibility(View.GONE);
-                        tvattemptmessage.setVisibility(View.GONE);
-                        btnAttempt.setVisibility(View.GONE);
-                        tvattemptmessage.setVisibility(View.GONE);
-                    }
-                }else if(LessonType.equals("Post-Assessment")){
-                    if((snapshot.getValue()==null)){
-                        tvAttemptLeft.setVisibility(View.VISIBLE);
-                        tvattemptmessage.setVisibility(View.VISIBLE);
-                        tvAttemptLeft.setText("3");
-                    }else if(String.valueOf(snapshot.getValue()).equals("2")){
-                        tvAttemptLeft.setVisibility(View.VISIBLE);
-                        tvattemptmessage.setVisibility(View.VISIBLE);
-                        tvAttemptLeft.setText("2");
-                    }else if(String.valueOf(snapshot.getValue()).equals("1")){
-                        tvAttemptLeft.setVisibility(View.VISIBLE);
-                        tvattemptmessage.setVisibility(View.VISIBLE);
-                        tvAttemptLeft.setText("1");
-                    }else{
-                        tvAttemptLeft.setVisibility(View.GONE);
-                        tvattemptmessage.setVisibility(View.GONE);
-                        btnAttempt.setVisibility(View.GONE);
-                        tvattemptmessage.setVisibility(View.GONE);
-                    }
-                }else if(LessonType.equals("Pre-Assessment")) {
-                    if ((snapshot.getValue() == null)) {
-                        tvAttemptLeft.setVisibility(View.VISIBLE);
-                        tvattemptmessage.setVisibility(View.VISIBLE);
-                        tvAttemptLeft.setText("1");
-                    }else{
-                        tvAttemptLeft.setVisibility(View.GONE);
-                        tvattemptmessage.setVisibility(View.GONE);
-                        btnAttempt.setVisibility(View.GONE);
-                        tvattemptmessage.setVisibility(View.GONE);
-                    }
+                switch (LessonType) {
+                    case "Activity":
+                        if ((snapshot.getValue() == null)) {
+                            tvAttemptLeft.setVisibility(View.VISIBLE);
+                            tvattemptmessage.setVisibility(View.VISIBLE);
+                            tvAttemptLeft.setText("2");
+                        } else if (String.valueOf(snapshot.getValue()).equals("1")) {
+                            tvAttemptLeft.setVisibility(View.VISIBLE);
+                            tvattemptmessage.setVisibility(View.VISIBLE);
+                            tvAttemptLeft.setText("1");
+                        } else {
+                            tvAttemptLeft.setVisibility(View.GONE);
+                            tvattemptmessage.setVisibility(View.GONE);
+                            btnAttempt.setVisibility(View.GONE);
+                            tvattemptmessage.setVisibility(View.GONE);
+                        }
+                        break;
+                    case "Post-Assessment":
+                        if ((snapshot.getValue() == null)) {
+                            tvAttemptLeft.setVisibility(View.VISIBLE);
+                            tvattemptmessage.setVisibility(View.VISIBLE);
+                            tvAttemptLeft.setText("3");
+                        } else if (String.valueOf(snapshot.getValue()).equals("2")) {
+                            tvAttemptLeft.setVisibility(View.VISIBLE);
+                            tvattemptmessage.setVisibility(View.VISIBLE);
+                            tvAttemptLeft.setText("2");
+                        } else if (String.valueOf(snapshot.getValue()).equals("1")) {
+                            tvAttemptLeft.setVisibility(View.VISIBLE);
+                            tvattemptmessage.setVisibility(View.VISIBLE);
+                            tvAttemptLeft.setText("1");
+                        } else {
+                            tvAttemptLeft.setVisibility(View.GONE);
+                            tvattemptmessage.setVisibility(View.GONE);
+                            btnAttempt.setVisibility(View.GONE);
+                            tvattemptmessage.setVisibility(View.GONE);
+                        }
+                        break;
+                    case "Pre-Assessment":
+                        if ((snapshot.getValue() == null)) {
+                            tvAttemptLeft.setVisibility(View.VISIBLE);
+                            tvattemptmessage.setVisibility(View.VISIBLE);
+                            tvAttemptLeft.setText("1");
+                        } else {
+                            tvAttemptLeft.setVisibility(View.GONE);
+                            tvattemptmessage.setVisibility(View.GONE);
+                            btnAttempt.setVisibility(View.GONE);
+                            tvattemptmessage.setVisibility(View.GONE);
+                        }
+                        break;
                 }
 
             }
