@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.capstone.Model.Student;
 import com.example.capstone.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -195,20 +196,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     }
                                 }
                             });
-                       }else {
-                            //To show user if connected to internet or not
-                            if(!connected){
-                                Toast.makeText(RegistrationActivity.this, "Failed to register, \n Please check your internet connection.", Toast.LENGTH_LONG).show();
-                                progressBar.setVisibility(View.GONE);
-                            }else{
-                                //TODO: show user if the email already exist
-                                Toast.makeText(RegistrationActivity.this, "Failed to register!", Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
-                            }
-
-                        }
+                       }
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
         }
 
     @Override
