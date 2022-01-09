@@ -36,8 +36,6 @@ public class HomeFragment extends Fragment {
     private DatabaseReference reference;
     private String userID;
 
-
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -56,32 +54,14 @@ public class HomeFragment extends Fragment {
 
         rvChapters = rootView.findViewById(R.id.rvChapters);
 
-
         shimmerFrameLayout=rootView.findViewById(R.id.shimmerFrameLayout);
         shimmerFrameLayout1=rootView.findViewById(R.id.shimmerFrameLayout1);
         shimmerFrameLayout2=rootView.findViewById(R.id.shimmerFrameLayout2);
 
-
-
         student = FirebaseAuth.getInstance().getCurrentUser();
         reference=FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
+        reference.keepSynced(true);
         userID=student.getUid();
-
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Student studentProfile= snapshot.getValue(Student.class);
-                if(studentProfile!=null){
-                    String sfname=studentProfile.getSFname();
-
-
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
         rvChapters.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));

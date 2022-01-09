@@ -43,6 +43,8 @@ public class ProfileFragment extends Fragment {
 
         student = FirebaseAuth.getInstance().getCurrentUser();
         reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
+        reference.keepSynced(true);
+
         userID=student.getUid();
 
         final TextView ProfileFName =rootView.findViewById(R.id.ProfileFName);
