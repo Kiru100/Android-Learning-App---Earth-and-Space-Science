@@ -8,7 +8,7 @@
     <string name="dbname_students">Students</string>
     <string name="dbname_chapter">Chapter</string>
     <string name="dbname_lesson">Lesson</string>
-    <string name="app_name">Gaea</string>
+    <string name="app_name">Pangea</string>
     <string name="reset_password">Reset Password</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
