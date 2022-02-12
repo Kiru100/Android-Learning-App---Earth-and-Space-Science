@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlChapters"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#656B81"
+    app:cardCornerRadius="20dp"
+     android:elevation="10dp"
+    app:cardUseCompatPadding="true">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradientbg">
+
+        <TextView
+            android:id="@+id/tvChapterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/chapter_title"
+            android:textColor="#f2f2f2"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvChapterDescription"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvChapterTitle"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:gravity="center"
+            android:text="Chapter Description"
+            android:textSize="17sp" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvChapterDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:progressTint="@color/design_default_color_background" />
+
+        <ImageView
+
+            android:id="@+id/chapterImage"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:layout_below="@+id/progressText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/chapters"
+            android:scaleType="centerCrop"
+            android:src="@drawable/common_google_signin_btn_icon_dark" />
+
+        <TextView
+            android:id="@+id/tvChapterNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chapterImage"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:fontFamily="@font/segoe_ui"
+            android:text="Chapter" />
+
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progress"
+            android:layout_centerHorizontal="true"
+            android:text="0%" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rlhideLayout"
+        android:layout_width="350dp"
+        android:layout_height="401dp"
+        android:background="#82070707" />
+
+
+
+</androidx.cardview.widget.CardView>

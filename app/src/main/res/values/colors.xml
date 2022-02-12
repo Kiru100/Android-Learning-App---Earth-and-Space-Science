@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#900C3E</color>
+    <color name="colorPrimaryDark">#900C3E</color>
+    <color name="gitblack">#001220</color>
+    <color name="gitwhite">#E1DDD7</color>
+    <color name="bitwhite">#96938F</color>
+    <color name="gitgray">#AAAAAA</color>
+    <color name="gitlightblack">#22272E</color>
+    <color name="gitlight">#505358</color>
+    <color name="githint">#CDCDCF</color>
+    <color name="gitred">#d4314d</color>
+    <color name="gitpurewhite">#ffffff</color>
+    <color name="gitred2">#A7233A</color>
+    <color name="gitmid">#682054</color>
+    <color name="gitblend1">#3E162E</color>
+    <color name="shimmer_color">#8D959B</color>
+    <color name="shimmer_bg">#55616A</color>
+
+
+</resources>

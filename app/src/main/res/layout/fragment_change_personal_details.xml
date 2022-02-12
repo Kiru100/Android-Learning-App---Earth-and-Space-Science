@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gitblack"
+    tools:context=".Fragment.ChangePersonalDetails"
+    android:forceDarkAllowed="false">
+
+
+    <Button
+        android:id="@+id/btnSavePersonalDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@null"
+        android:text="@string/save"
+        android:textColor="@color/gitwhite"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline32"
+        app:layout_constraintEnd_toStartOf="@+id/guideline31"
+        app:layout_constraintHeight_percent=".06"
+        app:layout_constraintStart_toStartOf="@+id/guideline30"
+        app:layout_constraintWidth_percent=".60" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivChangeProfilePicture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        app:civ_border_color="@color/gitwhite"
+        app:civ_border_width="1dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/guideline31"
+        app:layout_constraintHeight_percent=".13"
+        app:layout_constraintStart_toStartOf="@+id/guideline30"
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        app:layout_constraintWidth_percent=".4" />
+
+    <EditText
+        android:id="@+id/edtChangeLastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawablePadding="12dp"
+        android:ems="12"
+        android:fontFamily="@font/segoe_ui"
+        android:hint="@string/last_name"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline32"
+        app:layout_constraintEnd_toStartOf="@+id/guideline31"
+        app:layout_constraintHeight_percent=".06"
+        app:layout_constraintStart_toStartOf="@+id/guideline30"
+        app:layout_constraintTop_toBottomOf="@+id/textView31"
+        app:layout_constraintWidth_percent=".60" />
+
+    <EditText
+        android:id="@+id/edtChangeFirstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawablePadding="12dp"
+        android:ems="20"
+        android:hint="@string/first_name"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:minEms="15"
+        android:fontFamily="@font/segoe_ui"
+        android:padding="10dp"
+        android:textColor="@color/gitwhite"
+        android:textColorHint="@color/gitgray"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView31"
+        app:layout_constraintEnd_toStartOf="@+id/guideline31"
+        app:layout_constraintHeight_percent=".06"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline30"
+        app:layout_constraintTop_toBottomOf="@+id/textView30"
+        app:layout_constraintWidth_percent=".60" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/edit_personal_details"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView23"
+        app:layout_constraintStart_toStartOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="76dp"
+        android:layout_height="73dp"
+        android:src="@drawable/ic_baseline_settings_24"
+        app:layout_constraintBottom_toTopOf="@+id/guideline29"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/settings"
+        android:textColor="@color/gitwhite"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintStart_toStartOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".9" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="First Name"
+        app:layout_constraintBottom_toTopOf="@+id/edtChangeFirstName"
+        app:layout_constraintStart_toStartOf="@+id/edtChangeFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/btnGetImage"
+        app:layout_constraintVertical_bias="0.19999999"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/last_name"
+        app:layout_constraintBottom_toTopOf="@+id/edtChangeLastName"
+        app:layout_constraintStart_toStartOf="@+id/edtChangeLastName"
+        app:layout_constraintTop_toBottomOf="@+id/edtChangeFirstName" />
+
+    <Button
+        android:id="@+id/btnGetImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_drive_folder_upload_24"
+        android:paddingHorizontal="10dp"
+        android:drawablePadding="8dp"
+        android:text="Choose File"
+        app:layout_constraintEnd_toEndOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintTop_toBottomOf="@+id/ivChangeProfilePicture" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

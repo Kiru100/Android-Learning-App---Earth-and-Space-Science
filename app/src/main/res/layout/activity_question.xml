@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_homegb"
+    tools:context=".Activity.QuestionActivity"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline49"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline48"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".9" />
+
+            <TextView
+                android:id="@+id/tvQuizChapterNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gitwhite"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Chapter number"
+                android:textColor="@color/gitwhite"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvQuizChapterTitle"
+                app:layout_constraintStart_toStartOf="@+id/tvQuizChapterTitle"
+                app:layout_constraintTop_toTopOf="@+id/ivChapterImage3"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tvQuizChapterTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="@color/gitwhite"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="@string/chapter_title"
+                android:includeFontPadding="false"
+                android:textColor="@color/gitwhite"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvType"
+                app:layout_constraintEnd_toStartOf="@+id/guideline48"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ivChapterImage3"
+                app:layout_constraintTop_toBottomOf="@+id/tvQuizChapterNumber" />
+
+    <ImageView
+        android:id="@+id/ivChapterImage3"
+        android:layout_width="136dp"
+        android:layout_height="132dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline48"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline47"
+        app:layout_constraintTop_toTopOf="@+id/guideline51"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal_background" />
+
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gitwhite"
+                android:fontFamily="@font/segoe_ui"
+                android:text="pre-test (test type)"
+                android:textColor="@color/gitwhite"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivChapterImage3"
+                app:layout_constraintStart_toStartOf="@+id/tvQuizChapterTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvQuizChapterTitle" />
+
+            <Button
+                android:id="@+id/btnA"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/choice_background"
+                android:fontFamily="@font/segoe_ui"
+                android:paddingVertical="15dp"
+                android:textAllCaps="false"
+                android:textColor="@color/gitwhite"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/btnB"
+                app:layout_constraintEnd_toStartOf="@+id/guideline48"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline47"
+                app:layout_constraintTop_toTopOf="@+id/guideline9"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <Button
+                android:id="@+id/btnB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/choice_background"
+                android:fontFamily="@font/segoe_ui"
+                android:paddingVertical="15dp"
+                android:textAllCaps="false"
+                android:textColor="@color/gitwhite"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/btnC"
+                app:layout_constraintEnd_toStartOf="@+id/guideline48"
+                app:layout_constraintStart_toStartOf="@+id/guideline47"
+                app:layout_constraintTop_toBottomOf="@+id/btnA" />
+
+            <Button
+                android:id="@+id/btnC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/choice_background"
+                android:fontFamily="@font/segoe_ui"
+                android:paddingVertical="15dp"
+                android:textAllCaps="false"
+                android:textColor="@color/gitwhite"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/btnD"
+                app:layout_constraintEnd_toStartOf="@+id/guideline48"
+                app:layout_constraintStart_toStartOf="@+id/guideline47"
+                app:layout_constraintTop_toBottomOf="@+id/btnB" />
+
+            <Button
+                android:id="@+id/btnD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/choice_background"
+                android:fontFamily="@font/segoe_ui"
+                android:paddingVertical="15dp"
+                android:textAllCaps="false"
+                android:textColor="@color/gitwhite"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline49"
+                app:layout_constraintEnd_toStartOf="@+id/guideline48"
+                app:layout_constraintStart_toStartOf="@+id/guideline47"
+                app:layout_constraintTop_toBottomOf="@+id/btnC" />
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/custom_button"
+                android:backgroundTint="@color/gitblend1"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:padding="10dp"
+                android:text="timer"
+                android:textColor="@color/gitwhite"
+                app:layout_constraintEnd_toStartOf="@+id/guideline48"
+                app:layout_constraintTop_toTopOf="@+id/tvCount" />
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/custom_button"
+                android:backgroundTint="@color/gitblend1"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:padding="10dp"
+                android:text="current and cap number"
+                android:textColor="@color/gitwhite"
+                app:layout_constraintBottom_toTopOf="@+id/guideline9"
+                app:layout_constraintEnd_toStartOf="@+id/tvTimer"
+                app:layout_constraintHorizontal_bias="0.949"
+                app:layout_constraintStart_toStartOf="@+id/guideline47"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".05" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toStartOf="@+id/guideline48"
+        app:layout_constraintStart_toStartOf="@+id/guideline47"
+        app:layout_constraintTop_toBottomOf="@+id/ivChapterImage3">
+
+        <ImageView
+            android:id="@+id/questionPicture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gitblend1"
+            android:padding="5dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvQuestion"
+            app:srcCompat="@drawable/ic_baseline_account_box_24" />
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_button"
+            android:backgroundTint="@color/gitblend1"
+            android:fontFamily="@font/segoe_ui"
+            android:justificationMode="inter_word"
+            android:padding="10dp"
+            android:text="question number and question"
+            android:textColor="@color/gitwhite"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="spread" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

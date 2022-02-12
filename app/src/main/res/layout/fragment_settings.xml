@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gitblack"
+    tools:context=".Fragment.SettingsFragment"
+    android:forceDarkAllowed="false">
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_input"
+        android:text="@string/log_out"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHeight_percent=".06"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/btnChangePersonalDetails"
+        app:layout_constraintTop_toTopOf="@+id/guideline24"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivChangeProfilePicture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        app:civ_border_color="@color/gitwhite"
+        app:civ_border_width="1dp"
+        app:layout_constraintHeight_percent=".09"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toTopOf="@+id/guideline21"
+        app:layout_constraintWidth_percent=".12" />
+
+    <Button
+        android:id="@+id/btnChangePersonalDetails"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:drawableEnd="@drawable/right_arrow"
+        android:drawablePadding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintBottom_toBottomOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHeight_percent=".06"
+        app:layout_constraintStart_toStartOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintTop_toTopOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintWidth_percent=".8" />
+
+    <Button
+        android:id="@+id/btnAbout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableStart="@drawable/ic_baseline_help_24"
+        android:drawableEnd="@drawable/right_arrow"
+        android:drawablePadding="10dp"
+        android:gravity="start|center"
+        android:text="@string/about"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/tvSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/settings"
+        android:textColor="@color/gitwhite"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline21"
+        app:layout_constraintStart_toStartOf="@+id/guideline22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".9" />
+
+    <TextView
+        android:id="@+id/tvFirstLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:textColor="@color/gitwhite"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintTop_toBottomOf="@+id/tvSettings"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/edit_personal_details"
+        android:textColor="@color/gitgray"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintStart_toEndOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstLastName" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/gitwhite"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHeight_percent=".002"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/ivChangeProfilePicture"
+        app:layout_constraintWidth_percent=".8" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/gitwhite"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHeight_percent=".002"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/btnChangePassword"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/segoe_ui"
+        android:text="@string/account"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <Button
+        android:id="@+id/btnEditEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawableEnd="@drawable/right_arrow"
+        android:drawablePadding="10dp"
+        android:gravity="start|center"
+        android:text="@string/edit_email"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        app:layout_constraintWidth_percent=".8" />
+
+    <Button
+        android:id="@+id/btnChangePassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawableEnd="@drawable/right_arrow"
+        android:drawablePadding="10dp"
+        android:gravity="start|center"
+        android:text="@string/change_password"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditEmail"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/information"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_ver_1_0_1"
+        app:layout_constraintBottom_toTopOf="@+id/guideline24"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
