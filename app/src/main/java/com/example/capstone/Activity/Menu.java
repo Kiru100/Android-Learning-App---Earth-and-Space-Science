@@ -34,6 +34,7 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+<<<<<<< HEAD
         btnLogout=(Button)findViewById(R.id.btnLogout);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,13 @@ public class Menu extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(Menu.this, LoginActivity.class));
             }
+=======
+        btnLogout= findViewById(R.id.btnLogout);
+
+        btnLogout.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(Menu.this, LoginActivity.class));
+>>>>>>> 49d7749 (firebase methods)
         });
 
         student =FirebaseAuth.getInstance().getCurrentUser();

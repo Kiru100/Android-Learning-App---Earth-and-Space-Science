@@ -86,6 +86,10 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getActivity(), "Something wrong happen!", Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
+=======
+                System.out.println("get "+error);
+>>>>>>> 49d7749 (firebase methods)
             }
         });
 

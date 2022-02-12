@@ -11,6 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+<<<<<<< HEAD
+=======
+import android.widget.Toast;
+
+>>>>>>> 49d7749 (firebase methods)
 import com.bumptech.glide.Glide;
 import com.example.capstone.Activity.LoginActivity;
 import com.example.capstone.Model.Student;
@@ -65,12 +70,20 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 if(spicture!=null){
                     Glide.with(getActivity()).load(spicture).into(ivChangeProfilePicture);
                 }
+<<<<<<< HEAD
 
                 tvFirstLastName.setText(FullName);
 
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+=======
+                tvFirstLastName.setText(FullName);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+>>>>>>> 49d7749 (firebase methods)
             }
         });
 
