@@ -7,7 +7,7 @@
 <div align="center">
 <img src="https://user-images.githubusercontent.com/79371033/153740397-2499875f-984f-4988-bbf2-bcf308e14877.jpg" width="300"/>&emsp;<img src="https://user-images.githubusercontent.com/79371033/158021408-e172f5a7-e3ec-40ef-8bd6-82b35d36bd65.jpg" width="300"/>
 </div>
-<h2>Home and Lessons/h2>
+<h2>Home and Lessons</h2>
 <div align="center">
 <img src="https://user-images.githubusercontent.com/79371033/153740742-0c726501-10a5-4d46-8f6c-d2233f06b714.jpg" alt="Login" width="300"/>&emsp;<img src="https://user-images.githubusercontent.com/79371033/153740757-16aa1fa7-d850-4f9c-9a87-d2df016e15cd.jpg" width="300"/>&emsp;<img src="https://user-images.githubusercontent.com/79371033/153740743-67ae1d17-3b2a-421a-b048-ca15d5f78b71.jpg" width="300"/>
 </div>
