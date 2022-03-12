@@ -14,7 +14,7 @@
 
 <h2>Definition of Terms</h2>
 <div align="center">
-<img src="https://user-images.githubusercontent.com/79371033/153740757-16aa1fa7-d850-4f9c-9a87-d2df016e15cd.jpg" width="300"/>&emsp;<img src="https://user-images.githubusercontent.com/79371033/153740743-67ae1d17-3b2a-421a-b048-ca15d5f78b71.jpg" width="300"/>
+<img src="https://user-images.githubusercontent.com/79371033/153740757-16aa1fa7-d850-4f9c-9a87-d2df016e15cd.jpg" width="300"/>&emsp;<img src="https://user-images.githubusercontent.com/79371033/158021394-6ce47f91-7418-4c39-a184-17baeaa0b273.jpg" width="300"/>
 </div>
 
 <h2>Settings and Profile</h2>
