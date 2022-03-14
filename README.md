@@ -19,5 +19,5 @@
 
 <h2>Settings and Profile</h2>
 <div align="center">
-<img src="https://user-images.githubusercontent.com/79371033/158021401-6143959c-e829-498f-8886-6391888e30c1.jpg" width="300"/>
+<img src="https://user-images.githubusercontent.com/79371033/158024347-713b5e41-64ae-4591-b469-9263d4dfb269.jpg" width="300"/><img src="https://user-images.githubusercontent.com/79371033/158021401-6143959c-e829-498f-8886-6391888e30c1.jpg" width="300"/>
 </div>
