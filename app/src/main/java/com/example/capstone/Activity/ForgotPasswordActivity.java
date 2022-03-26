@@ -34,12 +34,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         auth=FirebaseAuth.getInstance();
 
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resetPassword();
-            }
-        });
+        btnResetPassword.setOnClickListener(view -> resetPassword());
 
         }
 
@@ -59,19 +54,16 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
             progressBar.setVisibility(View.VISIBLE);
 
-            auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(ForgotPasswordActivity.this, "Check your email to reset password.", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.INVISIBLE);
-                        startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
-                        finish();
-                    }
-                    else{
-                        Toast.makeText(ForgotPasswordActivity.this, "Try again, something wrong happen.", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.INVISIBLE);
-                    }
+            auth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
+                if (task.isSuccessful()){
+                    Toast.makeText(ForgotPasswordActivity.this, "Check your email to reset password.", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
+                    startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(ForgotPasswordActivity.this, "Try again, something wrong happen.", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
             });
 

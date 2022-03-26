@@ -170,40 +170,32 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         }
 
         mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            user.sendEmailVerification();
-                            Student student=new Student(fname,lname,email,section,0,0);
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        user.sendEmailVerification();
+                        Student student=new Student(fname,lname,email,section,0,0);
 
-                            FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students")
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
 
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(RegistrationActivity.this, "Register successfully. \n Please check your email address \n to verify email. ", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-                                        finish();
-                                    }else{
-                                        Toast.makeText(RegistrationActivity.this, "Failed to register, Try again", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(RegistrationActivity.this, "Register successfully. \n Please check your email address \n to verify email. ", Toast.LENGTH_LONG).show();
+                                    progressBar.setVisibility(View.GONE);
+                                    startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+                                    finish();
+                                }else{
+                                    Toast.makeText(RegistrationActivity.this, "Failed to register, Try again", Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
 
-                                    }
                                 }
-                            });
-                       }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                            }
+                        });
+                   }
+                }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show());
         }
 
     @Override

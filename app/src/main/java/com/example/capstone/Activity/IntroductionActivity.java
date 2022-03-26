@@ -44,8 +44,7 @@ public class IntroductionActivity extends AppCompatActivity {
         tvIntroMessage=findViewById(R.id.tvIntroMessage);
         tvChapterObjectives=findViewById(R.id.tvChapterObjectives);
         btnDone2=findViewById(R.id.btnDone2);
-       // zoomControls2=findViewById(R.id.zoomControls2);
-     //   btnIntroductionNextLesson=findViewById(R.id.btnIntroductionNextLesson);
+
 
         Intent intent = getIntent();
         if (null != intent) {
@@ -67,68 +66,22 @@ public class IntroductionActivity extends AppCompatActivity {
             tvIntroMessage.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
             tvChapterObjectives.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
-//
-//        float[] textSize = {17.5f};
-//        zoomControls2.setOnZoomInClickListener(v -> {
-//            textSize[0] += 1f;
-//            tvIntroMessage.setTextSize(textSize[0]);
-//            tvChapterObjectives.setTextSize(textSize[0]);
-//
-//            zoomandoutdisable(textSize);
-//        });
-//        zoomControls2.setOnZoomOutClickListener(v->{
-//            textSize[0] -= 1f;
-//            tvIntroMessage.setTextSize(textSize[0]);
-//            tvChapterObjectives.setTextSize(textSize[0]);
-//            zoomandoutdisable(textSize);
-//        });
 
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                markAsDone(chapterNumber,lessonName);
-                isdone=true;
-            }
+        new Handler().postDelayed(() -> {
+            markAsDone(chapterNumber,lessonName);
+            isdone=true;
         },60000);
 
 
-        btnDone2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isdone){
-                    Toast.makeText(getApplication(), "You have to read all content first before you can proceed", Toast.LENGTH_SHORT).show();
-                }else{
-                    onBackPressed();
-                }
+        btnDone2.setOnClickListener(v -> {
+            if(!isdone){
+                Toast.makeText(getApplication(), "You have to read all content first before you can proceed", Toast.LENGTH_SHORT).show();
+            }else{
+                onBackPressed();
             }
         });
 
-//            btnIntroductionNextLesson.setOnClickListener(v -> {
-//                if(isDoneReading){
-//                    //send to next activity
-//                    System.out.println("line 1 is clicked");
-//                }else{
-//                    Toast.makeText(getApplication(), "You have to read all content first before you can proceed", Toast.LENGTH_SHORT).show();
-//                    System.out.println("line is clicked");
-//                }
-//            });
-
     }
-
-
-//    public void zoomandoutdisable(float[] textSize){
-//        if(textSize[0]<=17.5){
-//            zoomControls2.setIsZoomOutEnabled(false);
-//        }else{
-//            zoomControls2.setIsZoomOutEnabled(true);
-//        }
-//        if(textSize[0]>=25){
-//            zoomControls2.setIsZoomInEnabled(false);
-//        }else{
-//            zoomControls2.setIsZoomInEnabled(true);
-//        }
-//    }
 
     public void markAsDone(int ChapterNumber,String LessonName){
         String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
