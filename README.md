@@ -1,4 +1,4 @@
-<h1>Android Based Learning Application</h2>
+<h1>Android Based Learning Application</h1>
 <p>This Android Based Learning Application is using Java as main language, Firebase Realtime Database and Firebase storage for storing informations and files including pictures.</p>
 <p>Main feature contains video from YouTube api with lesson to help student understand modules with minimal teacher's provision.</p>
 <p>This is purely made based from Earth and Space Science K-12 module of Grade 10 students in the Philippines.</p>
