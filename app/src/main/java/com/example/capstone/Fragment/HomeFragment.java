@@ -29,7 +29,6 @@ public class HomeFragment extends Fragment {
 
     private ChapterFirebaseAdapter fireAdapter;
     private RecyclerView rvChapters;
-    private FirebaseUser student;
     private DatabaseReference reference;
 
 
@@ -47,12 +46,9 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-       //TODO: Prevent fragment refresh when navigation is clicked
-
         rvChapters = rootView.findViewById(R.id.rvChapters);
 
 
-        student = FirebaseAuth.getInstance().getCurrentUser();
         reference=FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
         reference.keepSynced(true);
 
