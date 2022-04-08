@@ -41,60 +41,6 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView6"
                 app:layout_constraintVertical_bias="1.0" />
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerFrameLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15"
-                app:layout_constraintVertical_bias="0.0">
-
-                <include
-                    layout="@layout/shimmer_chapter_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                </include>
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerFrameLayout1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintStart_toEndOf="@+id/shimmerFrameLayout"
-                app:layout_constraintTop_toBottomOf="@+id/textView15">
-
-                <include
-                    layout="@layout/shimmer_chapter_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                </include>
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerFrameLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintStart_toEndOf="@+id/shimmerFrameLayout"
-                app:layout_constraintTop_toBottomOf="@+id/textView15">
-
-                <include
-                    layout="@layout/shimmer_chapter_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></include>
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvChapters"
                 android:layout_width="match_parent"
@@ -171,11 +117,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="(Based from DepEd Learning Material)"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView15"
-                app:layout_constraintTop_toTopOf="@+id/textView15" />
+                app:layout_constraintStart_toEndOf="@+id/textView15" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
