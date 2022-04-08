@@ -29,12 +29,9 @@ public class HomeFragment extends Fragment {
 
     private ChapterFirebaseAdapter fireAdapter;
     private RecyclerView rvChapters;
-    private ShimmerFrameLayout shimmerFrameLayout,shimmerFrameLayout1,shimmerFrameLayout2;
-    private boolean isLoaded;
-    private TextView tvWelcomeName;
     private FirebaseUser student;
     private DatabaseReference reference;
-    private String userID;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -54,14 +51,11 @@ public class HomeFragment extends Fragment {
 
         rvChapters = rootView.findViewById(R.id.rvChapters);
 
-        shimmerFrameLayout=rootView.findViewById(R.id.shimmerFrameLayout);
-        shimmerFrameLayout1=rootView.findViewById(R.id.shimmerFrameLayout1);
-        shimmerFrameLayout2=rootView.findViewById(R.id.shimmerFrameLayout2);
 
         student = FirebaseAuth.getInstance().getCurrentUser();
         reference=FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
         reference.keepSynced(true);
-        userID=student.getUid();
+
 
 
         rvChapters.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
