@@ -13,8 +13,9 @@
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_about.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_definition.xml" value="0.24652455977757182" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_home.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_lessons.xml" value="0.3087719298245614" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_pre_test.xml" value="0.3069687900812313" />
-        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_profile.xml" value="0.28174235403151066" />
+        <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/Dasco/Capstone/app/src/main/res/layout/shimmer_chapter_layout.xml" value="0.3009833262077811" />
       </map>
     </option>
@@ -24,5 +25,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3009833262077811" />
+      </ProjectState>
+    </option>
   </component>
 </project>
