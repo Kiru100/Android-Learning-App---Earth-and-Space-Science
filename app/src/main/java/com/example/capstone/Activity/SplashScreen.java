@@ -19,7 +19,6 @@ public class SplashScreen extends AppCompatActivity {
 
         //TODO: Check if user is connected to the internet
 
-
        new Handler().postDelayed(() -> {
 
            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

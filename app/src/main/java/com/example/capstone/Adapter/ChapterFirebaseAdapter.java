@@ -126,11 +126,8 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
         }
         if(!model.isAvailable()){
 
-
         }
     }
-
-
 
     @NonNull
     @Override

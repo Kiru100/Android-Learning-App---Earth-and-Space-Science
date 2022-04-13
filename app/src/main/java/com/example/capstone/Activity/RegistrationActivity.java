@@ -190,7 +190,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                 }else{
                                     Toast.makeText(RegistrationActivity.this, "Failed to register, Try again", Toast.LENGTH_SHORT).show();
                                     progressBar.setVisibility(View.GONE);
-
                                 }
                             }
                         });

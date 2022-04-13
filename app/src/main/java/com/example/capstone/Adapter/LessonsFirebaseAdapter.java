@@ -75,13 +75,10 @@ public class LessonsFirebaseAdapter extends FirebaseRecyclerAdapter<LessonInfo,L
                 },10000);
             }
         });
-        holder.btnUpArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.tvLessonDescription.setVisibility(View.GONE);
-                holder.btnDownArrow.setVisibility(View.VISIBLE);
-                holder.btnUpArrow.setVisibility(View.GONE);
-            }
+        holder.btnUpArrow.setOnClickListener(v -> {
+            holder.tvLessonDescription.setVisibility(View.GONE);
+            holder.btnDownArrow.setVisibility(View.VISIBLE);
+            holder.btnUpArrow.setVisibility(View.GONE);
         });
 
         String LessonType= model.getLtypes();
