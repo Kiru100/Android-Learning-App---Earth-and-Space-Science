@@ -53,15 +53,11 @@ public class DefinitionFirebaseAdapter extends FirebaseRecyclerAdapter<Definitio
         holder.cvDefinition.setOnClickListener(view -> {
             AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
-
-
-            DefinitionMain definitionMain = new DefinitionMain();
-
+            Fragment definitionMain =new DefinitionMain();
             Bundle bundle = new Bundle();
             bundle.putString("DefinitionName",model.getDefinitionName());
             bundle.putString("DefinitionDescription",model.getDefinitionDescription());
             bundle.putString("DefinitionImageURL",model.getDefinitionImageURL());
-
             definitionMain.setArguments(bundle);
 
                     activity.getSupportFragmentManager()
