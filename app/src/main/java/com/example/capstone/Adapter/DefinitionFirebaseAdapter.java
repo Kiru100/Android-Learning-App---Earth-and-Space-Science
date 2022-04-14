@@ -54,6 +54,7 @@ public class DefinitionFirebaseAdapter extends FirebaseRecyclerAdapter<Definitio
             AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
             Fragment definitionMain =new DefinitionMain();
+
             Bundle bundle = new Bundle();
             bundle.putString("DefinitionName",model.getDefinitionName());
             bundle.putString("DefinitionDescription",model.getDefinitionDescription());
