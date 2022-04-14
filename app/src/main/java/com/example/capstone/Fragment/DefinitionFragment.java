@@ -58,13 +58,13 @@ public class DefinitionFragment extends Fragment {
         svSearchDefinition.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String search) {
-                processSearch(search);
+                processSearch(search.toLowerCase());
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String search) {
-                processSearch(search);
+                processSearch(search.toLowerCase());
                 return false;
             }
         });
@@ -77,7 +77,7 @@ public class DefinitionFragment extends Fragment {
     private void processSearch(String search) {
         options= new FirebaseRecyclerOptions.Builder<DefinitionInfo>()
                 .setQuery(FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                        .getReference().child("Definition").orderByChild("DefinitionName").startAt(search).endAt(search+"\uf8ff")  ,DefinitionInfo.class).build();
+                        .getReference().child("Definition").orderByKey().startAt(search).endAt(search+"\uf8ff")  ,DefinitionInfo.class).build();
         fadapter = new DefinitionFirebaseAdapter(options);
         fadapter.startListening();
         rvDefinition.setAdapter(fadapter);

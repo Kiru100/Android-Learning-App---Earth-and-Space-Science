@@ -44,7 +44,6 @@ public class HomeFragment extends Fragment {
         reference.keepSynced(true);
 
 
-
         rvChapters.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         //firebase
