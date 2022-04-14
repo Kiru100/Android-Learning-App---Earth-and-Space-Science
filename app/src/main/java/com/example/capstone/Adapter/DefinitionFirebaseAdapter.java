@@ -53,8 +53,7 @@ public class DefinitionFirebaseAdapter extends FirebaseRecyclerAdapter<Definitio
         holder.cvDefinition.setOnClickListener(view -> {
             AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
-            Fragment definitionMain =new DefinitionMain();
-
+            DefinitionMain definitionMain =new DefinitionMain();
             Bundle bundle = new Bundle();
             bundle.putString("DefinitionName",model.getDefinitionName());
             bundle.putString("DefinitionDescription",model.getDefinitionDescription());
@@ -63,7 +62,7 @@ public class DefinitionFirebaseAdapter extends FirebaseRecyclerAdapter<Definitio
 
                     activity.getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragmentDefine, definitionMain)
+                    .replace(R.id.fragmentDefine,definitionMain )
                     .addToBackStack(null)
                     .commit();
         });

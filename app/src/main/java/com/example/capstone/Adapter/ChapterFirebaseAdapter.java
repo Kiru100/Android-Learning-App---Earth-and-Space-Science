@@ -32,15 +32,14 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,ChapterFirebaseAdapter.myViewHolder> {
 
-    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
-    private DatabaseReference studentsRef= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
+    private final FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    private final DatabaseReference studentsRef= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
             .getReference("Students");
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
      *
-     * @param options
      */
 
 
@@ -99,8 +98,6 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
             });
         }
 
-
-
         if(model.isAvailable()) {
             holder.rlhideLayout.setVisibility(View.INVISIBLE);
             holder.rlChapters.setOnClickListener(view -> {
@@ -124,9 +121,6 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
                                 .commit();
             });
         }
-        if(!model.isAvailable()){
-
-        }
     }
 
     @NonNull
@@ -139,14 +133,14 @@ public class ChapterFirebaseAdapter extends FirebaseRecyclerAdapter<ChapterInfo,
     class myViewHolder extends RecyclerView.ViewHolder {
 
 
-        private RelativeLayout rlhideLayout;
-        private TextView tvChapterTitle;
-        private CardView rlChapters;
-        private ProgressBar progress;
-        private ImageView chapterImage;
-        private TextView tvChapterDescription;
-        private TextView tvChapterNumber;
-        private TextView progressText;
+        private final RelativeLayout rlhideLayout;
+        private final TextView tvChapterTitle;
+        private final CardView rlChapters;
+        private final ProgressBar progress;
+        private final ImageView chapterImage;
+        private final TextView tvChapterDescription;
+        private final TextView tvChapterNumber;
+        private final TextView progressText;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);

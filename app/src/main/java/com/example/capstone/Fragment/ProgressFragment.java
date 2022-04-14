@@ -26,8 +26,7 @@ public class ProgressFragment extends Fragment{
     private ProgressFirebaseAdapter fireAdapter;
     private TextView tvChapterName,tvChapterNumber2;
 
-    public ProgressFragment() {
-    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +34,7 @@ public class ProgressFragment extends Fragment{
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                getFragmentManager().popBackStack();
+                requireActivity().getSupportFragmentManager().popBackStack();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);

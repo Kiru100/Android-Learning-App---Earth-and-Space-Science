@@ -47,29 +47,29 @@ public class ProfileFragment extends Fragment {
 
         userID=student.getUid();
 
-        final TextView ProfileFName =rootView.findViewById(R.id.ProfileFName);
-        final TextView ProfileLName =rootView.findViewById(R.id.ProfileLName);
-        final TextView ProfileEmail= rootView.findViewById(R.id.ProfileEmail);
-        final TextView ProfileSection= rootView.findViewById(R.id.ProfileSection);
-        final TextView ChapterOneProgress= rootView.findViewById(R.id.tvChapterOnePercent);
-        final TextView ChapterTwoProgress= rootView.findViewById(R.id.tvChapter2Percent);
-        final ImageView civProfilePicture= rootView.findViewById(R.id.civProfilePicture);
+        final TextView ProfileFName = rootView.findViewById(R.id.ProfileFName);
+        final TextView ProfileLName = rootView.findViewById(R.id.ProfileLName);
+        final TextView ProfileEmail = rootView.findViewById(R.id.ProfileEmail);
+        final TextView ProfileSection = rootView.findViewById(R.id.ProfileSection);
+        final TextView ChapterOneProgress = rootView.findViewById(R.id.tvChapterOnePercent);
+        final TextView ChapterTwoProgress = rootView.findViewById(R.id.tvChapter2Percent);
+        final ImageView civProfilePicture = rootView.findViewById(R.id.civProfilePicture);
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Student studentProfile= snapshot.getValue(Student.class);
                 if(studentProfile!=null){
-                    String sfname=studentProfile.getSFname();
-                    String slname=studentProfile.getSLname();
-                    String semail=studentProfile.getSEmail();
-                    String ssection=studentProfile.getSsection();
-                    String spicture=studentProfile.getSpicture();
-                    int Chapter_1_Progress= studentProfile.getChapter_1_Progress();
-                    int Chapter_2_Progress= studentProfile.getChapter_2_Progress();
+                    String sfname = studentProfile.getSFname();
+                    String slname = studentProfile.getSLname();
+                    String semail = studentProfile.getSEmail();
+                    String ssection = studentProfile.getSsection();
+                    String spicture = studentProfile.getSpicture();
+                    int Chapter_1_Progress = studentProfile.getChapter_1_Progress();
+                    int Chapter_2_Progress = studentProfile.getChapter_2_Progress();
 
                     if(spicture!=null){
-                        Glide.with(getActivity()).load(spicture).into(civProfilePicture);
+                        Glide.with(requireActivity()).load(spicture).into(civProfilePicture);
                     }
                     if(Chapter_1_Progress!=0){
                         ChapterOneProgress.setText(Chapter_1_Progress+"%");
@@ -92,23 +92,11 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        btnChapterOneProgress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendToAnotherFragment("Plate Tectonics",1);
-            }
-        });
-        btnChapterTwoProgress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendToAnotherFragment("Earth's Interior",2);
-            }
-        });
-
+        btnChapterOneProgress.setOnClickListener(view -> sendToAnotherFragment("Plate Tectonics",1));
+        btnChapterTwoProgress.setOnClickListener(view -> sendToAnotherFragment("Earth's Interior",2));
 
         return rootView;
     }
-
 
     public void sendToAnotherFragment(String ChapterName, int ChapterNumber){
 

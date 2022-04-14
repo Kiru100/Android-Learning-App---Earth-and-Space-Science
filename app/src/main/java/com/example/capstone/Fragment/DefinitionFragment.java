@@ -12,9 +12,8 @@ import com.example.capstone.Adapter.DefinitionFirebaseAdapter;
 import com.example.capstone.Model.DefinitionInfo;
 import com.example.capstone.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 import com.google.firebase.database.FirebaseDatabase;
-
-
 
 public class DefinitionFragment extends Fragment {
     private DefinitionFirebaseAdapter fadapter;
@@ -22,11 +21,9 @@ public class DefinitionFragment extends Fragment {
     private SearchView svSearchDefinition;
     FirebaseRecyclerOptions<DefinitionInfo> options;
 
-
     public DefinitionFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,8 +60,6 @@ public class DefinitionFragment extends Fragment {
             }
         });
 
-
-
         return rootView;
     }
 
@@ -77,7 +72,6 @@ public class DefinitionFragment extends Fragment {
         rvDefinition.setAdapter(fadapter);
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -89,8 +83,6 @@ public class DefinitionFragment extends Fragment {
         super.onStop();
         fadapter.stopListening();
     }
-
-
 
     //Prevent out of Bound error
     public class WrapContentLinearLayoutManager extends LinearLayoutManager {

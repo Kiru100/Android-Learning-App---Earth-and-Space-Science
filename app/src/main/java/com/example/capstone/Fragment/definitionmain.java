@@ -34,7 +34,7 @@ public class DefinitionMain extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                getFragmentManager().popBackStack();
+                requireActivity().getSupportFragmentManager().popBackStack();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
