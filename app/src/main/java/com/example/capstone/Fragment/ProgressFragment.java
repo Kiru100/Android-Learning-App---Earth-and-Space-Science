@@ -1,32 +1,21 @@
 package com.example.capstone.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-
-import com.example.capstone.Adapter.ChapterFirebaseAdapter;
 import com.example.capstone.Adapter.ProgressFirebaseAdapter;
-import com.example.capstone.Model.ChapterInfo;
 import com.example.capstone.Model.MarkAsDoneInfo;
 import com.example.capstone.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ProgressFragment extends Fragment{
