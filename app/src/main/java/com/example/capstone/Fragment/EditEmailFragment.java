@@ -78,34 +78,33 @@ public class EditEmailFragment extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         AuthCredential credential = EmailAuthProvider
                 .getCredential(auth.getCurrentUser().getEmail(), password);
+        assert user != null;
         user.reauthenticate(credential)
                 .addOnCompleteListener(task -> {
                     //change email here
                     FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+                    assert user1 != null;
                     user1.updateEmail(edtNewEmail.getText().toString())
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        //TODO: Don't allow user from using existing email
-                                        //TODO:prompt if fail or success as well as check if password is incorrect
-                                        mFirebaseMethods.updateEmail(edtNewEmail.getText().toString());
+                            .addOnCompleteListener(task1 -> {
+                                if (task1.isSuccessful()) {
+                                    //TODO: Don't allow user from using existing email
+                                    //TODO:prompt if fail or success as well as check if password is incorrect
+                                    mFirebaseMethods.updateEmail(edtNewEmail.getText().toString());
 
-                                        final NavController navController = Navigation.findNavController(getView());
-                                        navController.navigate(R.id.action_editEmail_to_settingsFragment);
-                                        Toast.makeText(getActivity(), "You successfully changed your email.", Toast.LENGTH_SHORT).show();
-                                    }  else{
-                                        auth.fetchSignInMethodsForEmail(edtNewEmail.getText().toString()).addOnCompleteListener(task11 -> {
-                                            boolean isNewUser = task11.getResult().getSignInMethods().isEmpty();
+                                    final NavController navController = Navigation.findNavController(getView());
+                                    navController.navigate(R.id.action_editEmail_to_settingsFragment);
+                                    Toast.makeText(getActivity(), "You successfully changed your email.", Toast.LENGTH_SHORT).show();
+                                }  else{
+                                    auth.fetchSignInMethodsForEmail(edtNewEmail.getText().toString()).addOnCompleteListener(task11 -> {
+                                        boolean isNewUser = task11.getResult().getSignInMethods().isEmpty();
 
-                                            if (isNewUser) {
-                                                Toast.makeText(getContext(), "Check your password.", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(getContext(), "Email already exist. \n Please try again.", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
+                                        if (isNewUser) {
+                                            Toast.makeText(getContext(), "Check your password.", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(getContext(), "Email already exist. \n Please try again.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
 
-                                    }
                                 }
                             });
                 });

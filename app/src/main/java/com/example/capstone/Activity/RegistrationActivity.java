@@ -40,9 +40,6 @@ import java.util.Arrays;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
-    //TODO: implement Show Password button
-    private boolean connected;
-
     private FirebaseAuth mAuth;
     private  TextView tvHaveAccount,btnRegister;
     private EditText edtFirstName, edtLastName, edtEmail, edtPassword;
@@ -160,6 +157,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         //return internet connection status
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean connected;
+
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             //we are connected to a network
@@ -173,26 +172,24 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()){
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                        assert user != null;
                         user.sendEmailVerification();
                         Student student=new Student(fname,lname,email,section,0,0);
 
                         FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                .setValue(student).addOnCompleteListener(new OnCompleteListener<Void>() {
-
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(RegistrationActivity.this, "Register successfully. \n Please check your email address \n to verify email. ", Toast.LENGTH_LONG).show();
-                                    progressBar.setVisibility(View.GONE);
-                                    startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-                                    finish();
-                                }else{
-                                    Toast.makeText(RegistrationActivity.this, "Failed to register, Try again", Toast.LENGTH_SHORT).show();
-                                    progressBar.setVisibility(View.GONE);
-                                }
-                            }
-                        });
+                                .setValue(student).addOnCompleteListener(task1 -> {
+                                    if(task1.isSuccessful()){
+                                        Toast.makeText(RegistrationActivity.this, "Register successfully. \n Please check your email address \n to verify email. ", Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
+                                        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+                                        finish();
+                                    }else{
+                                        Toast.makeText(RegistrationActivity.this, "Failed to register, Try again", Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                });
                    }
                 }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show());
         }
