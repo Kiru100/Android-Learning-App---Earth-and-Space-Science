@@ -1,9 +1,8 @@
 package com.example.capstone.Activity;
-
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
-
 import android.animation.Animator;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -14,7 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -22,7 +20,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.example.capstone.Model.Question;
 import com.example.capstone.R;
@@ -31,7 +28,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,14 +42,17 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             questionNumber;
     private String LessonName,LessonType,ChapterNumber,TestNode,imageURL,TestName;
     private ImageView ivChapterImage3,questionPicture;
-    private final MediaPlayer mediaPlayer= MediaPlayer.create(this,R.raw.gamesound);
-
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        mediaPlayer = MediaPlayer.create(getApplication(),R.raw.repeat);
+
+
         mediaPlayer.start();
+        mediaPlayer.setLooping(true);
         //textbox
         tvQuizChapterNumber=findViewById(R.id.tvQuizChapterNumber);
         tvQuizChapterTitle=findViewById(R.id.tvQuizChapterTitle);
@@ -301,6 +300,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
              startActivity(i);
 
              QuestionActivity.this.finish();
+             mediaPlayer.stop();
         }
 
     }
@@ -368,5 +368,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     }
                 });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        mediaPlayer.stop();
     }
 }
