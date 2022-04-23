@@ -59,7 +59,6 @@ public class DefinitionFirebaseAdapter extends FirebaseRecyclerAdapter<Definitio
             bundle.putString("DefinitionDescription",model.getDefinitionDescription());
             bundle.putString("DefinitionImageURL",model.getDefinitionImageURL());
             definitionMain.setArguments(bundle);
-
                     activity.getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragmentDefine,definitionMain )

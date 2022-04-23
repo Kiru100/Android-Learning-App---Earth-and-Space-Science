@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.text.LineBreaker;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -45,14 +46,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             questionNumber;
     private String LessonName,LessonType,ChapterNumber,TestNode,imageURL,TestName;
     private ImageView ivChapterImage3,questionPicture;
-
+    private final MediaPlayer mediaPlayer= MediaPlayer.create(this,R.raw.gamesound);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-
+        mediaPlayer.start();
         //textbox
         tvQuizChapterNumber=findViewById(R.id.tvQuizChapterNumber);
         tvQuizChapterTitle=findViewById(R.id.tvQuizChapterTitle);
