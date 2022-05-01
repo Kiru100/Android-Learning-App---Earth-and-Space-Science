@@ -37,15 +37,10 @@ public class LessonActivity extends YouTubeBaseActivity {
     private TextView tvLessonTitle,tvFirstLine,tvSecondLine,tvThirdLine,tvFirstFigureNumber,tvYoutubeTitle,tvSecondFigureNumber,tvLessonReference;
 
     private ImageView ivFirstLessonImage,ivSecondLessonImage;
-
     private int ChapterNumber;
-
     private ScrollView scrollView2;
-
     private boolean isDoneWatching;
-
     private boolean isDoneReading;
-
     private Button btnDone;
 
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();

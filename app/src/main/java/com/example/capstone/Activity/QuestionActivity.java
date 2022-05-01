@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView tvQuizChapterNumber,tvQuizChapterTitle,tvType,tvQuestion,tvTimer,tvCount;
     private Button btnA,btnB,btnC,btnD;
@@ -41,14 +40,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private String LessonName,LessonType,ChapterNumber,TestNode,imageURL,TestName;
     private ImageView ivChapterImage3,questionPicture;
     private MediaPlayer mediaPlayer;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
         mediaPlayer = MediaPlayer.create(getApplication(),R.raw.repeat);
-
-
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
         //textbox
@@ -60,18 +56,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         tvCount=findViewById(R.id.tvCount);
         ivChapterImage3=findViewById(R.id.ivChapterImage3);
         questionPicture=findViewById(R.id.questionPicture);
-
         //buttons
         btnA=findViewById(R.id.btnA);
         btnB=findViewById(R.id.btnB);
         btnC=findViewById(R.id.btnC);
         btnD=findViewById(R.id.btnD);
-
         btnA.setOnClickListener(this);
         btnB.setOnClickListener(this);
         btnC.setOnClickListener(this);
         btnD.setOnClickListener(this);
-
 
         Intent intent = getIntent();
         if (null != intent) {
@@ -91,24 +84,18 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 btnC.setVisibility(View.GONE);
                 btnD.setVisibility(View.GONE);
             }
-
             tvQuizChapterNumber.setText("Chapter "+ChapterNumber);
             tvQuizChapterTitle.setText(LessonName);
             tvType.setText(LessonType);
             Glide.with(this).load(imageURL).into(ivChapterImage3);
         }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             tvQuestion.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
-
-
         getQuestionList();
     }
-
     private void getQuestionList() {
         mQuestionList=new ArrayList();
-
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/")
                                          .getReference();
@@ -117,7 +104,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot dataSnapshot: snapshot.child("Question").child(TestNode).child("Items").getChildren()){
-
                     final String getQuestion = dataSnapshot.child("question").getValue(String.class);
                     final String getOption1= dataSnapshot.child("optionA").getValue(String.class);
                     final String getOption2= dataSnapshot.child("optionB").getValue(String.class);
@@ -129,20 +115,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     Question question=new Question(getQuestion,getOption1,getOption2,getOption3,getOption4,getCorrectAnswer,imageQuestionURL);
                     mQuestionList.add(question);
                     Collections.shuffle(mQuestionList);
-
                 }
                 setQuestion();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
-
     }
-
     private void setQuestion() {
         tvTimer.setText("2:00");
         tvQuestion.setText((questionNumber+1)+". "+mQuestionList.get(0).getQuestion());
@@ -163,14 +143,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
        }else{
            questionPicture.setVisibility(View.INVISIBLE);
        }
-
         String totalScore=String.valueOf(1)+ "/"+String.valueOf(mQuestionList.size());
         tvCount.setText(totalScore);
         startTimer();
 
         questionNumber=0;
     }
-
     private void startTimer() {
         countdown=new CountDownTimer(122000,1000) {
             @Override
@@ -192,15 +170,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                changeQuestion();
             }
         };
-
         countdown.start();
-
     }
-
     @Override
     public void onClick(View v) {
         int selectedButton=0;
-
         switch(v.getId()){
             case R.id.btnA:
                 selectedButton=1;
@@ -214,16 +188,13 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btnD:
                 selectedButton=4;
                 break;
-
             default:
         }
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         countdown.cancel();
         checkAnswer(selectedButton,v);
-
     }
-
     private void checkAnswer(int selectedButton, View view) {
         if(selectedButton==mQuestionList.get(questionNumber).getCorrectAnswer()){
             //answer
@@ -253,7 +224,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
                 default:
             }
-
         }
         Handler handler=new Handler();
         handler.postDelayed(new Runnable() {
@@ -262,14 +232,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 changeQuestion();
             }
         },2000);
-
-
     }
-
     private void changeQuestion() {
         if (questionNumber<mQuestionList.size()-1){
             //play animation to change the question
-
             questionNumber++;
 
             playAnim(tvQuestion,0,0);
@@ -282,8 +248,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             tvCount.setText(String.valueOf(questionNumber+1)+"/"+String.valueOf(mQuestionList.size()));
             tvTimer.setText("2:00");
             startTimer();
-
-
         }else{
             //go to score act
              Intent i= new Intent(QuestionActivity.this,ScoreActivity.class);
@@ -296,7 +260,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
              i.putExtra("imgURL",imageURL);
              i.putExtra("testName",TestName);
              startActivity(i);
-
              QuestionActivity.this.finish();
              mediaPlayer.stop();
         }
@@ -309,9 +272,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 .setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
-
                     }
-
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         if(value==0){
@@ -355,7 +316,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                             }
                             playAnim(view,1,viewNumber);
                         }
-
                     }
                     @Override
                     public void onAnimationCancel(Animator animation) {
@@ -365,13 +325,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
                     }
                 });
-
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         mediaPlayer.stop();
     }
 }
