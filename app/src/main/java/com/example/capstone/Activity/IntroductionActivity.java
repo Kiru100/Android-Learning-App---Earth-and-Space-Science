@@ -1,6 +1,5 @@
 package com.example.capstone.Activity;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.text.LineBreaker;
 import android.os.Build;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ZoomControls;
-
 import com.example.capstone.Model.LessonDoneInfo;
 import com.example.capstone.Model.MarkAsDoneInfo;
 import com.example.capstone.R;

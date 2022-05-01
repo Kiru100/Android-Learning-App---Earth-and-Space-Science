@@ -1,5 +1,4 @@
 package com.example.capstone.Activity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ZoomControls;
-
 import com.bumptech.glide.Glide;
 import com.example.capstone.Model.LessonDoneInfo;
 import com.example.capstone.Model.MarkAsDoneInfo;
