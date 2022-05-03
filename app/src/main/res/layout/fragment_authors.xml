@@ -12,7 +12,7 @@
         android:id="@+id/logoAuthorsandCredits"
         android:layout_width="76dp"
         android:layout_height="73dp"
-        android:src="@drawable/ic_baseline_help_24"
+        android:src="@drawable/ic_baseline_create_24"
 
         app:layout_constraintBottom_toTopOf="@+id/guideline34"
         app:layout_constraintEnd_toStartOf="@+id/guideline36"
