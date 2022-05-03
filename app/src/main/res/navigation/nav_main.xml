@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_changePersonalDetails"
             app:destination="@id/changePersonalDetails" />
+        <action
+            android:id="@+id/action_settingsFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
     </fragment>
     <fragment
         android:id="@+id/definitionFragment"
@@ -99,5 +102,14 @@
         android:name="com.example.capstone.Fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/authorsFragment"
+        android:name="com.example.capstone.Fragment.BlankFragment"
+        android:label="authors_blank"
+        tools:layout="@layout/fragment_authors" >
+        <action
+            android:id="@+id/action_blankFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
 
 </navigation>
