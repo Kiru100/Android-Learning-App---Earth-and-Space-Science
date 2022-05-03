@@ -59,6 +59,8 @@
                                     it is intended to help students better understand the subject in less stressful way that the students would like.
     </string>
     <string name="credits">Authors and Credits</string>
+    <string name="authors_and_credits">Authors and Credits</string>
+    <string name="author_and_credits_message">\t\tMessage Here</string>
 
 
 </resources>

@@ -46,6 +46,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.btnEditEmail).setOnClickListener(this);
         rootView.findViewById(R.id.btnChangePassword).setOnClickListener(this);
         rootView.findViewById(R.id.btnChangePersonalDetails).setOnClickListener(this);
+        rootView.findViewById(R.id.btnAuthors).setOnClickListener(this);
 
         student = FirebaseAuth.getInstance().getCurrentUser();
         reference= FirebaseDatabase.getInstance("https://capstoneproject-4b898-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Students");
@@ -105,6 +106,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnChangePersonalDetails:
                 navController.navigate(R.id.action_settingsFragment_to_changePersonalDetails);
+                break;
+            case R.id.btnAuthors:
+                navController.navigate(R.id.action_settingsFragment_to_authorsFragment);
                 break;
             default:
 

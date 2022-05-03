@@ -65,15 +65,15 @@
         app:layout_constraintHeight_percent=".05"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline22"
-        app:layout_constraintTop_toBottomOf="@+id/btnCredits"
+        app:layout_constraintTop_toBottomOf="@+id/btnAuthors"
         app:layout_constraintWidth_percent=".8" />
 
     <Button
-        android:id="@+id/btnCredits"
+        android:id="@+id/btnAuthors"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:drawableStart="@drawable/ic_baseline_help_24"
+        android:drawableStart="@drawable/ic_baseline_create_24"
         android:drawableEnd="@drawable/right_arrow"
         android:drawablePadding="10dp"
         android:gravity="start|center"

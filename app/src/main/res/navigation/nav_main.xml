@@ -31,8 +31,8 @@
             android:id="@+id/action_settingsFragment_to_changePersonalDetails"
             app:destination="@id/changePersonalDetails" />
         <action
-            android:id="@+id/action_settingsFragment_to_blankFragment"
-            app:destination="@id/blankFragment" />
+            android:id="@+id/action_settingsFragment_to_authorsFragment"
+            app:destination="@id/authorsFragment" />
     </fragment>
     <fragment
         android:id="@+id/definitionFragment"
@@ -104,7 +104,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/authorsFragment"
-        android:name="com.example.capstone.Fragment.BlankFragment"
+        android:name="com.example.capstone.Fragment.AuthorsFragment"
         android:label="authors_blank"
         tools:layout="@layout/fragment_authors" >
         <action

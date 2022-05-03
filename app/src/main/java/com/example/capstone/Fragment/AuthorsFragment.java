@@ -1,22 +1,18 @@
 package com.example.capstone.Fragment;
-
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.capstone.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends Fragment {
-    //TODO: Subject to remove
-    public BlankFragment() {
+public class AuthorsFragment extends Fragment {
+
+    public AuthorsFragment() {
         // Required empty public constructor
     }
 
