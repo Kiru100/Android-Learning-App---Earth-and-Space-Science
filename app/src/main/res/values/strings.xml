@@ -58,9 +58,9 @@
                                     by incorporating simple and understandable content that is entertaining and educational. In addition,
                                     it is intended to help students better understand the subject in less stressful way that the students would like.
     </string>
-    <string name="credits">Authors and Credits</string>
-    <string name="authors_and_credits">Authors and Credits</string>
-    <string name="author_and_credits_message">\t\tMessage Here</string>
+    <string name="credits">Authors</string>
+    <string name="authors_and_credits">Authors</string>
+    <string name="author_and_credits_message">The following created this android application: \n\n 1. Noel M. Dasco Jr.\n 2. Justine Paulo T. Era \n 3. Mariel T. Zaballas</string>
 
 
 </resources>
