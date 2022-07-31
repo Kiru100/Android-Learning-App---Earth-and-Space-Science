@@ -5,11 +5,9 @@ public class DefinitionInfo {
     private String DefinitionDescription;
     private String DefinitionImageURL;
 
-
     public DefinitionInfo(){
 
     }
-
 
     public String getDefinitionImageURL() {
         return DefinitionImageURL;
